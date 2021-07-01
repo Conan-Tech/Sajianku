@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <!-- Style -->
+    <link rel="stylesheet" href="Assets/scss/main.css">
+    <!-- font -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="page-container">
+        <div class="d-flex" id="wrapper">
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper">
+                <div class="sidebar-heading text-center">
+                    SajianKu
+                </div>
+                <ul class="list-group list-group-flush">
+                    <a href="dashboard.html" class="list-group-item"><i
+                            class="fas fa-tachometer-alt me-1"></i>Dashboard</a>
+                    <div class="sparator">Management</div>
+                    <a href="employee.html" class="list-group-item "><i class="fas fa-users me-1"></i>Employees</a>
+                    <a href="table.html" class="list-group-item "><i class="fas fa-th me-1"></i>Tables</a>
+                    <a href="category.html" class="list-group-item active"><i
+                            class="fas fa-th-list me-1"></i>Categories</a>
+                    <a href="menu.html" class="list-group-item"><i class="fas fa-utensils me-1"></i>Menus</a>
+                    <a href="#" class="list-group-item btn-logout btn-custom"><i
+                            class="fas fa-sign-out-alt me-1"></i></i>Logout</a>
+                </ul>
+            </div>
+
+            <!-- Page Content -->
+            <div id="page-content-wrapper" class="w-100">
+                <!-- Top Bar -->
+                <nav class="navbar navbar-expand-lg navbar-light bg-white">
+                    <div class="container-fluid">
+                        <button class="btn mr-auto mr-2 sidebar-supported-content d-md-none" id="menu-toggle">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                            <ul class="navbar-nav ms-auto">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Hello Din &nbsp; <i class="fas fa-user-circle fa-lg"></i>
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <!-- Main Content -->
+                <div id="section-content">
+                    <div class="content-heading">
+                        Categories
+                    </div>
+                    <div class="card">
+                        <div class="card-header d-flex flex-row align-items-center">
+                            <h6 class="m-0 text-custom">List of Categories</h6>
+                            <button class="btn btn-custom ms-auto px-4" data-bs-toggle="modal"
+                                data-bs-target="#modalAdd">Add Category</button>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-bordered table-hover table-responsive">
+                                <thead>
+                                    <tr class="text-center">
+                                        <th scope="col">NO</th>
+                                        <th scope="col">ID Kategori</th>
+                                        <th scope="col">Nama Kategori</th>
+                                        <th scope="col">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td scope="row" class="text-center">1</td>
+                                        <td>KT-001</td>
+                                        <td>Makanan</td>
+                                        <td class="text-center">
+                                            <button type="button" class="btn btn-success"><i
+                                                    class="far fa-edit"></i></button>
+                                            <button type="button" class="btn btn-danger"><i
+                                                    class="far fa-trash-alt"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row" class="text-center">2</td>
+                                        <td>KT-002</td>
+                                        <td>Minuman</td>
+                                        <td class="text-center">
+                                            <button type="button" class="btn btn-success"><i
+                                                    class="far fa-edit"></i></button>
+                                            <button type="button" class="btn btn-danger"><i
+                                                    class="far fa-trash-alt"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row" class="text-center">3</td>
+                                        <td>KT-003</td>
+                                        <td>Minuman</td>
+                                        <td class="text-center">
+                                            <button type="button" class="btn btn-success"><i
+                                                    class="far fa-edit"></i></button>
+                                            <button type="button" class="btn btn-danger"><i
+                                                    class="far fa-trash-alt"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row" class="text-center">4</td>
+                                        <td>KT-004</td>
+                                        <td>Makanan</td>
+                                        <td class="text-center">
+                                            <button type="button" class="btn btn-success"><i
+                                                    class="far fa-edit"></i></button>
+                                            <button type="button" class="btn btn-danger"><i
+                                                    class="far fa-trash-alt"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row" class="text-center">5</td>
+                                        <td>KT-005</td>
+                                        <td>Makanan</td>
+                                        <td class="text-center">
+                                            <button type="button" class="btn btn-success"><i
+                                                    class="far fa-edit"></i></button>
+                                            <button type="button" class="btn btn-danger"><i
+                                                    class="far fa-trash-alt"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- Footer -->
+                    <div class="footer">
+                        <div class="text-footer text-center">Copyright © 2021. Sajianku. All RIght Reserved</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalAdd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Category</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="mb-3">
+                                <label for="id" class="form-label">Id Kategori</label>
+                                <input type="email" class="form-control" name="id" id="id">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label for="jabatan" class="form-label">Jabatan</label>
+                                <select class="form-select" aria-label="Default select example" name="jabatan"
+                                    id="jabatan">
+                                    <option selected>Nama Katergory</option>
+                                    <option value="kategori">Makanan</option>
+                                    <option value="kategori">Minuman</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-custom">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Boostrap JS -->
+    <script src="Vendor/bootstrap-5.0.2/js/bootstrap.bundle.js"></script>
+    <script>
+        $("#menu-toggle").on("click", function (e) {
+            e.preventDefault;
+
+            let wrap = $("#wrapper");
+
+            $(wrap).toggleClass("toggled");
+            if (wrap.hasClass("toggled")) {
+                $("#menu-toggle").html("<i class='fas fa-chevron-left'></i>");
+            } else {
+                $("#menu-toggle").html("<i class='fas fa-chevron-right'></i>")
+            }
+        });
+    </script>
+</body>
+
+</html>
