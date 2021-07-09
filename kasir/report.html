@@ -26,10 +26,8 @@
                     <a href="dashboard.html" class="list-group-item"><i
                             class="fas fa-tachometer-alt me-1"></i>Dashboard</a>
                     <div class="sparator">Management</div>
-                    <a href="employee.html" class="list-group-item "><i class="fas fa-users me-1"></i>Employees</a>
-                    <a href="table.html" class="list-group-item"><i class="fas fa-th me-1"></i>Tables</a>
-                    <a href="category.html" class="list-group-item"><i class="fas fa-th-list me-1"></i>Categories</a>
-                    <a href="menu.html" class="list-group-item active"><i class="fas fa-utensils me-1"></i>Menus</a>
+                    <a href="payment.html" class="list-group-item"><i class="fas fa-users me-1"></i>Payment</a>
+                    <a href="report.html" class="list-group-item active"><i class="fas fa-th me-1"></i>Report</a>
                     <a href="#" class="list-group-item btn-logout btn-custom"><i
                             class="fas fa-sign-out-alt me-1"></i></i>Logout</a>
                 </ul>
@@ -67,145 +65,96 @@
                 <!-- Main Content -->
                 <div id="section-content">
                     <div class="content-heading">
-                        Menus
+                        Report
+                        <div class="mb-3 row">
+                            <label for="inputPassword" class="col-sm-2 col-form-label">Date</label>
+                            <div class="col-sm-2">
+                                <input type="date" class="form-control" id="inputPassword">
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="date" class="form-control" id="inputPassword">
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-success ms-auto"><i class="fas fa-print"></i></button>
+                        </td>
                     </div>
-                    <div class="card">
+
+                    <div class=" card">
                         <div class="card-header d-flex flex-row align-items-center">
-                            <h6 class="m-0 text-custom">Menu List</h6>
-                            <button class="btn btn-custom ms-auto px-4" data-bs-toggle="modal"
-                                data-bs-target="#modalAdd">Add Menu</button>
+                            <h6 class="m-0 text-custom">List Report</h6>
+
                         </div>
                         <div class="card-body">
+                            <h2 class="d-flex justify-content-end">Total:Rp.124.480.200</h2>
                             <table class="table table-bordered table-hover table-responsive">
                                 <thead>
                                     <tr class="text-center">
                                         <th scope="col">NO</th>
-                                        <th scope="col">Kode Menu</th>
-                                        <th scope="col">Nama Menu</th>
-                                        <th scope="col">Harga</th>
-                                        <th scope="col">Status</th>
+                                        <th scope="col">Tanggal</th>
+                                        <th scope="col">Jumlah Order</th>
+                                        <th scope="col">Pemasukan</th>
                                         <th scope="col">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td scope="row" class="text-center">1</td>
-                                        <td>10226</td>
-                                        <td>Grilled Cheese</td>
-                                        <td>Rp. 55000</td>
-                                        <td>Tersedia</td>
+                                        <td>01/06/2021</td>
+                                        <td>238</td>
+                                        <td>Rp. 5.000.000</td>
                                         <td class="text-center">
                                             <button type="button" class="btn btn-custom"><i
                                                     class="far fa-eye"></i></button>
-                                            <button type="button" class="btn btn-success"><i
-                                                    class="far fa-edit"></i></button>
-                                            <button type="button" class="btn btn-danger"><i
-                                                    class="far fa-trash-alt"></i></button>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td scope="row" class="text-center">2</td>
-                                        <td>10227</td>
-                                        <td>Youghurt Susu Kambing</td>
-                                        <td>Rp. 15000</td>
-                                        <td>Tersedia</td>
+                                        <td>01/06/2021</td>
+                                        <td>238</td>
+                                        <td>Rp. 5.000.000</td>
                                         <td class="text-center">
                                             <button type="button" class="btn btn-custom"><i
                                                     class="far fa-eye"></i></button>
-                                            <button type="button" class="btn btn-success"><i
-                                                    class="far fa-edit"></i></button>
-                                            <button type="button" class="btn btn-danger"><i
-                                                    class="far fa-trash-alt"></i></button>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td scope="row" class="text-center">3</td>
-                                        <td>10228</td>
-                                        <td>Sosis Bakar Biryani</td>
-                                        <td>Rp. 18000</td>
-                                        <td>Tersedia</td>
+                                        <td>01/06/2021</td>
+                                        <td>238</td>
+                                        <td>Rp. 5.000.000</td>
                                         <td class="text-center">
                                             <button type="button" class="btn btn-custom"><i
                                                     class="far fa-eye"></i></button>
-                                            <button type="button" class="btn btn-success"><i
-                                                    class="far fa-edit"></i></button>
-                                            <button type="button" class="btn btn-danger"><i
-                                                    class="far fa-trash-alt"></i></button>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td scope="row" class="text-center">4</td>
-                                        <td>10229</td>
-                                        <td>Ayam Goreng</td>
-                                        <td>Rp. 20000</td>
-                                        <td>Tidak tersedia</td>
+                                        <td>01/06/2021</td>
+                                        <td>238</td>
+                                        <td>Rp. 5.000.000</td>
                                         <td class="text-center">
                                             <button type="button" class="btn btn-custom"><i
                                                     class="far fa-eye"></i></button>
-                                            <button type="button" class="btn btn-success"><i
-                                                    class="far fa-edit"></i></button>
-                                            <button type="button" class="btn btn-danger"><i
-                                                    class="far fa-trash-alt"></i></button>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td scope="row" class="text-center">5</td>
-                                        <td>10230</td>
-                                        <td>Bir Pletok</td>
-                                        <td>Rp. 15000</td>
-                                        <td>Tidak tersedia</td>
+                                        <td>01/06/2021</td>
+                                        <td>238</td>
+                                        <td>Rp. 5.000.000</td>
                                         <td class="text-center">
                                             <button type="button" class="btn btn-custom"><i
                                                     class="far fa-eye"></i></button>
-                                            <button type="button" class="btn btn-success"><i
-                                                    class="far fa-edit"></i></button>
-                                            <button type="button" class="btn btn-danger"><i
-                                                    class="far fa-trash-alt"></i></button>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td scope="row" class="text-center">2</td>
-                                        <td>10231</td>
-                                        <td>Nasi Goreng</td>
-                                        <td>Rp. 28000</td>
-                                        <td>Tersedia</td>
+                                        <td scope="row" class="text-center">6</td>
+                                        <td>01/06/2021</td>
+                                        <td>238</td>
+                                        <td>Rp. 5.000.000</td>
                                         <td class="text-center">
                                             <button type="button" class="btn btn-custom"><i
                                                     class="far fa-eye"></i></button>
-                                            <button type="button" class="btn btn-success"><i
-                                                    class="far fa-edit"></i></button>
-                                            <button type="button" class="btn btn-danger"><i
-                                                    class="far fa-trash-alt"></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td scope="row" class="text-center">2</td>
-                                        <td>10231</td>
-                                        <td>Nasi Goreng</td>
-                                        <td>Rp. 28000</td>
-                                        <td>Tersedia</td>
-                                        <td class="text-center">
-                                            <button type="button" class="btn btn-custom"><i
-                                                    class="far fa-eye"></i></button>
-                                            <button type="button" class="btn btn-success"><i
-                                                    class="far fa-edit"></i></button>
-                                            <button type="button" class="btn btn-danger"><i
-                                                    class="far fa-trash-alt"></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td scope="row" class="text-center">2</td>
-                                        <td>10231</td>
-                                        <td>Nasi Goreng</td>
-                                        <td>Rp. 28000</td>
-                                        <td>Tersedia</td>
-                                        <td class="text-center">
-                                            <button type="button" class="btn btn-custom"><i
-                                                    class="far fa-eye"></i></button>
-                                            <button type="button" class="btn btn-success"><i
-                                                    class="far fa-edit"></i></button>
-                                            <button type="button" class="btn btn-danger"><i
-                                                    class="far fa-trash-alt"></i></button>
                                         </td>
                                     </tr>
                                 </tbody>
