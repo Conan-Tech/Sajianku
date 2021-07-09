@@ -11793,6 +11793,64 @@ body {
   color: #fb9300;
 }
 
+.offcanvas .offcanvas-body {
+  position: relative;
+  max-height: 64%;
+}
+
+.offcanvas .offcanvas-body .cancel-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.offcanvas .offcanvas-body .card {
+  border-radius: 10px;
+}
+
+.offcanvas .offcanvas-body .card .card-body {
+  padding: 0;
+}
+
+.offcanvas .offcanvas-body .card .card-body img {
+  border-radius: 10px;
+  background: #fce9cf;
+}
+
+.offcanvas .offcanvas-body .card .card-body h5, .offcanvas .offcanvas-body .card .card-body .h5 {
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 37px;
+}
+
+.offcanvas .offcanvas-body .card .card-body p {
+  font-weight: 300;
+  font-size: 0.9rem;
+}
+
+.offcanvas .offcanvas-body .card .card-body .price {
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-right: 20px;
+}
+
+.offcanvas .offcanvas-body .plus-minus-btn {
+  position: absolute;
+  bottom: 15px;
+  left: 40%;
+}
+
+.offcanvas .offcanvas-footer {
+  position: absolute;
+  bottom: 30px;
+  padding: 0 15px;
+  width: 100%;
+}
+
+.offcanvas .offcanvas-footer textarea {
+  background: #eeeeee;
+}
+
 .tabs-table .nav-link {
   color: #82848d;
 }
@@ -11903,6 +11961,18 @@ body {
 .btn-custom {
   background: #fb9300;
   border-radius: 10px !important;
+  color: #ffffff !important;
+}
+
+.btn-outline {
+  border: 1px solid #fb9300;
+  border-radius: 0px 5px 5px 0px;
+  margin-left: -5px;
+}
+
+.btn-add-order {
+  background: #fb9300;
+  border-radius: 5px 0px 0px 5px !important;
   color: #ffffff !important;
 }
 

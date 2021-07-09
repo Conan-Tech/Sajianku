@@ -109,3 +109,65 @@
     }
   }
 }
+
+.offcanvas {
+  // position: relative;
+
+  .offcanvas-body {
+    position: relative;
+    max-height: 64%;
+
+    .cancel-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    .card {
+      border-radius: 10px;
+
+      .card-body {
+        padding: 0;
+
+        img {
+          border-radius: 10px;
+          background: #fce9cf;
+        }
+
+        h5 {
+          font-weight: 700;
+          font-size: 1rem;
+          line-height: 37px;
+        }
+
+        p {
+          font-weight: 300;
+          font-size: 0.9rem;
+        }
+
+        .price {
+          font-weight: 500;
+          font-size: 0.9rem;
+          margin-right: 20px;
+        }
+      }
+    }
+
+    .plus-minus-btn {
+      position: absolute;
+      bottom: 15px;
+      left: 40%;
+    }
+  }
+
+  .offcanvas-footer {
+    position: absolute;
+    bottom: 30px;
+    padding: 0 15px;
+    width: 100%;
+
+    textarea {
+      background: #eeeeee;
+    }
+  }
+}
