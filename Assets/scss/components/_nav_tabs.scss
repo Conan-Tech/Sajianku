@@ -1,0 +1,78 @@
+.tabs-table {
+  .nav-link {
+    color: #82848d;
+
+    &:hover {
+      border-color: transparent transparent #dee2e6 !important;
+      border: transparent transparent #fb9300 !important;
+      color: #82848d;
+    }
+
+    &.active {
+      border-color: transparent transparent #fb9300 !important;
+      color: #fb9300 !important;
+    }
+  }
+}
+
+.tabs-menu {
+  .nav-tabs {
+    border: none !important;
+
+    .nav-link {
+      border: none;
+
+      &:hover {
+        border: none !important;
+      }
+
+      &.active {
+        border: none !important;
+      }
+
+      .card-menu {
+        border-radius: 15px;
+
+        &.active {
+          background: #fb9300;
+        }
+
+        .card-body {
+          .wrapper-nav-tabs-img {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+
+            .nav-tabs-img {
+              color: #82848d;
+
+              &.active {
+                color: #fb9300;
+              }
+            }
+          }
+
+          .nav-tabs-title {
+            color: #000000;
+            margin: 15px 0;
+
+            &.active {
+              color: #ffffff;
+            }
+          }
+
+          .nav-tabs-arrow {
+            color: #fb9300;
+
+            &.active {
+              color: #ffffff;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <!-- Style -->
-    <link rel="stylesheet" href="Assets/scss/main.css">
+    <link rel="stylesheet" href="../Assets/scss/main.css">
     <!-- font -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -21,10 +21,8 @@
                 <ul class="list-group list-group-flush">
                     <a href="dashboard.html" class="list-group-item active"><i class="fas fa-tachometer-alt me-1"></i>Dashboard</a>
                     <div class="sparator">Management</div>
-                    <a href="employee.html" class="list-group-item"><i class="fas fa-users me-1"></i>Employees</a>
-                    <a href="table.html" class="list-group-item"><i class="fas fa-th me-1"></i>Tables</a>
-                    <a href="category.html" class="list-group-item"><i class="fas fa-th-list me-1"></i>Categories</a>
-                    <a href="menu.html" class="list-group-item"><i class="fas fa-utensils me-1"></i>Menus</a>
+                    <a href="order.html" class="list-group-item"><i class="fas fa-users me-1"></i>Order</a>
+                    <a href="manage-order.html" class="list-group-item"><i class="fas fa-th me-1"></i>Manage Order</a>
                     <a href="#" class="list-group-item btn-logout btn-custom"><i class="fas fa-sign-out-alt me-1"></i></i>Logout</a>
                 </ul>
             </div>
@@ -140,7 +138,7 @@
 <!-- ajax -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- Boostrap JS -->
-<script src="Vendor/bootstrap-5.0.2/js/bootstrap.bundle.js"></script>
+<script src="../Vendor/bootstrap-5.0.2/js/bootstrap.bundle.js"></script>
 <script>
     $("#menu-toggle").on("click", function(e){
         e.preventDefault;

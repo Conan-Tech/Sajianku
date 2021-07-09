@@ -8,6 +8,10 @@
   color: #ffffff !important;
 }
 
+.btn-color {
+  background: #fb9300;
+}
+
 .btn-link {
   color: #000000;
   text-decoration: none;
@@ -15,4 +19,14 @@
   &:hover {
     color: #252525;
   }
+}
+
+.btn-alert {
+  width: 25%;
+}
+
+.btn-order {
+  border: none;
+  background: none;
+  margin-bottom: 20px;
 }

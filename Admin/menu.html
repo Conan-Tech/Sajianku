@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <!-- Style -->
-    <link rel="stylesheet" href="Assets/scss/main.css">
+    <link rel="stylesheet" href="../Assets/scss/main.css">
     <!-- font -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
@@ -80,7 +80,7 @@
                                 <thead>
                                     <tr class="text-center">
                                         <th scope="col">NO</th>
-                                        <th scope="col">Kode Makanan</th>
+                                        <th scope="col">Kode Menu</th>
                                         <th scope="col">Nama Menu</th>
                                         <th scope="col">Harga</th>
                                         <th scope="col">Status</th>
@@ -178,6 +178,36 @@
                                                     class="far fa-trash-alt"></i></button>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td scope="row" class="text-center">2</td>
+                                        <td>10231</td>
+                                        <td>Nasi Goreng</td>
+                                        <td>Rp. 28000</td>
+                                        <td>Tersedia</td>
+                                        <td class="text-center">
+                                            <button type="button" class="btn btn-custom"><i
+                                                    class="far fa-eye"></i></button>
+                                            <button type="button" class="btn btn-success"><i
+                                                    class="far fa-edit"></i></button>
+                                            <button type="button" class="btn btn-danger"><i
+                                                    class="far fa-trash-alt"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row" class="text-center">2</td>
+                                        <td>10231</td>
+                                        <td>Nasi Goreng</td>
+                                        <td>Rp. 28000</td>
+                                        <td>Tersedia</td>
+                                        <td class="text-center">
+                                            <button type="button" class="btn btn-custom"><i
+                                                    class="far fa-eye"></i></button>
+                                            <button type="button" class="btn btn-success"><i
+                                                    class="far fa-edit"></i></button>
+                                            <button type="button" class="btn btn-danger"><i
+                                                    class="far fa-trash-alt"></i></button>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -199,47 +229,36 @@
                     <h5 class="modal-title" id="exampleModalLabel">Add Menu</h5>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-2">
-                            <div class="mb-3">
-                                <label for="id" class="form-label">Kode Makanan</label>
-                                <input type="email" class="form-control" name="id" id="id">
-                            </div>
+                    <div class="mb-3 row">
+                        <label for="kode" class="col-sm-3 col-form-label">Kode Menu</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" id="kode" name="kode" readonly>
                         </div>
-                        <div class="div col-md-6">
-
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="menu" class="col-sm-3 col-form-label">Nama Menu</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" id="menu" name="menu">
                         </div>
-                        <div class="col-md-6 ">
-                            <div class="mb-3">
-                                <label for="nama" class="form-label">Nama Menu</label>
-                                <input type="email" class="form-control" name="nama" id="nama">
-                            </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="kategori" class="col-sm-3 col-form-label">Kategori Menu</label>
+                        <div class="col-sm-4">
+                            <select class="form-select" name="kategori" id="kategori">
+                                <option selected>--Pilih Kategori--</option>
+                            </select>
                         </div>
-                        <div class="div col-md-6">
-
-                        </div>
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="nama" class="form-label">Harga</label>
-                                <input type="email" class="form-control" name="nama" id="nama">
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="mb-3">
-                                <label for="jabatan" class="form-label">Status</label>
-                                <select class="form-select" aria-label="Default select example" name="jabatan"
-                                    id="jabatan">
-                                    <option selected>Pilih Status Ketersediaan</option>
-                                    <option value="status">Tersedia</option>
-                                    <option value="status">Kasir</option>
-                                </select>
-                            </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="harga" class="col-sm-3 col-form-label">Harga</label>
+                        <div class="col-sm-4">
+                            <input type="number" class="form-control" id="harga" name="harga">
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-custom">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-custom">Save</button>
                 </div>
             </div>
         </div>
@@ -248,7 +267,7 @@
     <!-- ajax -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Boostrap JS -->
-    <script src="Vendor/bootstrap-5.0.2/js/bootstrap.bundle.js"></script>
+    <script src="../Vendor/bootstrap-5.0.2/js/bootstrap.bundle.js"></script>
     <script>
         $("#menu-toggle").on("click", function (e) {
             e.preventDefault;

@@ -5,3 +5,11 @@
 .card-header {
   background: #eeeeee;
 }
+
+.card-table {
+  background: #fb9300;
+
+  &:hover {
+    background: #ffa92f;
+  }
+}

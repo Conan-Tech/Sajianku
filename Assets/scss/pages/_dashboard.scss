@@ -3,6 +3,7 @@
     background: #f5f5fb;
     min-height: 100vh;
     overflow-y: scroll;
+    height: 100px;
   }
 
   #sidebar-wrapper {
@@ -158,7 +159,7 @@
 
     .footer {
       border-top: 1px solid #979797;
-      margin-top: 120px;
+      margin-top: 50px;
 
       .text-footer {
         font-size: 0.8rem;
