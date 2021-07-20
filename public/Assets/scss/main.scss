@@ -1,0 +1,19 @@
+// Import bootstrap 5 liblary
+@import "../../Vendor/bootstrap-5.0.2/scss/bootstrap.scss";
+
+@import "global";
+@import "fonts";
+@import "navbar";
+
+@import "pages/dashboard";
+@import "pages/order";
+@import "pages/manageorder";
+@import "pages/payment";
+@import "pages/auth";
+
+@import "components/form";
+@import "components/nav_tabs";
+@import "components/text";
+@import "components/button";
+@import "components/card";
+@import "components/icon";

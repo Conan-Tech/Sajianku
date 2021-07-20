@@ -1,0 +1,58 @@
+.page-container {
+  #page-content-wrapper {
+    overflow-x: hidden;
+  }
+
+  &.page-payment {
+    .wrapper-content-payment {
+      height: calc(100% - 56px);
+
+      .payment-body {
+        position: relative;
+        max-height: 60%;
+        overflow-y: auto;
+
+        .card {
+          border-radius: 10px;
+
+          .card-body {
+            padding: 0;
+
+            img {
+              border-radius: 10px;
+              background: #fce9cf;
+            }
+
+            h5 {
+              font-weight: 700;
+              font-size: 1rem;
+              line-height: 37px;
+            }
+
+            p {
+              font-weight: 300;
+              font-size: 0.9rem;
+            }
+
+            .price {
+              font-weight: 500;
+              font-size: 0.9rem;
+              margin-right: 20px;
+            }
+          }
+        }
+      }
+
+      .payment-footer {
+        position: absolute;
+        bottom: 30px;
+        padding: 0 15px;
+        width: 100%;
+
+        textarea {
+          background: #eeeeee;
+        }
+      }
+    }
+  }
+}
