@@ -38,6 +38,10 @@ $routes->get('/category', 'Category::index');
 $routes->add('/delete-category/(:any)', 'Category::delete/$1');
 $routes->add('/update-category/(:any)', 'Category::update/$1');
 
+$routes->get('/employee', 'Employee::index');
+$routes->add('/delete-employee/(:any)', 'Employee::delete/$1');
+$routes->add('/update-employee/(:any)', 'Employee::update/$1');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
