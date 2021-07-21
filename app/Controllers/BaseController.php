@@ -3,7 +3,11 @@
 namespace App\Controllers;
 
 use App\Models\CategoryModel;
+<<<<<<< HEAD
 use App\Models\TableModel;
+=======
+use App\Models\EmployeeModel;
+>>>>>>> e12ed80319f76ca6e507b3454186882380c1af85
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\CLIRequest;
 use CodeIgniter\HTTP\IncomingRequest;
@@ -59,11 +63,19 @@ class BaseController extends Controller
 	}
 
 	protected $categoryModel;
+<<<<<<< HEAD
 	protected $tableModel;
+=======
+	protected $employeeModel;
+>>>>>>> e12ed80319f76ca6e507b3454186882380c1af85
 
 	public function __construct()
 	{
 		$this->categoryModel = new CategoryModel();
+<<<<<<< HEAD
 		$this->tableModel = new TableModel();
+=======
+		$this->employeeModel = new EmployeeModel();
+>>>>>>> e12ed80319f76ca6e507b3454186882380c1af85
 	}
 }

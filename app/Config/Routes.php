@@ -38,9 +38,15 @@ $routes->get('/category', 'Category::index');
 $routes->add('/delete-category/(:any)', 'Category::delete/$1');
 $routes->add('/update-category/(:any)', 'Category::update/$1');
 
+<<<<<<< HEAD
 $routes->get('/table', 'Table::index');
 $routes->add('/delete-table/(:any)', 'Table::delete/$1');
 $routes->add('/update-table/(:any)', 'Table::update/$1');
+=======
+$routes->get('/employee', 'Employee::index');
+$routes->add('/delete-employee/(:any)', 'Employee::delete/$1');
+$routes->add('/update-employee/(:any)', 'Employee::update/$1');
+>>>>>>> e12ed80319f76ca6e507b3454186882380c1af85
 
 /*
  * --------------------------------------------------------------------
