@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\CategoryModel;
+use App\Models\TableModel;
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\CLIRequest;
 use CodeIgniter\HTTP\IncomingRequest;
@@ -58,9 +59,11 @@ class BaseController extends Controller
 	}
 
 	protected $categoryModel;
+	protected $tableModel;
 
 	public function __construct()
 	{
 		$this->categoryModel = new CategoryModel();
+		$this->tableModel = new TableModel();
 	}
 }
