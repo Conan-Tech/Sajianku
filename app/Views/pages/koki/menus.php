@@ -1,4 +1,4 @@
-<?= $this->extend('layout/admin'); ?>
+<?= $this->extend('layout/koki'); ?>
 
 <?= $this->section('content'); ?>
 
