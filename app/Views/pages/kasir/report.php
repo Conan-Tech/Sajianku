@@ -46,51 +46,6 @@
                         <button type="button" class="btn btn-custom"><i class="far fa-eye"></i></button>
                     </td>
                 </tr>
-                <tr>
-                    <td scope="row" class="text-center">2</td>
-                    <td>01/06/2021</td>
-                    <td>238</td>
-                    <td>Rp. 5.000.000</td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-custom"><i class="far fa-eye"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td scope="row" class="text-center">3</td>
-                    <td>01/06/2021</td>
-                    <td>238</td>
-                    <td>Rp. 5.000.000</td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-custom"><i class="far fa-eye"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td scope="row" class="text-center">4</td>
-                    <td>01/06/2021</td>
-                    <td>238</td>
-                    <td>Rp. 5.000.000</td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-custom"><i class="far fa-eye"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td scope="row" class="text-center">5</td>
-                    <td>01/06/2021</td>
-                    <td>238</td>
-                    <td>Rp. 5.000.000</td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-custom"><i class="far fa-eye"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td scope="row" class="text-center">6</td>
-                    <td>01/06/2021</td>
-                    <td>238</td>
-                    <td>Rp. 5.000.000</td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-custom"><i class="far fa-eye"></i></button>
-                    </td>
-                </tr>
             </tbody>
         </table>
     </div>

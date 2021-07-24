@@ -7,6 +7,7 @@ use App\Models\TableModel;
 use App\Models\EmployeeModel;
 use App\Models\ManageordersModel;
 use App\Models\MenusModel;
+use App\Models\OrderModel;
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\CLIRequest;
 use CodeIgniter\HTTP\IncomingRequest;
@@ -66,6 +67,7 @@ class BaseController extends Controller
 	protected $employeeModel;
 	protected $manageordersModel;
 	protected $menusModel;
+	protected $orderModel;
 
 	public function __construct()
 	{
@@ -74,5 +76,6 @@ class BaseController extends Controller
 		$this->employeeModel = new EmployeeModel();
 		$this->manageordersModel = new ManageordersModel();
 		$this->menusModel = new MenusModel();
+		$this->orderModel = new OrderModel();
 	}
 }

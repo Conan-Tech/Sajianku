@@ -23,87 +23,131 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td scope="row" class="text-center">1</td>
-                    <td>10226</td>
-                    <td>Grilled Cheese</td>
-                    <td>Rp. 55000</td>
-                    <td class="text-center">
-                        <h6><span class="badge bg-success py-2 px-2 w-100">Tersedia</span></h6>
-                    </td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-danger"><i class="fas fa-times"></i></button>
-                        <button type="button" class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#modalAdd"><i class="far fa-eye"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td scope="row" class="text-center">2</td>
-                    <td>10226</td>
-                    <td>Grilled Cheese</td>
-                    <td>Rp. 55000</td>
-                    <td class="text-center">
-                        <h6><span class="badge bg-danger py-2 px-2 w-100">Tidak tersedia</span></h6>
-                    </td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-success"><i class="fas fa-check"></i></button>
-                        <button type="button" class="btn btn-custom"><i class="far fa-eye"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td scope="row" class="text-center">3</td>
-                    <td>10227</td>
-                    <td>Youghurt Susu Kambing</td>
-                    <td>Rp. 15000</td>
-                    <td class="text-center">
-                        <h6><span class="badge bg-success py-2 px-2 w-100">Tersedia</span></h6>
-                    </td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-danger"><i class="fas fa-times"></i></button>
-                        <button type="button" class="btn btn-custom"><i class="far fa-eye"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td scope="row" class="text-center">4</td>
-                    <td>10228</td>
-                    <td>Sosis Bakar Biryani</td>
-                    <td>Rp. 18000</td>
-                    <td class="text-center">
-                        <h6><span class="badge bg-danger py-2 px-2 w-100">Tidak tersedia</span></h6>
-                    </td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-success"><i class="fas fa-check"></i></button>
-                        <button type="button" class="btn btn-custom"><i class="far fa-eye"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td scope="row" class="text-center">5</td>
-                    <td>10229</td>
-                    <td>Ayam Goreng</td>
-                    <td>Rp. 20000</td>
-                    <td class="text-center">
-                        <h6><span class="badge bg-success py-2 px-2 w-100">Tersedia</span></h6>
-                    </td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-danger"><i class="fas fa-times"></i></button>
-                        <button type="button" class="btn btn-custom"><i class="far fa-eye"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td scope="row" class="text-center">6</td>
-                    <td>10230</td>
-                    <td>Bir Pletok</td>
-                    <td>Rp. 15000</td>
-                    <td class="text-center">
-                        <h6><span class="badge bg-success py-2 px-2 w-100">Tersedia</span></h6>
-                    </td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-danger"><i class="fas fa-times"></i></button>
-                        <button type="button" class="btn btn-custom"><i class="far fa-eye"></i></button>
-                    </td>
-                </tr>
+
+                <?php
+                $no = 1;
+                foreach ($menus as $menu) :
+                ?>
+
+                    <tr>
+                        <td scope="row" class="text-center"><?= $no++; ?></td>
+                        <td><?= $menu['Id_Menu']; ?></td>
+                        <td><?= $menu['Nama_Menu']; ?></td>
+                        <td><?= $menu['Harga']; ?></td>
+                        <td class="text-center">
+
+                            <?php
+                            if ($menu['Status_Ketersediaan'] == 0) {
+                                echo '<h6><span class="badge bg-danger py-2 px-2">Tidak Tersedia</span></h6>';
+                            } else {
+                                echo '<h6><span class="badge bg-success py-2 px-2"> Tersedia</span></h6>';
+                            }
+                            ?>
+
+                        </td>
+                        <td class="text-center">
+
+                            <?php
+                            if ($menu['Status_Ketersediaan'] == 0) {
+                            ?>
+                                <a href="Menus/updateAvailable/<?= $menu['Id_Menu'] ?>" button type="button" class="btn btn-success"><i class="fas fa-check"></i></a>
+                            <?php
+                            } else {
+                            ?>
+                                <a href="Menus/updateNotAvailable/<?= $menu['Id_Menu'] ?>" button type="button" class="btn btn-danger"><i class="fas fa-times"></i></a>
+                            <?php
+                            }
+                            ?>
+
+                            <button type="button" class="btn btn-custom btn-detail" data-bs-toggle="modal" data-bs-target="#modalDetail" data-id="<?= $menu['Id_Menu'] ?>"><i class="far fa-eye"></i></button>
+                        </td>
+                    </tr>
+
+                <?php
+                endforeach;
+                ?>
+
             </tbody>
         </table>
     </div>
 </div>
+
+<?= $this->endSection(); ?>
+
+<?= $this->section('modal'); ?>
+
+<!-- Modal Detail -->
+<div class="modal fade" id="modalDetail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Detail Menu</h5>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3 row">
+                    <label for="kode" class="col-sm-3 col-form-label">Kode Makanan</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="dkode" name="kode" readonly>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="menu" class="col-sm-3 col-form-label">Nama Menu</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" id="dmenu" name="menu" readonly>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="harga" class="col-sm-3 col-form-label">Harga</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="dharga" name="harga" readonly>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="harga" class="col-sm-3 col-form-label">Status</label>
+                    <div class="col-sm-4">
+                        <h6 id="dstatus"><span class="badge bg-success py-2 px-2"></span></h6>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?= $this->endSection(); ?>
+
+<?php $this->section('script') ?>
+
+<script>
+    //detail
+    $(".btn-detail").on("click", function() {
+        const id = $(this).data('id');
+
+        $.ajax({
+            url: "Menus/getDataMenus",
+            data: {
+                id: id,
+            },
+            method: "POST",
+            dataType: "json",
+            success: function(data) {
+                console.log(data);
+                $('#dkode').val(data.Id_Menu);
+                $('#dmenu').val(data.Nama_Menu);
+                $('#dharga').val(data.Harga);
+                $('#dstatus').html(data.Status_Ketersediaan);
+                if (data.Status_Ketersediaan == 0) {
+                    $('#dstatus').html('<span class="badge bg-danger py-2 px-2">Tidak Tersedia</span>')
+                } else {
+                    $('#dstatus').html('<span class="badge bg-success py-2 px-2">Tersedia</span>')
+
+                }
+            },
+
+        });
+    });
+</script>
 
 <?= $this->endSection(); ?>
