@@ -9,12 +9,12 @@ class Report extends BaseController
     public function index()
     {
         $data = [
-            'report' => $this->reportModel->fetchDataReport(),
+            'orders' => $this->orderModel->fetchDataOrder(),
         ];
         return view('pages/kasir/report', $data);
     }
 
-    public function getDataReport()
+    public function getDataOrder()
     {
         // echo json_encode($this->reportModel->fetchDataReport($_POST['id']));
     }

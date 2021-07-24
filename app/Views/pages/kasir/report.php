@@ -37,17 +37,74 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td scope="row" class="text-center">1</td>
-                    <td>01/06/2021</td>
-                    <td>238</td>
-                    <td>Rp. 5.000.000</td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-custom"><i class="far fa-eye"></i></button>
-                    </td>
-                </tr>
+
+                <?php
+                $no = 1;
+                foreach ($orders as $order) :
+                ?>
+
+                    <tr>
+                        <td scope="row" class="text-center"><?= $no++; ?></td>
+                        <td><?= $order['Tanggal_Order']; ?></td>
+                        <td>255</td>
+                        <td><?= $order['Total_Harga']; ?></td>
+                        <td class="text-center">
+                            <button type="button" class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#modalDetail" data-id=""><i class="far fa-eye"></i></button>
+                        </td>
+                    </tr>
+
+                <?php
+                endforeach;
+                ?>
+
             </tbody>
         </table>
+    </div>
+</div>
+
+<?= $this->endSection(); ?>
+
+<?= $this->section('modal'); ?>
+
+<!-- Modal Detail -->
+<div class="modal fade" id="modalDetail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Detail Report</h5>
+            </div>
+            <div class="modal-body">
+                <div class="card-body">
+                    <div class="card">
+                        <div class="card-header d-flex flex-row align-items-center py-3">
+                            <h6 class="m-0 text-color">Table Detail</h6>
+                        </div>
+                        <table class="table table-bordered table-hover table-responsive">
+                            <thead>
+                                <tr class="text-center">
+                                    <th scope="col">NO</th>
+                                    <th scope="col">ID Order</th>
+                                    <th scope="col">Nama Pemesan</th>
+                                    <th scope="col">No Meja</th>
+                                    <th scope="col">Jumlah Order</th>
+                                    <th scope="col">Total Harga</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td scope="row" class="text-center">1</td>
+                                    <td>OR-0001</td>
+                                    <td>Idris Merdefi</td>
+                                    <td class="text-center">01</td>
+                                    <td class="text-center">5</td>
+                                    <td>Rp. 65.000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
