@@ -9,8 +9,13 @@ class Manageorders extends BaseController
     public function index()
     {
         $data = [
-            'manageorders' => $this->manageordersModel->fetchDataManageorders(),
+            'orders' => $this->manageordersModel->fetchDataManageorders(),
         ];
         return view('pages/koki/manageorders', $data);
+    }
+
+    public function getDataManageorders()
+    {
+        echo json_encode($this->manageordersModel->fetchJoinManageorders($_POST['id']));
     }
 }

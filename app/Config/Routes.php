@@ -44,6 +44,8 @@ $routes->get('/employee', 'Employee::index');
 $routes->add('/delete-employee/(:any)', 'Employee::delete/$1');
 $routes->add('/update-employee/(:any)', 'Employee::update/$1');
 
+$routes->get('/manageorders', 'manageorders::index');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

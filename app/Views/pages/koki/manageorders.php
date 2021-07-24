@@ -23,84 +23,32 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td scope="row" class="text-center">1</td>
-                    <td>OR-0001</td>
-                    <td>Idris Mardefi</td>
-                    <td>01</td>
-                    <td>
-                        <h6><span class="badge btn-color py-2 px-2 w-100">Waiting Cook</span></h6>
-                    </td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-success"><i class="fas fa-check"></i></button>
-                        <button type="button" class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#modalDetail"><i class="far fa-eye"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td scope="row" class="text-center">2</td>
-                    <td>OR-0002</td>
-                    <td>Gilang Romansyah</td>
-                    <td>02</td>
-                    <td>
-                        <h6><span class="badge btn-color py-2 px-2 w-100">Waiting Cook</span></h6>
-                    </td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-success"><i class="fas fa-check"></i></button>
-                        <button type="button" class="btn btn-custom"><i class="far fa-eye"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td scope="row" class="text-center">3</td>
-                    <td>OR-0003</td>
-                    <td>Fahriansyah</td>
-                    <td>03</td>
-                    <td>
-                        <h6><span class="badge btn-color py-2 px-2 w-100">Waiting Cook</span></h6>
-                    </td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-success"><i class="fas fa-check"></i></button>
-                        <button type="button" class="btn btn-custom"><i class="far fa-eye"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td scope="row" class="text-center">4</td>
-                    <td>OR-0004</td>
-                    <td>Siska Khol</td>
-                    <td>04</td>
-                    <td>
-                        <h6><span class="badge btn-color py-2 px-2 w-100">Waiting Cook</span></h6>
-                    </td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-success"><i class="fas fa-check"></i></button>
-                        <button type="button" class="btn btn-custom"><i class="far fa-eye"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td scope="row" class="text-center">5</td>
-                    <td>OR-0005</td>
-                    <td>Nur Eka</td>
-                    <td>5</td>
-                    <td>
-                        <h6><span class="badge btn-color py-2 px-2 w-100">Waiting Cook</span></h6>
-                    </td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-success"><i class="fas fa-check"></i></button>
-                        <button type="button" class="btn btn-custom"><i class="far fa-eye"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td scope="row" class="text-center">6</td>
-                    <td>OR-0006</td>
-                    <td>Ramdhani</td>
-                    <td>06</td>
-                    <td>
-                        <h6><span class="badge btn-color py-2 px-2 w-100">Waiting Cook</span></h6>
-                    </td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-success"><i class="fas fa-check"></i></button>
-                        <button type="button" class="btn btn-custom"><i class="far fa-eye"></i></button>
-                    </td>
-                </tr>
+
+                <?php
+                $no = 1;
+                foreach ($orders as $order) :
+                ?>
+
+                    <tr>
+                        <td scope="row" class="text-center"><?= $no++ ?></td>
+                        <td><?= $order['Id_Order'] ?></td>
+                        <td><?= $order['Nama_Pemesan'] ?></td>
+                        <td><?= $order['No_Meja'] ?></td>
+                        <td>
+                            <?php
+                            if ($order['Status_Order'] == 0) :
+                            ?>
+                                <h6><span class="badge btn-color py-2 px-2 w-100">Waiting Cook</span></h6>
+                            <?php
+                            endif;
+                            ?>
+                        </td>
+                        <td class="text-center">
+                            <button type="button" class="btn btn-success"><i class="fas fa-check"></i></button>
+                            <button type="button" class="btn btn-custom btn-detail" data-bs-toggle="modal" data-bs-target="#modalDetail" data-id="<?= $order['Id_Order'] ?>"><i class="far fa-eye"></i></button>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>
@@ -121,188 +69,66 @@
                             <div class="mb-3 row">
                                 <label for="staticEmail" class="col-sm-4 col-form-label">Id Order</label>
                                 <div class="col-sm-8">
-                                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value=": OR-0001">
+                                    <input type="text" readonly class="form-control-plaintext" id="id" name="id">
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="staticEmail" class="col-sm-4 col-form-label">Atas Nama</label>
                                 <div class="col-sm-8">
-                                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value=": Idris Merdefi">
+                                    <input type="text" readonly class="form-control-plaintext" id="nama" name="nama">
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="staticEmail" class="col-sm-4 col-form-label">No Meja</label>
                                 <div class="col-sm-8">
-                                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value=": 01">
+                                    <input type="text" readonly class="form-control-plaintext" id="nome" name="nome">
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="staticEmail" class="col-sm-4 col-form-label">Total Order</label>
                                 <div class="col-sm-8">
-                                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value=": 8">
+                                    <input type="text" readonly class="form-control-plaintext" id="toder" name="toder">
                                 </div>
                             </div>
                             <textarea class="form-control text-color form-color" id="catatan" name="catatan" rows="9" placeholder="Catatan..."></textarea>
                         </div>
                     </div>
                     <div class="col-md-8">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="card card-detail shadow mb-3 w-100">
-                                    <div class="card-body">
-                                        <div class="row h-100">
-                                            <div class="col-3">
-                                                <img class="px-2 py-2" src="../Assets/images/spagethi.png">
-                                            </div>
-                                            <div class="col-5 align-self-center ms-3 mt-2">
-                                                <h5>Spagethi</h5>
-                                                <p><span class="text-custom">x&nbsp;</span>1</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card card-detail shadow mb-3 w-100">
-                                    <div class="card-body">
-                                        <div class="row h-100">
-                                            <div class="col-3">
-                                                <img class="px-2 py-2" src="../Assets/images/spagethi.png">
-                                            </div>
-                                            <div class="col-5 align-self-center ms-3 mt-2">
-                                                <h5>Spagethi</h5>
-                                                <p><span class="text-custom">x&nbsp;</span>1</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card card-detail shadow mb-3 w-100">
-                                    <div class="card-body">
-                                        <div class="row h-100">
-                                            <div class="col-3">
-                                                <img class="px-2 py-2" src="../Assets/images/spagethi.png">
-                                            </div>
-                                            <div class="col-5 align-self-center ms-3 mt-2">
-                                                <h5>Spagethi</h5>
-                                                <p><span class="text-custom">x&nbsp;</span>1</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card card-detail shadow mb-3 w-100">
-                                    <div class="card-body">
-                                        <div class="row h-100">
-                                            <div class="col-3">
-                                                <img class="px-2 py-2" src="../Assets/images/spagethi.png">
-                                            </div>
-                                            <div class="col-5 align-self-center ms-3 mt-2">
-                                                <h5>Spagethi</h5>
-                                                <p><span class="text-custom">x&nbsp;</span>1</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card card-detail shadow mb-3 w-100">
-                                    <div class="card-body">
-                                        <div class="row h-100">
-                                            <div class="col-3">
-                                                <img class="px-2 py-2" src="../Assets/images/spagethi.png">
-                                            </div>
-                                            <div class="col-5 align-self-center ms-3 mt-2">
-                                                <h5>Spagethi</h5>
-                                                <p><span class="text-custom">x&nbsp;</span>1</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card card-detail shadow mb-3 w-100">
-                                    <div class="card-body">
-                                        <div class="row h-100">
-                                            <div class="col-3">
-                                                <img class="px-2 py-2" src="../Assets/images/spagethi.png">
-                                            </div>
-                                            <div class="col-5 align-self-center ms-3 mt-2">
-                                                <h5>Spagethi</h5>
-                                                <p><span class="text-custom">x&nbsp;</span>1</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card card-detail shadow mb-3 w-100">
-                                    <div class="card-body">
-                                        <div class="row h-100">
-                                            <div class="col-3">
-                                                <img class="px-2 py-2" src="../Assets/images/spagethi.png">
-                                            </div>
-                                            <div class="col-5 align-self-center ms-3 mt-2">
-                                                <h5>Spagethi</h5>
-                                                <p><span class="text-custom">x&nbsp;</span>1</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card card-detail shadow mb-3 w-100">
-                                    <div class="card-body">
-                                        <div class="row h-100">
-                                            <div class="col-3">
-                                                <img class="px-2 py-2" src="../Assets/images/spagethi.png">
-                                            </div>
-                                            <div class="col-5 align-self-center ms-3 mt-2">
-                                                <h5>Spagethi</h5>
-                                                <p><span class="text-custom">x&nbsp;</span>1</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card card-detail shadow mb-3 w-100">
-                                    <div class="card-body">
-                                        <div class="row h-100">
-                                            <div class="col-3">
-                                                <img class="px-2 py-2" src="../Assets/images/spagethi.png">
-                                            </div>
-                                            <div class="col-5 align-self-center ms-3 mt-2">
-                                                <h5>Spagethi</h5>
-                                                <p><span class="text-custom">x&nbsp;</span>1</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card card-detail shadow mb-3 w-100">
-                                    <div class="card-body">
-                                        <div class="row h-100">
-                                            <div class="col-3">
-                                                <img class="px-2 py-2" src="../Assets/images/spagethi.png">
-                                            </div>
-                                            <div class="col-5 align-self-center ms-3 mt-2">
-                                                <h5>Spagethi</h5>
-                                                <p><span class="text-custom">x&nbsp;</span>1</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="row order">
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                    <?= $this->endSection(); ?>
 
-<?= $this->endSection(); ?>
+                    <?php $this->section('script') ?>
+                    <script>
+                        //detail
+                        $(".btn-detail").on("click", function() {
+                            const id = $(this).data('id');
+
+                            $.ajax({
+                                url: "Manageorders/getDataManageorders",
+                                data: {
+                                    id: id,
+                                },
+                                method: "POST",
+                                dataType: "json",
+                                success: function(data) {
+                                    console.log(data);
+                                    $('#id').val(data.Id_Order);
+                                    $('#nama').val(data.Nama_Pemesan);
+                                    $('#nome').val(data.No_Meja);
+
+                                    let html = "";
+                                    let total = 0;
+                                    for (let i = 0; i < data.length; i++) {
+                                        total += data.Qty;
+                                        $('.order').html('<div class="col-md-6"> <div class="card card-detail shadow mb-3 w-100"><div class="card-body"><div class="row h-100"><div class="col-3"><img class="px-2 py-2" src="../Assets/images/spagethi.png"></div><div class="col-5 align-self-center ms-3 mt-2"><h5>' + data[i].Nama_Menu + '</h5><p><span class="text-custom">x&nbsp;</span>' + data[i].Qty + '</p> </div></div></div></div></div>');
+                                    }
+                                    $('#toder').val(total);
+
+                                },
+
+                            });
+                        });
+                    </script>
+                    <?= $this->endSection(); ?>
