@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\CategoryModel;
 use App\Models\TableModel;
 use App\Models\EmployeeModel;
+use App\Models\ManageordersModel;
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\CLIRequest;
 use CodeIgniter\HTTP\IncomingRequest;
@@ -62,11 +63,13 @@ class BaseController extends Controller
 	protected $categoryModel;
 	protected $tableModel;
 	protected $employeeModel;
+	protected $manageordersModel;
 
 	public function __construct()
 	{
 		$this->categoryModel = new CategoryModel();
 		$this->tableModel = new TableModel();
 		$this->employeeModel = new EmployeeModel();
+		$this->manageordersModel = new ManageordersModel();
 	}
 }

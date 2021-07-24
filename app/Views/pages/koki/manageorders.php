@@ -1,4 +1,4 @@
-<?= $this->extend('layout/admin'); ?>
+<?= $this->extend('layout/koki'); ?>
 
 <?= $this->section('content'); ?>
 
@@ -103,6 +103,205 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+</div>
+
+<!-- Modal Detail -->
+<div class="modal fade" id="modalDetail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Detail Order</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="mb-3">
+                            <div class="mb-3 row">
+                                <label for="staticEmail" class="col-sm-4 col-form-label">Id Order</label>
+                                <div class="col-sm-8">
+                                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value=": OR-0001">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="staticEmail" class="col-sm-4 col-form-label">Atas Nama</label>
+                                <div class="col-sm-8">
+                                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value=": Idris Merdefi">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="staticEmail" class="col-sm-4 col-form-label">No Meja</label>
+                                <div class="col-sm-8">
+                                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value=": 01">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="staticEmail" class="col-sm-4 col-form-label">Total Order</label>
+                                <div class="col-sm-8">
+                                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value=": 8">
+                                </div>
+                            </div>
+                            <textarea class="form-control text-color form-color" id="catatan" name="catatan" rows="9" placeholder="Catatan..."></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card card-detail shadow mb-3 w-100">
+                                    <div class="card-body">
+                                        <div class="row h-100">
+                                            <div class="col-3">
+                                                <img class="px-2 py-2" src="../Assets/images/spagethi.png">
+                                            </div>
+                                            <div class="col-5 align-self-center ms-3 mt-2">
+                                                <h5>Spagethi</h5>
+                                                <p><span class="text-custom">x&nbsp;</span>1</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card card-detail shadow mb-3 w-100">
+                                    <div class="card-body">
+                                        <div class="row h-100">
+                                            <div class="col-3">
+                                                <img class="px-2 py-2" src="../Assets/images/spagethi.png">
+                                            </div>
+                                            <div class="col-5 align-self-center ms-3 mt-2">
+                                                <h5>Spagethi</h5>
+                                                <p><span class="text-custom">x&nbsp;</span>1</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card card-detail shadow mb-3 w-100">
+                                    <div class="card-body">
+                                        <div class="row h-100">
+                                            <div class="col-3">
+                                                <img class="px-2 py-2" src="../Assets/images/spagethi.png">
+                                            </div>
+                                            <div class="col-5 align-self-center ms-3 mt-2">
+                                                <h5>Spagethi</h5>
+                                                <p><span class="text-custom">x&nbsp;</span>1</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card card-detail shadow mb-3 w-100">
+                                    <div class="card-body">
+                                        <div class="row h-100">
+                                            <div class="col-3">
+                                                <img class="px-2 py-2" src="../Assets/images/spagethi.png">
+                                            </div>
+                                            <div class="col-5 align-self-center ms-3 mt-2">
+                                                <h5>Spagethi</h5>
+                                                <p><span class="text-custom">x&nbsp;</span>1</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card card-detail shadow mb-3 w-100">
+                                    <div class="card-body">
+                                        <div class="row h-100">
+                                            <div class="col-3">
+                                                <img class="px-2 py-2" src="../Assets/images/spagethi.png">
+                                            </div>
+                                            <div class="col-5 align-self-center ms-3 mt-2">
+                                                <h5>Spagethi</h5>
+                                                <p><span class="text-custom">x&nbsp;</span>1</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card card-detail shadow mb-3 w-100">
+                                    <div class="card-body">
+                                        <div class="row h-100">
+                                            <div class="col-3">
+                                                <img class="px-2 py-2" src="../Assets/images/spagethi.png">
+                                            </div>
+                                            <div class="col-5 align-self-center ms-3 mt-2">
+                                                <h5>Spagethi</h5>
+                                                <p><span class="text-custom">x&nbsp;</span>1</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card card-detail shadow mb-3 w-100">
+                                    <div class="card-body">
+                                        <div class="row h-100">
+                                            <div class="col-3">
+                                                <img class="px-2 py-2" src="../Assets/images/spagethi.png">
+                                            </div>
+                                            <div class="col-5 align-self-center ms-3 mt-2">
+                                                <h5>Spagethi</h5>
+                                                <p><span class="text-custom">x&nbsp;</span>1</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card card-detail shadow mb-3 w-100">
+                                    <div class="card-body">
+                                        <div class="row h-100">
+                                            <div class="col-3">
+                                                <img class="px-2 py-2" src="../Assets/images/spagethi.png">
+                                            </div>
+                                            <div class="col-5 align-self-center ms-3 mt-2">
+                                                <h5>Spagethi</h5>
+                                                <p><span class="text-custom">x&nbsp;</span>1</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card card-detail shadow mb-3 w-100">
+                                    <div class="card-body">
+                                        <div class="row h-100">
+                                            <div class="col-3">
+                                                <img class="px-2 py-2" src="../Assets/images/spagethi.png">
+                                            </div>
+                                            <div class="col-5 align-self-center ms-3 mt-2">
+                                                <h5>Spagethi</h5>
+                                                <p><span class="text-custom">x&nbsp;</span>1</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card card-detail shadow mb-3 w-100">
+                                    <div class="card-body">
+                                        <div class="row h-100">
+                                            <div class="col-3">
+                                                <img class="px-2 py-2" src="../Assets/images/spagethi.png">
+                                            </div>
+                                            <div class="col-5 align-self-center ms-3 mt-2">
+                                                <h5>Spagethi</h5>
+                                                <p><span class="text-custom">x&nbsp;</span>1</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
