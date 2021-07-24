@@ -23,8 +23,7 @@
                 <img src="<?= base_url('Assets') ?>/images/login.jpeg" class="img-fluid rounded-start" alt="...">
             </div>
             <div class="col-md-6 " style="padding: 0 50px;">
-
-                <form>
+                <form action="" method="">
                     <div class="sidebar-heading text-center">
                         <h2 class="m-0 text-custom"> <img src="<?= base_url('Assets') ?>/images/logo.png" alt="logo" width="53.143px" st>Sajianku</h2>
                         Sign into your account
@@ -44,7 +43,7 @@
                         </div>
                     </div>
                     <div class="d-grid mt-5">
-                        <button class="btn btn-custom" type="button">Login</button>
+                        <button type="submit" class="btn btn-custom">Login</button>
                     </div>
                 </form>
             </div>

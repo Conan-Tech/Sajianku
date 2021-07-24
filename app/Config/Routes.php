@@ -34,7 +34,6 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 
 $routes->get('/category', 'Category::index');
-// $routes->POST('/insert-category', 'Category::save');
 $routes->add('/delete-category/(:any)', 'Category::delete/$1');
 $routes->add('/update-category/(:any)', 'Category::update/$1');
 

@@ -148,6 +148,7 @@
 
 <script>
     $(document).ready(function() {
+        // insert
         $('.tambah-kategori').submit(function(e) {
             e.preventDefault();
 
