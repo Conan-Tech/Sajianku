@@ -56,6 +56,8 @@ $routes->add('/admin/update-employee/(:any)', 'Employee::update/$1');
 
 $routes->get('/pelayan/order', 'Order::index');
 
+$routes->get('/manageorders', 'manageorders::index');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

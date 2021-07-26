@@ -13,4 +13,27 @@ class Menus extends BaseController
         ];
         return view('pages/koki/menus', $data);
     }
+
+    public function getDataMenus()
+    {
+        echo json_encode($this->menusModel->fetchDataMenus($_POST['id']));
+    }
+
+    public function updateAvailable($id)
+    {
+        $this->menusModel->update($id, [
+            'Status_Ketersediaan'  => 1,
+        ]);
+
+        return redirect()->to('/menus');
+    }
+
+    public function updateNotAvailable($id)
+    {
+        $this->menusModel->update($id, [
+            'Status_Ketersediaan'  => 0,
+        ]);
+
+        return redirect()->to('/menus');
+    }
 }
