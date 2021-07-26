@@ -9,7 +9,7 @@ class TableModel extends Model
     protected $table      = 'meja';
     protected $primaryKey = 'No_Meja';
 
-    protected $allowedFields = ['No_Meja', 'Kapasistas', 'Status_Ketersediaan'];
+    protected $allowedFields = ['No_Meja', 'Kapasitas', 'Status_Ketersediaan'];
 
     public function fetchDataTable($id = null)
     {

@@ -33,16 +33,28 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
-$routes->get('/category', 'Category::index');
-$routes->add('/delete-category/(:any)', 'Category::delete/$1');
-$routes->add('/update-category/(:any)', 'Category::update/$1');
+$routes->post('/login', 'Auth::login');
+$routes->get('/logout', 'Auth::logout');
 
-$routes->get('/table', 'Table::index');
-$routes->add('/delete-table/(:any)', 'Table::delete/$1');
-$routes->add('/update-table/(:any)', 'Table::update/$1');
-$routes->get('/employee', 'Employee::index');
-$routes->add('/delete-employee/(:any)', 'Employee::delete/$1');
-$routes->add('/update-employee/(:any)', 'Employee::update/$1');
+$routes->get('/admin/category', 'Category::index');
+$routes->post('/admin/get-category', 'Category::getDataCategory');
+$routes->post('/admin/save-category', 'Category::save');
+$routes->add('/admin/delete-category/(:any)', 'Category::delete/$1');
+$routes->add('/admin/update-category/(:any)', 'Category::update/$1');
+
+$routes->get('/admin/table', 'Table::index');
+$routes->post('/admin/get-table', 'Table::getDataTable');
+$routes->post('/admin/save-table', 'Table::save');
+$routes->add('/admin/delete-table/(:any)', 'Table::delete/$1');
+$routes->add('/admin/update-table/(:any)', 'Table::update/$1');
+
+$routes->get('/admin/employee', 'Employee::index');
+$routes->post('/admin/get-employee', 'Employee::getDataEmployee');
+$routes->post('/admin/save-employee', 'Employee::save');
+$routes->add('/admin/delete-employee/(:any)', 'Employee::delete/$1');
+$routes->add('/admin/update-employee/(:any)', 'Employee::update/$1');
+
+$routes->get('/pelayan/order', 'Order::index');
 
 /*
  * --------------------------------------------------------------------

@@ -52,9 +52,10 @@ class Employee extends BaseController
 
                 'username' => [
                     'label'     => 'Username',
-                    'rules'     => 'required',
+                    'rules'     => 'required|is_unique[pegawai.Username]',
                     'errors'    => [
-                        'required'  => 'Kolom {field} tidak boleh kosong'
+                        'required'  => 'Kolom {field} tidak boleh kosong',
+                        'is_unique' => '{field} sudah terdaftar'
                     ]
                 ],
 
@@ -107,7 +108,6 @@ class Employee extends BaseController
 
             $this->employeeModel->update($id, [
                 'Nama_Pegawai'  => $this->request->getVar('nama'),
-                'Nama_Pegawai'  => $this->request->getVar('nama'),
                 'Jabatan'       => $this->request->getVar('jabatan'),
                 'Username'      => $this->request->getVar('username'),
                 'Password'      => $dataEmployee['Password'],
@@ -115,20 +115,19 @@ class Employee extends BaseController
         } else {
             $this->employeeModel->update($id, [
                 'Nama_Pegawai'  => $this->request->getVar('nama'),
-                'Nama_Pegawai'  => $this->request->getVar('nama'),
                 'Jabatan'       => $this->request->getVar('jabatan'),
                 'Username'      => $this->request->getVar('username'),
                 'Password'      => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
             ]);
         }
 
-        return redirect()->to('/employee');
+        return redirect()->to('/admin/employee');
     }
 
     public function delete($id)
     {
         $this->employeeModel->delete($id);
 
-        return redirect()->to('/employee');
+        return redirect()->to('/admin/employee');
     }
 }

@@ -2,10 +2,15 @@
 
 namespace Config;
 
+use App\Controllers\Employee;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
 use CodeIgniter\Filters\Honeypot;
+use App\Filters\FilterAdmin;
+use App\Filters\FilterPelayan;
+use App\Filters\FilterKoki;
+use App\Filters\FilterKasir;
 
 class Filters extends BaseConfig
 {
@@ -16,9 +21,13 @@ class Filters extends BaseConfig
 	 * @var array
 	 */
 	public $aliases = [
-		'csrf'     => CSRF::class,
-		'toolbar'  => DebugToolbar::class,
-		'honeypot' => Honeypot::class,
+		'csrf'     		=> CSRF::class,
+		'toolbar'  		=> DebugToolbar::class,
+		'honeypot' 		=> Honeypot::class,
+		'filteradmin'	=> FilterAdmin::class,
+		'filterpelayan'	=> FilterPelayan::class,
+		'filterkoki'	=> FilterKoki::class,
+		'filterkasir'	=> FilterKasir::class,
 	];
 
 	/**
@@ -29,10 +38,65 @@ class Filters extends BaseConfig
 	 */
 	public $globals = [
 		'before' => [
+			'filteradmin' => [
+				'except' => [
+					'/',
+					'/login',
+					'logout'
+				]
+			],
+
+			'filterpelayan' => [
+				'except' => [
+					'/',
+					'/login',
+					'logout'
+				]
+			],
+
+			'filterkoki' => [
+				'except' => [
+					'/',
+					'/login',
+					'logout'
+				]
+			],
+
+			'filterkasir' => [
+				'except' => [
+					'/',
+					'/login',
+					'logout'
+				]
+			],
 			// 'honeypot',
 			// 'csrf',
 		],
 		'after'  => [
+			'filteradmin' => [
+				'except' => [
+					'/admin/*'
+				]
+			],
+
+			'filterpelayan' => [
+				'except' => [
+					'/pelayan/*'
+				]
+			],
+
+			'filterkoki' => [
+				'except' => [
+					'/koki/*'
+				]
+			],
+
+			'filterkasir' => [
+				'except' => [
+					'/kasir/*'
+				]
+			],
+
 			'toolbar',
 			// 'honeypot',
 		],

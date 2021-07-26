@@ -37,7 +37,7 @@
                         <td class="text-center">
                             <button type="button" class="btn btn-custom btn-detail" data-bs-toggle="modal" data-bs-target="#modalDetail" data-id="<?= $employee['Id_Pegawai'] ?>"><i class="far fa-eye"></i></button>
                             <button type="button" class="btn btn-success btn-edit" data-bs-toggle="modal" data-bs-target="#modalUpdate" data-id="<?= $employee['Id_Pegawai'] ?>"><i class="far fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalHapus" data-href="/delete-employee/<?= $employee['Id_Pegawai'] ?>"><i class="far fa-trash-alt"></i></button>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalHapus" data-href="/admin/delete-employee/<?= $employee['Id_Pegawai'] ?>"><i class="far fa-trash-alt"></i></button>
                         </td>
                     </tr>
 
@@ -61,7 +61,7 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Add Employee</h5>
             </div>
-            <form action="/Employee/save" method="post" class="tambah-employee">
+            <form action="/admin/save-employee" method="post" class="tambah-employee">
                 <div class="modal-body">
                     <div class="mb-3 row">
                         <label for="id" class="col-sm-3 col-form-label">Id Pegawai</label>
@@ -100,18 +100,18 @@
                         <label for="username" class="col-sm-3 col-form-label">Username</label>
                         <div class="col-sm-7">
                             <input type="text" class="form-control" id="tusername" name="username">
-                        </div>
-                        <div class="invalid-feedback error-username">
-                            You must agree before submitting.
+                            <div class="invalid-feedback error-user">
+                                You must agree before submitting.
+                            </div>
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="password" class="col-sm-3 col-form-label">Password</label>
                         <div class="col-sm-7">
                             <input type="text" class="form-control" id="tpassword" name="password">
-                        </div>
-                        <div class="invalid-feedback error-password">
-                            You must agree before submitting.
+                            <div class="invalid-feedback error-pass">
+                                You must agree before submitting.
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -196,6 +196,10 @@
                         <div class="col-sm-4">
                             <select class="form-select" name="jabatan" id="ujabatan">
                                 <option selected>--Pilih Jabatan--</option>
+                                <option value="Admin">Admin</option>
+                                <option value="Pelayan">Pelayan</option>
+                                <option value="Koki">Koki</option>
+                                <option value="Kasir">Kasir</option>
                             </select>
                         </div>
                     </div>
@@ -257,7 +261,7 @@
                     data: $(this).serialize(),
                     dataType: "json",
                     success: function(response) {
-                        console.log(response);
+                        // console.log(response);
                         if (response.error) {
                             if (response.error.idPegawai) {
                                 $('#tid').addClass('is-invalid');
@@ -285,18 +289,18 @@
 
                             if (response.error.username) {
                                 $('#tusername').addClass('is-invalid');
-                                $('.error-username').html(response.error.username);
+                                $('.error-user').html(response.error.username);
                             } else {
                                 $('#tusername').removeClass('is-invalid');
-                                $('.error-username').html('');
+                                $('.error-user').html('');
                             }
 
                             if (response.error.password) {
                                 $('#tpassword').addClass('is-invalid');
-                                $('.error-password').html(response.error.password);
+                                $('.error-pass').html(response.error.password);
                             } else {
                                 $('#tpassword').removeClass('is-invalid');
-                                $('.error-password').html('');
+                                $('.error-pass').html('');
                             }
                         } else if (response.success) {
                             location.reload();
@@ -310,10 +314,10 @@
             $(".btn-detail").on("click", function() {
                 const id = $(this).data('id');
 
-                $("form").attr("action", "/update-employee/" + id);
+                $("form").attr("action", "/admin/update-employee/" + id);
 
                 $.ajax({
-                    url: "Employee/getDataEmployee",
+                    url: "/admin/get-employee",
                     data: {
                         id: id,
                     },
@@ -335,10 +339,10 @@
             $(".btn-edit").on("click", function() {
                 const id = $(this).data('id');
 
-                $("form").attr("action", "/update-employee/" + id);
+                $("form").attr("action", "/admin/update-employee/" + id);
 
                 $.ajax({
-                    url: "Employee/getDataEmployee",
+                    url: "/admin/get-employee",
                     data: {
                         id: id,
                     },

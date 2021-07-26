@@ -34,7 +34,7 @@
                         <td><?= $category['Nama_Kategori'] ?></td>
                         <td class="text-center">
                             <button type="button" class="btn btn-success btn-edit" data-bs-toggle="modal" data-bs-target="#modalUbah" data-id="<?= $category['Id_Kategori'] ?>"><i class="far fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalHapus" data-href="delete-category/<?= $category['Id_Kategori'] ?>"><i class="far fa-trash-alt"></i></button>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalHapus" data-href="/admin/delete-category/<?= $category['Id_Kategori'] ?>"><i class="far fa-trash-alt"></i></button>
                         </td>
                     </tr>
 
@@ -59,7 +59,7 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Add Category</h5>
             </div>
-            <form class="tambah-kategori" action="/Category/save" method="POST">
+            <form class="tambah-kategori" action="/admin/save-category" method="POST">
                 <div class="modal-body">
                     <div class="mb-3 row">
                         <label for="kategori" class="col-sm-3 col-form-label">Id Kategori</label>
@@ -179,10 +179,10 @@
         $(".btn-edit").on("click", function() {
             const id = $(this).data('id');
 
-            $("form").attr("action", "/update-category/" + id);
+            $("form").attr("action", "/admin/update-category/" + id);
 
             $.ajax({
-                url: "Category/getDataCategory",
+                url: "/admin/get-category",
                 data: {
                     id: id,
                 },

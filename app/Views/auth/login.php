@@ -18,27 +18,40 @@
 
 <body>
     <div class="d-flex vh-100 justify-content-center align-items-center auth">
-        <div class="row align-items-center shadow">
+        <div class="row w-75 align-items-center shadow">
             <div class="col-md-6" style="padding: 0;">
                 <img src="<?= base_url('Assets') ?>/images/login.jpeg" class="img-fluid rounded-start" alt="...">
             </div>
-            <div class="col-md-6 " style="padding: 0 50px;">
-                <form action="" method="">
+            <div class="col-md-6" style="padding: 0 50px;">
+                <form action="/login" method="post">
                     <div class="sidebar-heading text-center">
                         <h2 class="m-0 text-custom"> <img src="<?= base_url('Assets') ?>/images/logo.png" alt="logo" width="53.143px" st>Sajianku</h2>
                         Sign into your account
+
+                        <?php
+                        if (session()->getFlashdata('error')) :
+                        ?>
+
+                            <div class="alert alert-danger mt-4" role="alert">
+                                <?= session()->getFlashdata('error') ?>
+                            </div>
+
+                        <?php
+                        endif;
+                        ?>
+
                     </div>
                     <div class="mb-1 mt-3">
                         <label for="username" class="form-label "></label>
                         <div class="input-group">
-                            <input type="text" class="form-control" id="username" placeholder="Username">
+                            <input type="text" class="form-control" id="username" placeholder="Username" name="username">
                             <i class="fas fa-user"></i>
                         </div>
                     </div>
                     <div class="mb-1">
                         <label for="exampleInputPassword1" class="form-label"></label>
                         <div class="input-group">
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="password" name="password">
                             <i class="fas fa-lock"></i>
                         </div>
                     </div>

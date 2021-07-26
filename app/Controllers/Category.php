@@ -66,13 +66,13 @@ class Category extends BaseController
             'Nama_Kategori' => $this->request->getVar('namakategori')
         ]);
 
-        return redirect()->to('/category');
+        return redirect()->to('/admin/category');
     }
 
     public function delete($id)
     {
         $this->categoryModel->delete($id);
 
-        return redirect()->to('/category');
+        return redirect()->to('/admin/category');
     }
 }

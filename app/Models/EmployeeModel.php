@@ -20,4 +20,9 @@ class EmployeeModel extends Model
 
         return $this->where('Id_Pegawai', $id)->first();
     }
+
+    public function fetchEmployeeByUsername($username)
+    {
+        return $this->where('Username', $username)->first();
+    }
 }

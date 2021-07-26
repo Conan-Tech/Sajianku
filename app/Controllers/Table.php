@@ -75,13 +75,13 @@ class Table extends BaseController
             'Kapasitas' => $this->request->getVar('kapasitas'),
         ]);
 
-        return redirect()->to('/table');
+        return redirect()->to('/admin/table');
     }
 
     public function delete($id)
     {
         $this->tableModel->delete($id);
 
-        return redirect()->to('/table');
+        return redirect()->to('/admin/table');
     }
 }

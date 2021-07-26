@@ -34,7 +34,7 @@
                         <td><?= $table['Kapasitas'] ?> Orang</td>
                         <td class="text-center">
                             <button type="button" class="btn btn-success btn-edit" data-bs-toggle="modal" data-bs-target="#modalUpdate" data-id="<?= $table['No_Meja'] ?>"><i class="far fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalHapus" data-href="/delete-table/<?= $table['No_Meja'] ?>"><i class="far fa-trash-alt"></i></button>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalHapus" data-href="/admin/delete-table/<?= $table['No_Meja'] ?>"><i class="far fa-trash-alt"></i></button>
                         </td>
                     </tr>
 
@@ -58,7 +58,7 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Add Table</h5>
             </div>
-            <form action="/Table/save" method="POST" class="tambah-table">
+            <form action="/admin/save-table" method="POST" class="tambah-table">
                 <div class="modal-body">
                     <div class="mb-3 row">
                         <label for="meja" class="col-sm-3 col-form-label">No Meja</label>
@@ -100,7 +100,7 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Update Table</h5>
             </div>
-            <form action="/update-table" method="POST">
+            <form action="/admin/update-table" method="POST">
                 <div class="modal-body">
                     <div class="mb-3 row">
                         <label for="meja" class="col-sm-3 col-form-label">No Meja</label>
@@ -159,7 +159,6 @@
         // insert 
         $('.tambah-table').submit(function(e) {
             e.preventDefault();
-            console.log($(this).serialize())
 
             $.ajax({
                 type: "post",
@@ -177,7 +176,7 @@
                             $('.error-meja').html('');
                         }
 
-                        if (response.error.kapasitas) {
+                        if (response.error.kapasitas || $('#tkapasitas').val() == "--Pilih Kapasistas--") {
                             $('#tkapasitas').addClass('is-invalid');
                             $('.error-kapasitas').html(response.error.kapasitas);
                         } else {
@@ -197,10 +196,10 @@
         $(".btn-edit").on("click", function() {
             const id = $(this).data('id');
 
-            $("form").attr("action", "/update-table/" + id);
+            $("form").attr("action", "/admin/update-table/" + id);
 
             $.ajax({
-                url: "Table/getDataTable",
+                url: "/admin/get-table",
                 data: {
                     id: id,
                 },
@@ -209,7 +208,7 @@
                 success: function(data) {
                     console.log(data);
                     $('#umeja').val(data.No_Meja);
-                    $('#ukapasitas').val(data.Kapasistas);
+                    $('#ukapasitas').val(data.Kapasitas);
                 },
 
             });

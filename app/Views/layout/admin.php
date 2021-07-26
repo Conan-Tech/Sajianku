@@ -23,35 +23,47 @@
                 </div>
                 <ul class="list-group list-group-flush">
 
-                    <a href="dashboard.html" class="list-group-item"><i class="fas fa-tachometer-alt me-1"></i>Dashboard</a>
-                    <div class="sparator">Management</div>
-                    <a href="employee.html" class="list-group-item "><i class="fas fa-users me-1"></i>Employees</a>
-                    <a href="table.html" class="list-group-item "><i class="fas fa-th me-1"></i>Tables</a>
-                    <a href="category.html" class="list-group-item active"><i class="fas fa-th-list me-1"></i>Categories</a>
-                    <a href="menu.html" class="list-group-item"><i class="fas fa-utensils me-1"></i>Menus</a>
-                    <a href="#" class="list-group-item btn-logout btn-custom"><i class="fas fa-sign-out-alt me-1"></i></i>Logout</a>
+                    <?php if (session()->get('jabatan') == 'Admin') : ?>
 
+                        <a href="dashboard.html" class="list-group-item"><i class="fas fa-tachometer-alt me-1"></i>Dashboard</a>
+                        <div class="sparator">Management</div>
+                        <a href="/admin/employee" class="list-group-item "><i class="fas fa-users me-1"></i>Employees</a>
+                        <a href="/admin/table" class="list-group-item "><i class="fas fa-th me-1"></i>Tables</a>
+                        <a href="/admin/category" class="list-group-item active"><i class="fas fa-th-list me-1"></i>Categories</a>
+                        <a href="/admin/menu" class="list-group-item"><i class="fas fa-utensils me-1"></i>Menus</a>
+                        <a href="/logout" class="list-group-item btn-logout btn-custom"><i class="fas fa-sign-out-alt me-1"></i></i>Logout</a>
 
-                    <!-- <a href="dashboard.html" class="list-group-item active"><i class="fas fa-tachometer-alt me-1"></i>Dashboard</a>
+                    <?php endif; ?>
+
+                    <?php if (session()->get('jabatan') == 'Pelayan') : ?>
+
+                        <a href="dashboard.html" class="list-group-item active"><i class="fas fa-tachometer-alt me-1"></i>Dashboard</a>
                         <div class="sparator">Management</div>
                         <a href="order.html" class="list-group-item"><i class="fas fa-users me-1"></i>Order</a>
                         <a href="manageorder.html" class="list-group-item"><i class="fas fa-th me-1"></i>Manage Order</a>
-                        <a href="#" class="list-group-item btn-logout btn-custom"><i class="fas fa-sign-out-alt me-1"></i></i>Logout</a> -->
+                        <a href="#" class="list-group-item btn-logout btn-custom"><i class="fas fa-sign-out-alt me-1"></i></i>Logout</a>
 
+                    <?php endif; ?>
 
-                    <!-- <a href="dashboard.html" class="list-group-item active"><i class="fas fa-tachometer-alt me-1"></i>Dashboard</a>
+                    <?php if (session()->get('jabatan') == 'Koki') : ?>
+
+                        <a href="dashboard.html" class="list-group-item active"><i class="fas fa-tachometer-alt me-1"></i>Dashboard</a>
                         <div class="sparator">Management</div>
                         <a href="manageorders.html" class="list-group-item"><i class="fas fa-users me-1"></i>Manage Orders</a>
                         <a href="menus.html" class="list-group-item"><i class="fas fa-utensils me-1"></i>Menus</a>
-                        <a href="#" class="list-group-item btn-logout btn-custom"><i class="fas fa-sign-out-alt me-1"></i></i>Logout</a> -->
+                        <a href="#" class="list-group-item btn-logout btn-custom"><i class="fas fa-sign-out-alt me-1"></i></i>Logout</a>
 
+                    <?php endif; ?>
 
+                    <?php if (session()->get('jabatan') == 'Kasir') : ?>
 
-                    <!-- <a href="dashboard.html" class="list-group-item active"><i class="fas fa-tachometer-alt me-1"></i>Dashboard</a>
+                        <a href="dashboard.html" class="list-group-item active"><i class="fas fa-tachometer-alt me-1"></i>Dashboard</a>
                         <div class="sparator">Management</div>
                         <a href="payment.html" class="list-group-item"><i class="fas fa-cash-register me-1"></i>Payment</a>
                         <a href="report.html" class="list-group-item"><i class="fas fa-clipboard-list me-1"></i></i>Report</a>
-                        <a href="#" class="list-group-item btn-logout btn-custom"><i class="fas fa-sign-out-alt me-1"></i></i>Logout</a> -->
+                        <a href="#" class="list-group-item btn-logout btn-custom"><i class="fas fa-sign-out-alt me-1"></i></i>Logout</a>
+
+                    <?php endif; ?>
 
                 </ul>
             </div>
@@ -75,7 +87,7 @@
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                         <li><a class="dropdown-item" href="#">Profile</a></li>
-                                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                                        <li><a class="dropdown-item" href="/logout">Logout</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -100,6 +112,7 @@
 
     <!-- ajax -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <!-- Boostrap JS -->
     <script src="<?= base_url("Vendor") ?>/bootstrap-5.0.2/js/bootstrap.bundle.js"></script>
     <script>
