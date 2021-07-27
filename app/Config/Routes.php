@@ -2,6 +2,8 @@
 
 namespace Config;
 
+use CodeIgniter\Commands\Utilities\Routes;
+
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
 
@@ -73,6 +75,9 @@ $routes->get('/koki/menu', 'Menus::index');
 $routes->post('/koki/get-menus', 'Menus::getDataMenus');
 $routes->add('/koki/updateAvailableMenu/(:any)', 'Menus::updateAvailable/$1');
 $routes->add('/koki/updateNotAvailableMenu/(:any)', 'Menus::updateNotAvailable/$1');
+$routes->add('/kasir/report', 'Report::index');
+
+$routes->get('/manageorders', 'manageorders::index');
 
 /*
  * --------------------------------------------------------------------

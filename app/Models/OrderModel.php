@@ -18,7 +18,52 @@ class OrderModel extends Model
             return $this->findAll();
         }
 
-        return $this->where('Id_Order', $id)->first();
+        return $this->where('Id_Order', $id)->findAll();
+    }
+
+    public function fetchDataOrderByDate($tgl1 = null, $tgl2 = null)
+    {
+        if (($tgl1 == false) and ($tgl2 == false)) {
+            $this->groupBy('Tanggal_Order');
+            return $this->findAll();
+        } else {
+            return $this->where("Tanggal_Order BETWEEN '$tgl1' AND '$tgl2'")
+                ->groupBy('Tanggal_Order')
+                ->findAll();
+        }
+    }
+
+    public function get_count($dt = null)
+    {
+        $this->where('Tanggal_Order', $dt);
+        return $this->countAllResults();
+    }
+
+    public function sum_price($pr = null)
+    {
+        return $this->selectSum('Total_Harga')
+            ->where('Tanggal_Order', $pr)
+            ->get()->getRowArray();
+    }
+
+    public function fetchJoinDataOrder($id = null)
+    {
+        if ($id == false) {
+            return $this->join('detail_order', 'detail_order.Id_Order = order.Id_Order')
+                ->findAll();
+        }
+
+        return $this->select('*')
+            ->selectSum('detail_order.Qty')
+            ->join('detail_order', 'detail_order.Id_Order = order.Id_Order')
+            ->where('order.Tanggal_Order', $id)
+            ->groupBy('order.Id_Order')
+            ->findAll();
+    }
+
+    public function sumAll()
+    {
+        return $this->selectSum('Total_Harga')->get()->getRowArray();;
     }
 
     public function fetchDataOrderByStatus()

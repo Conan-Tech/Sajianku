@@ -5,27 +5,34 @@
 <!-- Main Content -->
 <div class="content-heading">
     <h5>Report</h5>
-    <div class="mb-3 row">
-        <label for="inputPassword" class="col-sm-1 mt-1">Date :</label>
-        <div class="col-sm-2">
-            <input type="date" class="form-control form-control-sm" id="inputPassword">
-        </div>
-        <div class="col-sm-2">
-            <input type="date" class="form-control form-control-sm" id="inputPassword">
-        </div>
-        <div class="col-sm-2"><button class="btn btn-custom">Submit</button></div>
-        <div class="col-sm-auto ms-auto">
-            <button type="button" class="btn btn-success ms-auto"><i class="fas fa-print"></i></button>
-        </div>
+    <form action="/kasir/report" method="post">
+        <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-1 mt-1">Date :</label>
+            <div class="col-sm-2">
+                <input type="date" class="form-control form-control-sm" id="tgl1" name="tgl1">
+            </div>
+            <div class="col-sm-2">
+                <input type="date" class="form-control form-control-sm" id="tgl2" name="tgl2">
+            </div>
+            <div class="col-sm-2"><input type="submit" name="cari" class="btn btn-custom" value="Cari"></input></div>
+    </form>
+    <div class="col-sm-auto ms-auto">
+        <button type="button" class="btn btn-success ms-auto"><i class="fas fa-print"></i></button>
     </div>
+</div>
 </div>
 
 <div class=" card">
     <div class="card-header d-flex flex-row align-items-center py-3">
         <h6 class="m-0 text-custom">List Report</h6>
     </div>
+
+    <?php
+    $orderModel = new \App\Models\OrderModel();
+    ?>
+
     <div class="card-body">
-        <h2 class="d-flex justify-content-end fs-5 py-2 text-color">Total:Rp.124.480.200</h2>
+        <h2 class="d-flex justify-content-end fs-5 py-2 text-color">Total : Rp<?= $orderModel->sumAll()['Total_Harga']; ?></h2>
         <table class="table table-bordered table-hover table-responsive">
             <thead>
                 <tr class="text-center">
@@ -37,25 +44,25 @@
                 </tr>
             </thead>
             <tbody>
+                <tr>
 
-                <?php
-                $no = 1;
-                foreach ($orders as $order) :
-                ?>
+                    <?php
+                    $no = 1;
+                    foreach ($orders as $order) :
+                    ?>
 
-                    <tr>
                         <td scope="row" class="text-center"><?= $no++; ?></td>
                         <td><?= $order['Tanggal_Order']; ?></td>
-                        <td>255</td>
-                        <td><?= $order['Total_Harga']; ?></td>
+                        <td><?= $orderModel->get_count($order['Tanggal_Order']); ?></td>
+                        <td><?= $orderModel->sum_price($order['Tanggal_Order'])['Total_Harga']; ?></td>
                         <td class="text-center">
-                            <button type="button" class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#modalDetail" data-id=""><i class="far fa-eye"></i></button>
+                            <button type="button" class="btn btn-custom btn-detail" data-bs-toggle="modal" data-bs-target="#modalDetail" data-id="<?= $order['Tanggal_Order']; ?>"><i class="far fa-eye"></i></button>
                         </td>
-                    </tr>
+                </tr>
 
-                <?php
-                endforeach;
-                ?>
+            <?php
+                    endforeach;
+            ?>
 
             </tbody>
         </table>
@@ -71,7 +78,14 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Detail Report</h5>
+                <div class="row">
+                    <div class="col-12">
+                        <h5 class="modal-title" id="exampleModalLabel"><b>Detail Report</b></h5>
+                    </div>
+                    <div class="col-12">
+                        <p id="ddate"></p>
+                    </div>
+                </div>
             </div>
             <div class="modal-body">
                 <div class="card-body">
@@ -90,15 +104,7 @@
                                     <th scope="col">Total Harga</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td scope="row" class="text-center">1</td>
-                                    <td>OR-0001</td>
-                                    <td>Idris Merdefi</td>
-                                    <td class="text-center">01</td>
-                                    <td class="text-center">5</td>
-                                    <td>Rp. 65.000</td>
-                                </tr>
+                            <tbody id="tableDetail">
                             </tbody>
                         </table>
                     </div>
@@ -107,5 +113,41 @@
         </div>
     </div>
 </div>
+
+<?= $this->endSection(); ?>
+
+<?php $this->section('script') ?>
+
+<script>
+    //detail
+    $(".btn-detail").on("click", function() {
+        const id = $(this).data('id');
+
+        $.ajax({
+            url: "../Report/getDataOrder",
+            data: {
+                id: id,
+            },
+            method: "POST",
+            dataType: "json",
+            success: function(data) {
+                console.log(data);
+                $('#ddate').html("Tanggal : " + data[0].Tanggal_Order);
+                $('#tableDetail').empty();
+                for (let i = 0; i < data.length; i++) {
+                    $('#tableDetail').append('<tr>' +
+                        '<td scope="row" class="text-center">' + (i + 1) + '</td>' +
+                        '<td>' + data[i].Id_Order + '</td>' +
+                        '<td>' + data[i].Nama_Pemesan + '</td>' +
+                        '<td class="text-center">' + data[i].No_Meja + '</td>' +
+                        '<td class="text-center">' + data[i].Qty + '</td>' +
+                        '<td>' + data[i].Total_Harga + '</td>' +
+                        '</tr>');
+                }
+            },
+
+        });
+    });
+</script>
 
 <?= $this->endSection(); ?>

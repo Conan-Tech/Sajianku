@@ -36,71 +36,71 @@ class Filters extends BaseConfig
 	 *
 	 * @var array
 	 */
-	public $globals = [
-		'before' => [
-			'filteradmin' => [
-				'except' => [
-					'/',
-					'/login',
-					'logout'
-				]
-			],
+	// public $globals = [
+	// 	'before' => [
+	// 		'filteradmin' => [
+	// 			'except' => [
+	// 				'/',
+	// 				'/login',
+	// 				'logout'
+	// 			]
+	// 		],
 
-			'filterpelayan' => [
-				'except' => [
-					'/',
-					'/login',
-					'logout'
-				]
-			],
+	// 		'filterpelayan' => [
+	// 			'except' => [
+	// 				'/',
+	// 				'/login',
+	// 				'logout'
+	// 			]
+	// 		],
 
-			'filterkoki' => [
-				'except' => [
-					'/',
-					'/login',
-					'logout'
-				]
-			],
+	// 		'filterkoki' => [
+	// 			'except' => [
+	// 				'/',
+	// 				'/login',
+	// 				'logout'
+	// 			]
+	// 		],
 
-			'filterkasir' => [
-				'except' => [
-					'/',
-					'/login',
-					'logout'
-				]
-			],
-			// 'honeypot',
-			// 'csrf',
-		],
-		'after'  => [
-			'filteradmin' => [
-				'except' => [
-					'/admin/*'
-				]
-			],
+	// 		'filterkasir' => [
+	// 			'except' => [
+	// 				'/',
+	// 				'/login',
+	// 				'logout'
+	// 			]
+	// 		],
+	// 		// 'honeypot',
+	// 		// 'csrf',
+	// 	],
+	// 	'after'  => [
+	// 		'filteradmin' => [
+	// 			'except' => [
+	// 				'/admin/*'
+	// 			]
+	// 		],
 
-			'filterpelayan' => [
-				'except' => [
-					'/pelayan/*'
-				]
-			],
+	// 		'filterpelayan' => [
+	// 			'except' => [
+	// 				'/pelayan/*'
+	// 			]
+	// 		],
 
-			'filterkoki' => [
-				'except' => [
-					'/koki/*'
-				]
-			],
+	// 		'filterkoki' => [
+	// 			'except' => [
+	// 				'/koki/*'
+	// 			]
+	// 		],
 
-			'filterkasir' => [
-				'except' => [
-					'/kasir/*'
-				]
-			],
+	// 		'filterkasir' => [
+	// 			'except' => [
+	// 				'/kasir/*'
+	// 			]
+	// 		],
 
-			'toolbar',
-			// 'honeypot',
-		],
-	];
+	// 		'toolbar',
+	// 		// 'honeypot',
+	// 	],
+	// ];
 
 	/**
 	 * List of filter aliases that works on a
