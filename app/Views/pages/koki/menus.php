@@ -1,14 +1,14 @@
-<?= $this->extend('layout/koki'); ?>
+<?= $this->extend('layout/admin'); ?>
 
 <?= $this->section('content'); ?>
 
 <!-- Main Content -->
 <div class="content-heading">
-    Menu
+    <h5>Menus</h5>
 </div>
 <div class="card">
     <div class="card-header d-flex flex-row align-items-center py-3">
-        <h6 class="m-0 text-custom">Menu List</h6>
+        <h6 class="m-0 text-custom">List Of Menu</h6>
     </div>
     <div class="card-body">
         <table class="table table-bordered table-hover table-responsive">
@@ -38,9 +38,9 @@
 
                             <?php
                             if ($menu['Status_Ketersediaan'] == 0) {
-                                echo '<h6><span class="badge bg-danger py-2 px-2">Tidak Tersedia</span></h6>';
+                                echo '<h6><span class="badge bg-danger py-2 px-2 w-100">Tidak Tersedia</span></h6>';
                             } else {
-                                echo '<h6><span class="badge bg-success py-2 px-2"> Tersedia</span></h6>';
+                                echo '<h6><span class="badge bg-success py-2 px-2 w-100"> Tersedia</span></h6>';
                             }
                             ?>
 
@@ -50,11 +50,11 @@
                             <?php
                             if ($menu['Status_Ketersediaan'] == 0) {
                             ?>
-                                <a href="Menus/updateAvailable/<?= $menu['Id_Menu'] ?>" button type="button" class="btn btn-success"><i class="fas fa-check"></i></a>
+                                <a href="/koki/updateAvailableMenu/<?= $menu['Id_Menu'] ?>" button type="button" class="btn btn-success"><i class="fas fa-check"></i></a>
                             <?php
                             } else {
                             ?>
-                                <a href="Menus/updateNotAvailable/<?= $menu['Id_Menu'] ?>" button type="button" class="btn btn-danger"><i class="fas fa-times"></i></a>
+                                <a href="/koki/updateNotAvailableMenu/<?= $menu['Id_Menu'] ?>" button type="button" class="btn btn-danger px-3"><i class="fas fa-times"></i></a>
                             <?php
                             }
                             ?>
@@ -126,7 +126,7 @@
         const id = $(this).data('id');
 
         $.ajax({
-            url: "Menus/getDataMenus",
+            url: "/koki/get-menus",
             data: {
                 id: id,
             },

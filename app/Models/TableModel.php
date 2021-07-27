@@ -19,4 +19,9 @@ class TableModel extends Model
 
         return $this->where('No_Meja', $id)->first();
     }
+
+    public function fetchDataTableByStatus($status)
+    {
+        return $this->where('Status_Ketersediaan', $status)->findAll();
+    }
 }

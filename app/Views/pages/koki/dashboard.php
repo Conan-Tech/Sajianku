@@ -4,7 +4,7 @@
 
 <!-- Main Content -->
 <div class="content-heading">
-    Dashboard
+    <h5>Dashboard</h5>
 </div>
 <div class="jumbotron card">
     <div class="card-body">

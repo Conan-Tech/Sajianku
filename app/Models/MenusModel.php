@@ -24,6 +24,11 @@ class MenusModel extends Model
     public function fetchDataMenusByCategories($category)
     {
         return $this->join('kategori', 'kategori.Id_Kategori = menu.Id_Kategori')
-            ->where('Nama_Kategori', $category)->findAll();
+            ->where(['Nama_Kategori' => $category, 'Status_Ketersediaan' => 1])->findAll();
+    }
+
+    public function fetchMenuCart($data = array())
+    {
+        return $this->whereIn('Id_Menu', $data)->findAll();
     }
 }

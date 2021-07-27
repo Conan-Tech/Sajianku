@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\CategoryModel;
+use App\Models\DetailOrderModel;
 use App\Models\TableModel;
 use App\Models\EmployeeModel;
 use App\Models\ManageordersModel;
@@ -68,6 +69,7 @@ class BaseController extends Controller
 	protected $manageordersModel;
 	protected $menusModel;
 	protected $orderModel;
+	protected $detailOrderModel;
 
 	public function __construct()
 	{
@@ -77,5 +79,6 @@ class BaseController extends Controller
 		$this->manageordersModel = new ManageordersModel();
 		$this->menusModel = new MenusModel();
 		$this->orderModel = new OrderModel();
+		$this->detailOrderModel = new DetailOrderModel();
 	}
 }

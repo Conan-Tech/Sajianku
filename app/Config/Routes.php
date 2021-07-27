@@ -36,11 +36,11 @@ $routes->get('/', 'Home::index');
 $routes->post('/login', 'Auth::login');
 $routes->get('/logout', 'Auth::logout');
 
-$routes->get('/admin/category', 'Category::index');
-$routes->post('/admin/get-category', 'Category::getDataCategory');
-$routes->post('/admin/save-category', 'Category::save');
-$routes->add('/admin/delete-category/(:any)', 'Category::delete/$1');
-$routes->add('/admin/update-category/(:any)', 'Category::update/$1');
+$routes->get('/admin/employee', 'Employee::index');
+$routes->post('/admin/get-employee', 'Employee::getDataEmployee');
+$routes->post('/admin/save-employee', 'Employee::save');
+$routes->add('/admin/delete-employee/(:any)', 'Employee::delete/$1');
+$routes->add('/admin/update-employee/(:any)', 'Employee::update/$1');
 
 $routes->get('/admin/table', 'Table::index');
 $routes->post('/admin/get-table', 'Table::getDataTable');
@@ -48,15 +48,31 @@ $routes->post('/admin/save-table', 'Table::save');
 $routes->add('/admin/delete-table/(:any)', 'Table::delete/$1');
 $routes->add('/admin/update-table/(:any)', 'Table::update/$1');
 
-$routes->get('/admin/employee', 'Employee::index');
-$routes->post('/admin/get-employee', 'Employee::getDataEmployee');
-$routes->post('/admin/save-employee', 'Employee::save');
-$routes->add('/admin/delete-employee/(:any)', 'Employee::delete/$1');
-$routes->add('/admin/update-employee/(:any)', 'Employee::update/$1');
+$routes->get('/admin/category', 'Category::index');
+$routes->post('/admin/get-category', 'Category::getDataCategory');
+$routes->post('/admin/save-category', 'Category::save');
+$routes->add('/admin/delete-category/(:any)', 'Category::delete/$1');
+$routes->add('/admin/update-category/(:any)', 'Category::update/$1');
+
+$routes->get('/admin/menu', 'MenuAdmin::index');
+$routes->post('/admin/get-menu', 'MenuAdmin::getDataCategory');
+$routes->post('/admin/save-menu', 'MenuAdmin::save');
+$routes->add('/admin/delete-menu/(:any)', 'MenuAdmin::delete/$1');
+$routes->add('/admin/update-menu/(:any)', 'MenuAdmin::update/$1');
 
 $routes->get('/pelayan/order', 'Order::index');
+$routes->add('/pelayan/order-menu/(:any)/(:any)', 'Order::order_menu');
+$routes->post('/pelayan/add-cart', 'Cart::index');
+$routes->post('/pelayan/remove-item', 'Cart::remove_item');
+$routes->post('/pelayan/save-order', 'Order::save');
+$routes->post('/pelayan/set-session-qty', 'Cart::set_session');
 
-$routes->get('/manageorders', 'manageorders::index');
+$routes->get('/koki/manageorder', 'Manageorders::index');
+$routes->post('/koki/get-manageorder', 'Manageorders::getDataManageorders');
+$routes->get('/koki/menu', 'Menus::index');
+$routes->post('/koki/get-menus', 'Menus::getDataMenus');
+$routes->add('/koki/updateAvailableMenu/(:any)', 'Menus::updateAvailable/$1');
+$routes->add('/koki/updateNotAvailableMenu/(:any)', 'Menus::updateNotAvailable/$1');
 
 /*
  * --------------------------------------------------------------------

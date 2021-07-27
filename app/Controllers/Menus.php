@@ -25,7 +25,7 @@ class Menus extends BaseController
             'Status_Ketersediaan'  => 1,
         ]);
 
-        return redirect()->to('/menus');
+        return redirect()->to('/koki/menu');
     }
 
     public function updateNotAvailable($id)
@@ -34,6 +34,6 @@ class Menus extends BaseController
             'Status_Ketersediaan'  => 0,
         ]);
 
-        return redirect()->to('/menus');
+        return redirect()->to('/koki/menu');
     }
 }

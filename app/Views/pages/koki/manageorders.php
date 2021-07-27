@@ -1,10 +1,10 @@
-<?= $this->extend('layout/koki'); ?>
+<?= $this->extend('layout/admin'); ?>
 
 <?= $this->section('content'); ?>
 
 <!-- Main Content -->
 <div class="content-heading">
-    Employees
+    <h5>Employees</h5>
 </div>
 <div class="card">
     <div class="card-header d-flex flex-row align-items-center py-3">
@@ -35,13 +35,17 @@
                         <td><?= $order['Nama_Pemesan'] ?></td>
                         <td><?= $order['No_Meja'] ?></td>
                         <td>
+
                             <?php
                             if ($order['Status_Order'] == 0) :
                             ?>
+
                                 <h6><span class="badge btn-color py-2 px-2 w-100">Waiting Cook</span></h6>
+
                             <?php
                             endif;
                             ?>
+
                         </td>
                         <td class="text-center">
                             <button type="button" class="btn btn-success"><i class="fas fa-check"></i></button>
@@ -53,6 +57,10 @@
         </table>
     </div>
 </div>
+
+<?= $this->endSection(); ?>
+
+<?php $this->section('modal') ?>
 
 <!-- Modal Detail -->
 <div class="modal fade" id="modalDetail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -90,45 +98,67 @@
                                     <input type="text" readonly class="form-control-plaintext" id="toder" name="toder">
                                 </div>
                             </div>
-                            <textarea class="form-control text-color form-color" id="catatan" name="catatan" rows="9" placeholder="Catatan..."></textarea>
+                            <textarea class="form-control text-color form-color" id="catatan" name="catatan" rows="9" placeholder="Catatan..." readonly></textarea>
                         </div>
                     </div>
                     <div class="col-md-8">
                         <div class="row order">
                         </div>
                     </div>
-                    <?= $this->endSection(); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-                    <?php $this->section('script') ?>
-                    <script>
-                        //detail
-                        $(".btn-detail").on("click", function() {
-                            const id = $(this).data('id');
+<?php $this->endSection() ?>
 
-                            $.ajax({
-                                url: "Manageorders/getDataManageorders",
-                                data: {
-                                    id: id,
-                                },
-                                method: "POST",
-                                dataType: "json",
-                                success: function(data) {
-                                    console.log(data);
-                                    $('#id').val(data.Id_Order);
-                                    $('#nama').val(data.Nama_Pemesan);
-                                    $('#nome').val(data.No_Meja);
+<?php $this->section('script') ?>
+<script>
+    //detail
+    $(".btn-detail").on("click", function() {
+        const id = $(this).data('id');
 
-                                    let html = "";
-                                    let total = 0;
-                                    for (let i = 0; i < data.length; i++) {
-                                        total += data.Qty;
-                                        $('.order').html('<div class="col-md-6"> <div class="card card-detail shadow mb-3 w-100"><div class="card-body"><div class="row h-100"><div class="col-3"><img class="px-2 py-2" src="../Assets/images/spagethi.png"></div><div class="col-5 align-self-center ms-3 mt-2"><h5>' + data[i].Nama_Menu + '</h5><p><span class="text-custom">x&nbsp;</span>' + data[i].Qty + '</p> </div></div></div></div></div>');
-                                    }
-                                    $('#toder').val(total);
+        $.ajax({
+            url: "/koki/get-manageorder",
+            data: {
+                id: id,
+            },
+            method: "POST",
+            dataType: "json",
+            success: function(data) {
+                console.log(data);
+                $('#id').val(data[0].Id_Order);
+                $('#nama').val(data[0].Nama_Pemesan);
+                $('#nome').val(data[0].No_Meja);
+                $('#catatan').val(data[0].Catatan);
 
-                                },
+                let html = "";
+                let total = 0;
+                for (let i = 0; i < data.length; i++) {
+                    total += Number(data[i].Qty);
+                    html += '<div class="col-md-6"> ' +
+                        '<div class="card card-detail shadow mb-3 w-100">' +
+                        '<div class="card-body">' +
+                        '<div class="row h-100">' +
+                        '<div class="col-3">' +
+                        '<img class="px-2 py-2" src="<?= base_url('Assets') ?>/images/spagethi.png">' +
+                        '</div>' +
+                        '<div class="col-5 align-self-center ms-3 mt-2">' +
+                        '<h5>' + data[i].Nama_Menu + '</h5>' +
+                        '<p>' + '<span class="text-custom">' + 'x&nbsp;' + '</span>' + data[i].Qty + '</p>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>'
+                }
+                $('.order').html(html);
+                $('#toder').val(total);
 
-                            });
-                        });
-                    </script>
-                    <?= $this->endSection(); ?>
+            },
+
+        });
+    });
+</script>
+<?= $this->endSection(); ?>

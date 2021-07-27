@@ -39,8 +39,8 @@
 
                         <a href="dashboard.html" class="list-group-item active"><i class="fas fa-tachometer-alt me-1"></i>Dashboard</a>
                         <div class="sparator">Management</div>
-                        <a href="order.html" class="list-group-item"><i class="fas fa-users me-1"></i>Order</a>
-                        <a href="manageorder.html" class="list-group-item"><i class="fas fa-th me-1"></i>Manage Order</a>
+                        <a href="/pelayan/order" class="list-group-item"><i class="fas fa-users me-1"></i>Order</a>
+                        <a href="/pelayan/manageorder" class="list-group-item"><i class="fas fa-th me-1"></i>Manage Order</a>
                         <a href="#" class="list-group-item btn-logout btn-custom"><i class="fas fa-sign-out-alt me-1"></i></i>Logout</a>
 
                     <?php endif; ?>
@@ -49,9 +49,9 @@
 
                         <a href="dashboard.html" class="list-group-item active"><i class="fas fa-tachometer-alt me-1"></i>Dashboard</a>
                         <div class="sparator">Management</div>
-                        <a href="manageorders.html" class="list-group-item"><i class="fas fa-users me-1"></i>Manage Orders</a>
-                        <a href="menus.html" class="list-group-item"><i class="fas fa-utensils me-1"></i>Menus</a>
-                        <a href="#" class="list-group-item btn-logout btn-custom"><i class="fas fa-sign-out-alt me-1"></i></i>Logout</a>
+                        <a href="/koki/manageorder" class="list-group-item"><i class="fas fa-users me-1"></i>Manage Orders</a>
+                        <a href="/koki/menu" class="list-group-item"><i class="fas fa-utensils me-1"></i>Menus</a>
+                        <a href="/logout" class="list-group-item btn-logout btn-custom"><i class="fas fa-sign-out-alt me-1"></i></i>Logout</a>
 
                     <?php endif; ?>
 
@@ -59,8 +59,8 @@
 
                         <a href="dashboard.html" class="list-group-item active"><i class="fas fa-tachometer-alt me-1"></i>Dashboard</a>
                         <div class="sparator">Management</div>
-                        <a href="payment.html" class="list-group-item"><i class="fas fa-cash-register me-1"></i>Payment</a>
-                        <a href="report.html" class="list-group-item"><i class="fas fa-clipboard-list me-1"></i></i>Report</a>
+                        <a href="/kasir/pembayaran" class="list-group-item"><i class="fas fa-cash-register me-1"></i>Payment</a>
+                        <a href="/kasir/laporan" class="list-group-item"><i class="fas fa-clipboard-list me-1"></i></i>Report</a>
                         <a href="#" class="list-group-item btn-logout btn-custom"><i class="fas fa-sign-out-alt me-1"></i></i>Logout</a>
 
                     <?php endif; ?>
@@ -90,6 +90,15 @@
                                         <li><a class="dropdown-item" href="/logout">Logout</a></li>
                                     </ul>
                                 </li>
+
+                                <?php if (session()->get('jabatan') == 'Pelayan') : ?>
+
+                                    <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#cart">
+                                        <i class="fas fa-shopping-basket text-color"></i>
+                                    </button>
+
+                                <?php endif; ?>
+
                             </ul>
                         </div>
                     </div>
