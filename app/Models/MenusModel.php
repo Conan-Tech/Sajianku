@@ -36,4 +36,5 @@ class MenusModel extends Model
     {
         return $this->selectCount('*')->countAllResults();
     }
+    
 }

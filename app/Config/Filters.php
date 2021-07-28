@@ -97,8 +97,8 @@ class Filters extends BaseConfig
 				]
 			],
 
-			'toolbar',
-			// 'honeypot',
+	// 		'toolbar',
+	// 		// 'honeypot',
 		],
 	];
 
