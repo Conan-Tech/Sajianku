@@ -23,7 +23,6 @@ class Order extends BaseController
 
         if (!empty($_SESSION['cart'])) {
             $jumlah = count($_SESSION['cart']);
-            // dd($jumlah);
             $menu = [];
             $cart = array_values($_SESSION['cart']);
             for ($i = 0; $i < $jumlah; $i++) {
@@ -39,6 +38,34 @@ class Order extends BaseController
         }
 
         return view('pages/pelayan/order-menu', $data);
+    }
+
+    public function order_edit($id)
+    {
+        $data = [
+            'foods'     => $this->menusModel->fetchDataMenusByCategories("Makanan"),
+            'drinks'    => $this->menusModel->fetchDataMenusByCategories('Minuman'),
+            'orders'    => $this->detailOrderModel->fetchDataDetailOrderByIdOrder($id)
+        ];
+
+        if (!empty($_SESSION['cart'])) {
+            $jumlah = count($_SESSION['cart']);
+            $menu = [];
+            $cart = array_values($_SESSION['cart']);
+            for ($i = 0; $i < $jumlah; $i++) {
+                $menu[$i] = $cart[$i];
+            }
+
+
+            $data = [
+                'foods'     => $this->menusModel->fetchDataMenusByCategories("Makanan"),
+                'drinks'    => $this->menusModel->fetchDataMenusByCategories('Minuman'),
+                'orders'    => $this->detailOrderModel->fetchDataDetailOrderByIdOrder($id),
+                'carts'     => $this->menusModel->fetchMenuCart($menu)
+            ];
+        }
+
+        return view('pages/pelayan/order-edit', $data);
     }
 
     public function save()

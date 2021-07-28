@@ -1,3 +1,5 @@
+<?php $request = \Config\Services::request(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,42 +27,42 @@
 
                     <?php if (session()->get('jabatan') == 'Admin') : ?>
 
-                        <a href="dashboard.html" class="list-group-item"><i class="fas fa-tachometer-alt me-1"></i>Dashboard</a>
+                        <a href="/dashboard" class="list-group-item <?= $request->uri->getSegment(1) == 'dashboard' ? 'active' : '' ?>"><i class="fas fa-tachometer-alt me-1"></i>Dashboard</a>
                         <div class="sparator">Management</div>
-                        <a href="/admin/employee" class="list-group-item "><i class="fas fa-users me-1"></i>Employees</a>
-                        <a href="/admin/table" class="list-group-item "><i class="fas fa-th me-1"></i>Tables</a>
-                        <a href="/admin/category" class="list-group-item active"><i class="fas fa-th-list me-1"></i>Categories</a>
-                        <a href="/admin/menu" class="list-group-item"><i class="fas fa-utensils me-1"></i>Menus</a>
+                        <a href="/admin/employee" class="list-group-item <?= $request->uri->getSegment(2) == 'employee' ? 'active' : '' ?>"><i class="fas fa-users me-1"></i>Employees</a>
+                        <a href="/admin/table" class="list-group-item <?= $request->uri->getSegment(2) == 'table' ? 'active' : '' ?>"><i class="fas fa-th me-1"></i>Tables</a>
+                        <a href="/admin/category" class="list-group-item <?= $request->uri->getSegment(2) == 'category' ? 'active' : '' ?>"><i class="fas fa-th-list me-1"></i>Categories</a>
+                        <a href="/admin/menu" class="list-group-item <?= $request->uri->getSegment(2) == 'menu' ? 'active' : '' ?>"><i class="fas fa-utensils me-1"></i>Menus</a>
                         <a href="/logout" class="list-group-item btn-logout btn-custom"><i class="fas fa-sign-out-alt me-1"></i></i>Logout</a>
 
                     <?php endif; ?>
 
                     <?php if (session()->get('jabatan') == 'Pelayan') : ?>
 
-                        <a href="dashboard.html" class="list-group-item active"><i class="fas fa-tachometer-alt me-1"></i>Dashboard</a>
+                        <a href="/dashboard" class="list-group-item <?= $request->uri->getSegment(1) == 'dashboard' ? 'active' : '' ?>"><i class="fas fa-tachometer-alt me-1"></i>Dashboard</a>
                         <div class="sparator">Management</div>
-                        <a href="/pelayan/order" class="list-group-item"><i class="fas fa-users me-1"></i>Order</a>
-                        <a href="/pelayan/manageorder" class="list-group-item"><i class="fas fa-th me-1"></i>Manage Order</a>
+                        <a href="/pelayan/order" class="list-group-item <?= $request->uri->getSegment(2) == 'order' || $request->uri->getSegment(2) == 'order-menu' ? 'active' : '' ?>"><i class="fas fa-users me-1"></i>Order</a>
+                        <a href="/pelayan/manageorder" class="list-group-item <?= $request->uri->getSegment(2) == 'manageorder' || $request->uri->getSegment(2) == 'order-edit' ? 'active' : '' ?>"><i class="fas fa-th me-1"></i>Manage Order</a>
                         <a href="#" class="list-group-item btn-logout btn-custom"><i class="fas fa-sign-out-alt me-1"></i></i>Logout</a>
 
                     <?php endif; ?>
 
                     <?php if (session()->get('jabatan') == 'Koki') : ?>
 
-                        <a href="dashboard.html" class="list-group-item active"><i class="fas fa-tachometer-alt me-1"></i>Dashboard</a>
+                        <a href="/dashboard" class="list-group-item <?= $request->uri->getSegment(1) == 'dashboard' ? 'active' : '' ?>"><i class="fas fa-tachometer-alt me-1"></i>Dashboard</a>
                         <div class="sparator">Management</div>
-                        <a href="/koki/manageorder" class="list-group-item"><i class="fas fa-users me-1"></i>Manage Orders</a>
-                        <a href="/koki/menu" class="list-group-item"><i class="fas fa-utensils me-1"></i>Menus</a>
+                        <a href="/koki/manageorder" class="list-group-item <?= $request->uri->getSegment(2) == 'manageorder' ? 'active' : '' ?>"><i class="fas fa-users me-1"></i>Manage Orders</a>
+                        <a href="/koki/menu" class="list-group-item <?= $request->uri->getSegment(2) == 'menu' ? 'active' : '' ?>"><i class="fas fa-utensils me-1"></i>Menus</a>
                         <a href="/logout" class="list-group-item btn-logout btn-custom"><i class="fas fa-sign-out-alt me-1"></i></i>Logout</a>
 
                     <?php endif; ?>
 
                     <?php if (session()->get('jabatan') == 'Kasir') : ?>
 
-                        <a href="dashboard.html" class="list-group-item active"><i class="fas fa-tachometer-alt me-1"></i>Dashboard</a>
+                        <a href="/dashboard" class="list-group-item <?= $request->uri->getSegment(1) == 'dashboard' ? 'active' : '' ?>"><i class="fas fa-tachometer-alt me-1"></i>Dashboard</a>
                         <div class="sparator">Management</div>
-                        <a href="/kasir/pembayaran" class="list-group-item"><i class="fas fa-cash-register me-1"></i>Payment</a>
-                        <a href="/kasir/laporan" class="list-group-item"><i class="fas fa-clipboard-list me-1"></i></i>Report</a>
+                        <a href="/kasir/payment" class="list-group-item <?= $request->uri->getSegment(2) == 'payment' ? 'active' : '' ?>"><i class="fas fa-cash-register me-1"></i>Payment</a>
+                        <a href="/kasir/report" class="list-group-item <?= $request->uri->getSegment(1) == 'report' ? 'active' : '' ?>"><i class="fas fa-clipboard-list me-1"></i></i>Report</a>
                         <a href="#" class="list-group-item btn-logout btn-custom"><i class="fas fa-sign-out-alt me-1"></i></i>Logout</a>
 
                     <?php endif; ?>
@@ -83,7 +85,7 @@
                             <ul class="navbar-nav ms-auto">
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Hello Din &nbsp; <i class="fas fa-user-circle fa-lg"></i>
+                                        Hello <?= session()->get('nama') ?> &nbsp; <i class="fas fa-user-circle fa-lg"></i>
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                         <li><a class="dropdown-item" href="#">Profile</a></li>

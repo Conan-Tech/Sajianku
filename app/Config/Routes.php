@@ -36,6 +36,8 @@ $routes->get('/', 'Home::index');
 $routes->post('/login', 'Auth::login');
 $routes->get('/logout', 'Auth::logout');
 
+$routes->get('/dashboard', 'Dashboard::index');
+
 $routes->get('/admin/employee', 'Employee::index');
 $routes->post('/admin/get-employee', 'Employee::getDataEmployee');
 $routes->post('/admin/save-employee', 'Employee::save');
@@ -66,11 +68,15 @@ $routes->post('/pelayan/add-cart', 'Cart::index');
 $routes->post('/pelayan/remove-item', 'Cart::remove_item');
 $routes->post('/pelayan/save-order', 'Order::save');
 $routes->post('/pelayan/set-session-qty', 'Cart::set_session');
+$routes->get('/pelayan/manageorder', 'ManageOrderPelayan::index');
+$routes->post('/pelayan/get-manageorder', 'ManageOrderPelayan::getDataManageorders');
+$routes->add('/pelayan/order-edit/(:any)', 'Order::order_edit/$1');
 
 $routes->get('/koki/manageorder', 'Manageorders::index');
 $routes->post('/koki/get-manageorder', 'Manageorders::getDataManageorders');
 $routes->get('/koki/menu', 'Menus::index');
 $routes->post('/koki/get-menus', 'Menus::getDataMenus');
+$routes->add('/koki/updateReady/(:any)', 'Manageorders::updateReady/$1');
 $routes->add('/koki/updateAvailableMenu/(:any)', 'Menus::updateAvailable/$1');
 $routes->add('/koki/updateNotAvailableMenu/(:any)', 'Menus::updateNotAvailable/$1');
 

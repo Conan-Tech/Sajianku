@@ -9,22 +9,56 @@
 <div class="jumbotron card">
     <div class="card-body">
         <div class="title">
-            Hello Din,
+            Hello <?= session()->get('nama') ?>,
         </div>
         <div class="sub-title">
-            Administrator
+            <?= session()->get('jabatan') ?>
         </div>
     </div>
 </div>
-<div class="card manage-order-wrapper">
-    <div class="card manage-order">
-        <div class="info-order">
-            <div class="badge bg-badge">5</div>
-            <span class="title">Pending Transactions</span>
-            <a href="" class="btn-link ms-auto">Manage Transactions &nbsp; <i class="far fa-arrow-alt-circle-right fa-lg"></i></a>
+
+<?php if (session()->get('jabatan') == 'Pelayan') : ?>
+
+    <div class="card manage-order-wrapper">
+        <div class="card manage-order">
+            <div class="info-order">
+                <div class="badge bg-badge"><?= $complete ?></div>
+                <span class="title">Complete Orders</span>
+                <a href="/pelayan/manageorder" class="btn-link ms-auto">Manage Orders &nbsp; <i class="far fa-arrow-alt-circle-right fa-lg"></i></a>
+            </div>
         </div>
     </div>
-</div>
+
+<?php endif; ?>
+
+<?php if (session()->get('jabatan') == 'Koki') : ?>
+
+    <div class="card manage-order-wrapper">
+        <div class="card manage-order">
+            <div class="info-order">
+                <div class="badge bg-badge"><?= $new ?></div>
+                <span class="title">New Orders</span>
+                <a href="/koki/manageorder" class="btn-link ms-auto">Manage Orders &nbsp; <i class="far fa-arrow-alt-circle-right fa-lg"></i></a>
+            </div>
+        </div>
+    </div>
+
+<?php endif; ?>
+
+<?php if (session()->get('jabatan') == 'Kasir') : ?>
+
+    <div class="card manage-order-wrapper">
+        <div class="card manage-order">
+            <div class="info-order">
+                <div class="badge bg-badge"><?= $transaction ?></div>
+                <span class="title">Pending Transaction</span>
+                <a href="#" class="btn-link ms-auto">Manage Transactions &nbsp; <i class="far fa-arrow-alt-circle-right fa-lg"></i></a>
+            </div>
+        </div>
+    </div>
+
+<?php endif; ?>
+
 <div class="row info mt-5">
     <!-- Card Total Menus -->
     <div class="col-md-4 mb-4">
@@ -35,7 +69,7 @@
                         <i class="fas fa-utensils fa-2x fa-color"></i>
                     </div>
                     <div class="col mr-2">
-                        <div class="title">886</div>
+                        <div class="title"><?= $menu ?></div>
                         <div class="sub-title mb-1">Total Menus</div>
                     </div>
                 </div>
@@ -51,7 +85,7 @@
                         <i class="fas fa-clipboard-list fa-2x fa-color"></i>
                     </div>
                     <div class="col mr-2">
-                        <div class="title">886</div>
+                        <div class="title"><?= $order ?></div>
                         <div class="sub-title mb-1">Total Orders</div>
                     </div>
                 </div>
@@ -67,7 +101,7 @@
                         <i class="fas fa-coins fa-2x fa-color"></i>
                     </div>
                     <div class="col mr-2">
-                        <div class="title">Rp 500.000</div>
+                        <div class="title">Rp <?= rupiah($revenue['Total_Harga']) ?></div>
                         <div class="sub-title mb-1">Total Revenue</div>
                     </div>
                 </div>

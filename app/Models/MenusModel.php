@@ -31,4 +31,9 @@ class MenusModel extends Model
     {
         return $this->whereIn('Id_Menu', $data)->findAll();
     }
+
+    public function countMenu()
+    {
+        return $this->selectCount('*')->countAllResults();
+    }
 }

@@ -21,9 +21,10 @@ class OrderModel extends Model
         return $this->where('Id_Order', $id)->first();
     }
 
-    public function fetchDataOrderByStatus()
+    public function fetchDataOrderByStatus($status = null)
     {
-        return $this->where('Status_Order', 0)->findAll();
+        return $this->where('Status_Order', 0)
+            ->orWhere('Status_Order', $status)->findAll();
     }
 
     public function generateIdOrder()
@@ -53,5 +54,20 @@ class OrderModel extends Model
         return $this->join('detail_order', 'detail_order.Id_Order = order.Id_Order')
             ->join('menu', 'menu.Id_Menu = detail_order.Id_Menu')
             ->where('order.Id_Order', $id)->findAll();
+    }
+
+    public function countOrderByDate()
+    {
+        return $this->selectCount('*')->where('Tanggal_Order', date('Y-m-d'))->countAllResults();
+    }
+
+    public function countRevenueByDate()
+    {
+        return $this->selectSum('Total_Harga')->where('Tanggal_Order', date('Y-m-d'))->get()->getRowArray();
+    }
+
+    public function countOrderByStatus($status)
+    {
+        return $this->selectCount('*')->where('Status_Order', $status)->countAllResults();
     }
 }

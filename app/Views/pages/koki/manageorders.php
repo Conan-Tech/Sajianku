@@ -48,7 +48,7 @@
 
                         </td>
                         <td class="text-center">
-                            <button type="button" class="btn btn-success"><i class="fas fa-check"></i></button>
+                            <a href="/koki/updateReady/<?= $order['Id_Order'] ?>" class="btn btn-success"><i class="fas fa-check"></i></a>
                             <button type="button" class="btn btn-custom btn-detail" data-bs-toggle="modal" data-bs-target="#modalDetail" data-id="<?= $order['Id_Order'] ?>"><i class="far fa-eye"></i></button>
                         </td>
                     </tr>

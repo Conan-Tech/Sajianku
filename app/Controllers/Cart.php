@@ -6,8 +6,10 @@ class Cart extends BaseController
 {
     public function index()
     {
-        session()->set('meja', $_POST['meja']);
-        session()->set('pemesan', $_POST['pemesan']);
+        if (isset($_POST['meja'])) {
+            session()->set('meja', $_POST['meja']);
+            session()->set('pemesan', $_POST['pemesan']);
+        }
 
         //check if product is already in the cart
         if (!in_array($_POST['menu'], $_SESSION['cart'])) {

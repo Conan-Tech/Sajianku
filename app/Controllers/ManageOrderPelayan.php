@@ -4,18 +4,18 @@ namespace App\Controllers;
 
 use CodeIgniter\HTTP\Request;
 
-class Manageorders extends BaseController
+class ManageorderPelayan extends BaseController
 {
     public function index()
     {
         $data = [
-            'orders' => $this->manageordersModel->fetchDataManageorders(),
+            'orders' => $this->orderModel->fetchDataOrderByStatus(1),
         ];
-        return view('pages/koki/manageorders', $data);
+        return view('pages/pelayan/manageorder', $data);
     }
 
     public function getDataManageorders()
     {
-        echo json_encode($this->manageordersModel->fetchJoinManageorders($_POST['id']));
+        echo json_encode($this->orderModel->fetchOrderJoin($_POST['id']));
     }
 }

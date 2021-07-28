@@ -50,11 +50,11 @@
                             <?php
                             if ($menu['Status_Ketersediaan'] == 0) {
                             ?>
-                                <a href="/koki/updateAvailableMenu/<?= $menu['Id_Menu'] ?>" button type="button" class="btn btn-success"><i class="fas fa-check"></i></a>
+                                <a href="/koki/updateAvailableMenu/<?= $menu['Id_Menu'] ?>" class="btn btn-success"><i class="fas fa-check"></i></a>
                             <?php
                             } else {
                             ?>
-                                <a href="/koki/updateNotAvailableMenu/<?= $menu['Id_Menu'] ?>" button type="button" class="btn btn-danger px-3"><i class="fas fa-times"></i></a>
+                                <a href="/koki/updateNotAvailableMenu/<?= $menu['Id_Menu'] ?>" class="btn btn-danger px-3"><i class="fas fa-times"></i></a>
                             <?php
                             }
                             ?>

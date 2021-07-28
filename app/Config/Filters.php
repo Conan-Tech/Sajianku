@@ -75,25 +75,25 @@ class Filters extends BaseConfig
 		'after'  => [
 			'filteradmin' => [
 				'except' => [
-					'/admin/*'
+					'/admin/*', '/dashboard'
 				]
 			],
 
 			'filterpelayan' => [
 				'except' => [
-					'/pelayan/*'
+					'/pelayan/*', '/dashboard'
 				]
 			],
 
 			'filterkoki' => [
 				'except' => [
-					'/koki/*'
+					'/koki/*', '/dashboard'
 				]
 			],
 
 			'filterkasir' => [
 				'except' => [
-					'/kasir/*'
+					'/kasir/*', '/dashboard'
 				]
 			],
 
