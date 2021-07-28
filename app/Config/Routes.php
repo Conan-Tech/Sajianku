@@ -81,7 +81,9 @@ $routes->post('/koki/get-menus', 'Menus::getDataMenus');
 $routes->add('/koki/updateReady/(:any)', 'Manageorders::updateReady/$1');
 $routes->add('/koki/updateAvailableMenu/(:any)', 'Menus::updateAvailable/$1');
 $routes->add('/koki/updateNotAvailableMenu/(:any)', 'Menus::updateNotAvailable/$1');
+
 $routes->add('/kasir/report', 'Report::index');
+$routes->post('/kasir/get-data-order', 'Report::getDataOrder');
 
 $routes->get('/manageorders', 'manageorders::index');
 

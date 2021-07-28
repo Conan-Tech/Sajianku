@@ -20,9 +20,10 @@ class Report extends BaseController
 
             $data = [
                 'orders' => $this->orderModel->fetchDataOrderByDate($tgl1, $tgl2),
+                'tgl1'  => $tgl1 = $this->request->getVar('tgl1'),
+                'tgl2'  => $tgl1 = $this->request->getVar('tgl2'),
             ];
         }
-
         return view('pages/kasir/report', $data);
     }
 

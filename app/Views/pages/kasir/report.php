@@ -24,7 +24,7 @@
 
 <div class=" card">
     <div class="card-header d-flex flex-row align-items-center py-3">
-        <h6 class="m-0 text-custom">List Report</h6>
+        <h6 class="m-0 text-custom">List Report <?php if (isset($tgl1) && isset($tgl2)) : ?> (<?= $tgl1 ?> s/d <?= $tgl2 ?>) <?php endif; ?></h6>
     </div>
 
     <?php
@@ -124,7 +124,7 @@
         const id = $(this).data('id');
 
         $.ajax({
-            url: "../Report/getDataOrder",
+            url: "/kasir/get-data-order",
             data: {
                 id: id,
             },
