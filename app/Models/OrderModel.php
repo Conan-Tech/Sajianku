@@ -24,7 +24,7 @@ class OrderModel extends Model
     public function fetchDataOrderByDate($tgl1 = null, $tgl2 = null)
     {
         if (($tgl1 == false) and ($tgl2 == false)) {
-            $this->groupBy('Tanggal_Order');
+            $this->where('Status_Order', 2)->groupBy('Tanggal_Order');
             return $this->findAll();
         } else {
             return $this->where("Tanggal_Order BETWEEN '$tgl1' AND '$tgl2'")
@@ -35,7 +35,7 @@ class OrderModel extends Model
 
     public function get_count($dt = null)
     {
-        $this->where('Tanggal_Order', $dt);
+        $this->where('Tanggal_Order', $dt)->where('Status_Order', 2);
         return $this->countAllResults();
     }
 
@@ -49,7 +49,7 @@ class OrderModel extends Model
     public function fetchJoinDataOrder($id = null)
     {
         if ($id == false) {
-            return $this->join('detail_order', 'detail_order.Id_Order = order.Id_Order')
+            return $this->join('detail_order', 'detail_order.Id_Order = order.Id_Order')->where('Status_Order', 2)
                 ->findAll();
         }
 
@@ -57,6 +57,7 @@ class OrderModel extends Model
             ->selectSum('detail_order.Qty')
             ->join('detail_order', 'detail_order.Id_Order = order.Id_Order')
             ->where('order.Tanggal_Order', $id)
+            ->where('Status_Order', 2)
             ->groupBy('order.Id_Order')
             ->findAll();
     }
