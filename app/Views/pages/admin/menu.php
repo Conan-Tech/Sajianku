@@ -192,9 +192,9 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Update Employee</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Update Menu</h5>
             </div>
-            <form action="/update-menu" method="post">
+            <form action="/update-menu" enctype="multipart/form-data" method="post">
                 <div class="modal-body">
                     <div class="mb-3 row">
                         <label for="kodemenu" class="col-sm-3 col-form-label">Kode Menu</label>
@@ -227,6 +227,18 @@
                                 <?php endforeach; ?>
 
                             </select>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="sampul" class="col-sm-3 col-form-label">Upload Menu</label>
+                        <div class="col-sm-3">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="usampul" name="sampul">
+                                <div class="invalid-feedback error-sampul">
+                                    You must agree before submitting.
+                                </div>
+                                <label class="cutom-file-label" for="customFile"></label>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -347,6 +359,7 @@
                     $('#unamamenu').val(data.Nama_Menu);
                     $('#uharga').val(data.Harga);
                     $('#ukategori').val(data.Id_Kategori);
+                    $('#usampul').val(data.Photo);
                 },
 
             });
