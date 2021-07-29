@@ -21,11 +21,26 @@ class MenusModel extends Model
         return $this->where('Id_Menu', $id)->first();
     }
 
+    public function fetchJoinDataMenus($id = null)
+    {
+         if ($id == false) {
+
+            return $this->join('kategori', 'kategori.Id_Kategori = menu.Id_Kategori')->findAll();
+            
+        }
+
+        return $this->join('kategori', 'kategori.Id_Kategori = menu.Id_Kategori')
+        ->where('Id_Menu', $id)->first();
+        
+
+    }
+
     public function fetchDataMenusByCategories($category)
     {
         return $this->join('kategori', 'kategori.Id_Kategori = menu.Id_Kategori')
             ->where(['Nama_Kategori' => $category, 'Status_Ketersediaan' => 1])->findAll();
     }
+
 
     public function fetchMenuCart($data = array())
     {
@@ -36,5 +51,4 @@ class MenusModel extends Model
     {
         return $this->selectCount('*')->countAllResults();
     }
-    
 }

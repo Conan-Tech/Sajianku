@@ -71,7 +71,7 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Add Menu</h5>
             </div>
-            <form action="/admin/save-menu" method="POST" enctype="multipart/form-data" class="tambah-menu">
+            <form action="/admin/save-menu" method="POST" class="tambah-menu">
                 <div class="modal-body">
                     <div class="mb-3 row">
                         <label for="kode" class="col-sm-3 col-form-label">Kode Menu</label>
@@ -105,8 +105,13 @@
                         <div class="col-sm-4">
                             <select class="form-select" name="kategori" id="tkategori">
                                 <option selected>--Pilih Kategori--</option>
-                                <option value="Makanan">Makanan</option>
-                                <option value="Minuman">Pelayan</option>
+
+                                <?php foreach($categories as $category): ?>
+
+                                     <option value="<?= $category['Id_Kategori']?>"><?= $category['Nama_Kategori']?></option>
+
+                                <?php endforeach; ?>
+
                             </select>
                             <div class="invalid-feedback error-kategori">
                                 You must agree before submitting.
@@ -114,10 +119,10 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="status" class="col-sm-3 col-form-label">Upload Menu</label>
+                        <label for="sampul" class="col-sm-3 col-form-label">Upload Menu</label>
                         <div class="col-sm-3">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="sampul" name="sampul">
+                                <input type="file" class="custom-file-input" id="tsampul" name="sampul">
                                 <label class="cutom-file-label" for="customFile"></label>
                             </div>
                         </div>
@@ -211,8 +216,13 @@
                         <div class="col-sm-4">
                             <select class="form-select" name="kategori" id="ukategori">
                                 <option selected>--Pilih kategori--</option>
-                                <option value="Makanan">makanan</option>
-                                <option value="Minuman">Minuman</option>
+
+                                <?php foreach($categories as $category): ?>
+
+                                     <option value="<?= $category['Id_Kategori']?>"><?= $category['Nama_Kategori']?></option>
+
+                                <?php endforeach; ?>
+
                             </select>
                         </div>
                     </div>
@@ -225,7 +235,26 @@
         </div>
     </div>
 </div>
-
+<!-- Modal Hapus -->
+<div class="modal fade" id="modalHapus" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content py-3">
+            <div class="modal-body row text-center">
+                <div class="col-12 mb-4">
+                    <span class="material-icons alert-icon">
+                        error_outline
+                    </span>
+                    <h3 class="text-alert mt-3">Warning</h3>
+                    <p class="sub-text-alert">you won't to be able to revert this</p>
+                </div>
+                <div class="col-12">
+                    <button type="button" class="btn btn-secondary btn-alert me-3" data-bs-dismiss="modal">Cancel</button>
+                    <a class="btn btn-custom btn-alert btn-delete">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <?= $this->endSection(); ?>
@@ -233,32 +262,32 @@
 
 <script>
     $(document).ready(function() {
-                // insert 
+                // insert
                 $('.tambah-menu').submit(function(e) {
                     e.preventDefault();
-
+                    console.log($(this).serialize())
                     $.ajax({
                         type: "post",
                         url: $(this).attr('action'),
                         data: $(this).serialize(),
                         dataType: "json",
                         success: function(response) {
-                            console.log(response);
-                            if (response.error) {
+                            // console.log(response);
+                                if (response.error) {
                                 if (response.error.kodemenu) {
                                     $('#tkode').addClass('is-invalid');
-                                    $('.error-kode').html(response.error.kodemenu);
+                                    $('.error-kodemenu').html(response.error.kodemenu);
                                 } else {
                                     $('#tkode').removeClass('is-invalid');
-                                    $('.error-kode').html('');
+                                    $('.error-kodemenu').html('');
                                 }
 
                                 if (response.error.namamenu) {
                                     $('#tnamamenu').addClass('is-invalid');
-                                    $('.error-namamenu').html(response.error.namamenu);
+                                    $('.error-menu').html(response.error.namamenu);
                                 } else {
                                     $('#tnamamenu').removeClass('is-invalid');
-                                    $('.error-namamenu').html('');
+                                    $('.error-menu').html('');
                                 }
 
                                 if (response.error.harga) {
@@ -268,7 +297,13 @@
                                     $('#tharga').removeClass('is-invalid');
                                     $('.error-harga').html('');
                                 }
-
+                                // if (response.error.sampul) {
+                                //     $('#tsampul').addClass('is-invalid');
+                                //     $('.error-sampul').html(response.error.sampul);
+                                // } else {
+                                //     $('#tsampul').removeClass('is-invalid');
+                                //     $('.error-sampul').html('');
+                                // }
                                 if (response.error.kategori || $('#tkategori').val() == "--Pilih Kategori--") {
                                     $('#tkategori').addClass('is-invalid');
                                     $('.error-kategori').html(response.error.kategori);
@@ -283,7 +318,6 @@
                     });
                     return false;
                 });
-
                
                //update
                 $(".btn-edit").on("click", function() {
@@ -303,7 +337,7 @@
                         $('#ukodemenu').val(data.Id_Menu);
                         $('#unamamenu').val(data.Nama_Menu);
                         $('#uharga').val(data.Harga);
-                        $('#ukategoti').val(data.kateori);
+                        $('#ukategori').val(data.Id_Kategori);
                     },
 
                 });
@@ -324,13 +358,7 @@
                             $('#dkode').val(data.Id_Menu);
                             $('#dmenu').val(data.Nama_Menu);
                             $('#dharga').val(data.Harga);
-                            $('#dkategori').html(data.Id_Kategori);
-                                 if (data.Id_Kategori == 'KT-001') {
-                                $('#dkategori').html('Makanan')
-                            } else {
-                                $('#dkategori').html('Minuman')
-                            }
-
+                            $('#dkategori').val(data.Nama_Kategori);
                             $('#dstatus').html(data.Status_Ketersediaan);
                             if (data.Status_Ketersediaan == 0) {
                                 $('#dstatus').html('<span class="badge bg-danger py-2 px-2">Tidak Tersedia</span>')
