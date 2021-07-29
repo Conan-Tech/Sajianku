@@ -44,14 +44,14 @@
                     <div class="mb-1 mt-3">
                         <label for="username" class="form-label "></label>
                         <div class="input-group">
-                            <input type="text" class="form-control" id="username" placeholder="Username" name="username">
+                            <input type="text" class="form-control" id="username" placeholder="Username" name="username" required>
                             <i class="fas fa-user"></i>
                         </div>
                     </div>
                     <div class="mb-1">
                         <label for="exampleInputPassword1" class="form-label"></label>
                         <div class="input-group">
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="password" name="password">
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="password" name="password" required>
                             <i class="fas fa-lock"></i>
                         </div>
                     </div>
