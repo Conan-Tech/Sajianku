@@ -78,7 +78,7 @@ if (!isset($_SESSION['cart'])) {
                                         <div class="col-md-3">
                                             <div class="card mb-5 mx-3 shadow">
                                                 <div class="img-wrapper text-center">
-                                                    <img src="<?= base_url('Assets') ?>/images/spagethi.png" class="card-img-top w-50 py-3">
+                                                    <img src="<?= base_url('Assets') ?>/images/<?= $food['Photo'] ?>" class="card-img-top w-50 py-3">
                                                 </div>
                                                 <div class="card-body menu-body">
                                                     <h5 class="card-title"><?= $food['Nama_Menu'] ?></h5>

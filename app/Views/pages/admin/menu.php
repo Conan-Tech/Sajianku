@@ -71,12 +71,12 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Add Menu</h5>
             </div>
-            <form action="/admin/save-menu" method="POST" class="tambah-menu">
+            <form action="/admin/save-menu" enctype="multipart/form-data" method="POST" class="tambah-menu">
                 <div class="modal-body">
                     <div class="mb-3 row">
                         <label for="kode" class="col-sm-3 col-form-label">Kode Menu</label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control" id="tkode" name="kode">
+                            <input type="text" class="form-control" id="tkode" name="kode" value="<?= $id ?>" readonly>
                             <div class="invalid-feedback error-kodemenu">
                                 You must agree before submitting.
                             </div>
@@ -106,9 +106,9 @@
                             <select class="form-select" name="kategori" id="tkategori">
                                 <option selected>--Pilih Kategori--</option>
 
-                                <?php foreach($categories as $category): ?>
+                                <?php foreach ($categories as $category) : ?>
 
-                                     <option value="<?= $category['Id_Kategori']?>"><?= $category['Nama_Kategori']?></option>
+                                    <option value="<?= $category['Id_Kategori'] ?>"><?= $category['Nama_Kategori'] ?></option>
 
                                 <?php endforeach; ?>
 
@@ -123,6 +123,9 @@
                         <div class="col-sm-3">
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="tsampul" name="sampul">
+                                <div class="invalid-feedback error-sampul">
+                                    You must agree before submitting.
+                                </div>
                                 <label class="cutom-file-label" for="customFile"></label>
                             </div>
                         </div>
@@ -176,11 +179,11 @@
                     </div>
                 </div>
             </div>
-              <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            </div>
         </div>
-        </div>
-      
+
     </div>
 </div>
 
@@ -217,9 +220,9 @@
                             <select class="form-select" name="kategori" id="ukategori">
                                 <option selected>--Pilih kategori--</option>
 
-                                <?php foreach($categories as $category): ?>
+                                <?php foreach ($categories as $category) : ?>
 
-                                     <option value="<?= $category['Id_Kategori']?>"><?= $category['Nama_Kategori']?></option>
+                                    <option value="<?= $category['Id_Kategori'] ?>"><?= $category['Nama_Kategori'] ?></option>
 
                                 <?php endforeach; ?>
 
@@ -262,119 +265,125 @@
 
 <script>
     $(document).ready(function() {
-                // insert
-                $('.tambah-menu').submit(function(e) {
-                    e.preventDefault();
-                    console.log($(this).serialize())
-                    $.ajax({
-                        type: "post",
-                        url: $(this).attr('action'),
-                        data: $(this).serialize(),
-                        dataType: "json",
-                        success: function(response) {
-                            // console.log(response);
-                                if (response.error) {
-                                if (response.error.kodemenu) {
-                                    $('#tkode').addClass('is-invalid');
-                                    $('.error-kodemenu').html(response.error.kodemenu);
-                                } else {
-                                    $('#tkode').removeClass('is-invalid');
-                                    $('.error-kodemenu').html('');
-                                }
+        // insert
+        $('.tambah-menu').submit(function(e) {
+            e.preventDefault();
 
-                                if (response.error.namamenu) {
-                                    $('#tnamamenu').addClass('is-invalid');
-                                    $('.error-menu').html(response.error.namamenu);
-                                } else {
-                                    $('#tnamamenu').removeClass('is-invalid');
-                                    $('.error-menu').html('');
-                                }
+            let data = new FormData(this);
 
-                                if (response.error.harga) {
-                                    $('#tharga').addClass('is-invalid');
-                                    $('.error-harga').html(response.error.harga);
-                                } else {
-                                    $('#tharga').removeClass('is-invalid');
-                                    $('.error-harga').html('');
-                                }
-                                // if (response.error.sampul) {
-                                //     $('#tsampul').addClass('is-invalid');
-                                //     $('.error-sampul').html(response.error.sampul);
-                                // } else {
-                                //     $('#tsampul').removeClass('is-invalid');
-                                //     $('.error-sampul').html('');
-                                // }
-                                if (response.error.kategori || $('#tkategori').val() == "--Pilih Kategori--") {
-                                    $('#tkategori').addClass('is-invalid');
-                                    $('.error-kategori').html(response.error.kategori);
-                                } else {
-                                    $('#tkategori').removeClass('is-invalid');
-                                    $('.error-kategori').html('');
-                                }
-                            } else if (response.success) {
-                                location.reload();
-                            }
+            $.ajax({
+                type: "post",
+                enctype: 'multipart/form-data',
+                url: $(this).attr('action'),
+                data: data,
+                dataType: "json",
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    console.log(response);
+                    if (response.error) {
+                        if (response.error.kodemenu) {
+                            $('#tkode').addClass('is-invalid');
+                            $('.error-kodemenu').html(response.error.kodemenu);
+                        } else {
+                            $('#tkode').removeClass('is-invalid');
+                            $('.error-kodemenu').html('');
                         }
-                    });
-                    return false;
-                });
-               
-               //update
-                $(".btn-edit").on("click", function() {
-                const id = $(this).data('id');
 
-                $("form").attr("action", "/admin/update-menu/" + id);
+                        if (response.error.namamenu) {
+                            $('#tnamamenu').addClass('is-invalid');
+                            $('.error-menu').html(response.error.namamenu);
+                        } else {
+                            $('#tnamamenu').removeClass('is-invalid');
+                            $('.error-menu').html('');
+                        }
 
-                $.ajax({
-                    url: "/MenuAdmin/getDataMenus",
-                    data: {
-                        id: id,
-                    },
-                    method: "POST",
-                    dataType: "json",
-                    success: function(data) {
-                        console.log(data);
-                        $('#ukodemenu').val(data.Id_Menu);
-                        $('#unamamenu').val(data.Nama_Menu);
-                        $('#uharga').val(data.Harga);
-                        $('#ukategori').val(data.Id_Kategori);
-                    },
-
-                });
+                        if (response.error.harga) {
+                            $('#tharga').addClass('is-invalid');
+                            $('.error-harga').html(response.error.harga);
+                        } else {
+                            $('#tharga').removeClass('is-invalid');
+                            $('.error-harga').html('');
+                        }
+                        if (response.error.sampul) {
+                            $('#tsampul').addClass('is-invalid');
+                            $('.error-sampul').html(response.error.sampul);
+                        } else {
+                            $('#tsampul').removeClass('is-invalid');
+                            $('.error-sampul').html('');
+                        }
+                        if (response.error.kategori || $('#tkategori').val() == "--Pilih Kategori--") {
+                            $('#tkategori').addClass('is-invalid');
+                            $('.error-kategori').html(response.error.kategori);
+                        } else {
+                            $('#tkategori').removeClass('is-invalid');
+                            $('.error-kategori').html('');
+                        }
+                    } else if (response.success) {
+                        location.reload();
+                    }
+                }
             });
-                //detail
-                $(".btn-detail").on("click", function() {
-                    const id = $(this).data('id');
+            return false;
+        });
 
-                    $.ajax({
-                        url: "/MenuAdmin/getDataMenus",
-                        data: {
-                            id: id,
-                        },
-                        method: "POST",
-                        dataType: "json",
-                        success: function(data) {
-                            console.log(data);
-                            $('#dkode').val(data.Id_Menu);
-                            $('#dmenu').val(data.Nama_Menu);
-                            $('#dharga').val(data.Harga);
-                            $('#dkategori').val(data.Nama_Kategori);
-                            $('#dstatus').html(data.Status_Ketersediaan);
-                            if (data.Status_Ketersediaan == 0) {
-                                $('#dstatus').html('<span class="badge bg-danger py-2 px-2">Tidak Tersedia</span>')
-                            } else {
-                                $('#dstatus').html('<span class="badge bg-success py-2 px-2">Tersedia</span>')
+        //update
+        $(".btn-edit").on("click", function() {
+            const id = $(this).data('id');
 
-                            }
-                        },
+            $("form").attr("action", "/admin/update-menu/" + id);
 
-                    });
-                });
+            $.ajax({
+                url: "/MenuAdmin/getDataMenus",
+                data: {
+                    id: id,
+                },
+                method: "POST",
+                dataType: "json",
+                success: function(data) {
+                    console.log(data);
+                    $('#ukodemenu').val(data.Id_Menu);
+                    $('#unamamenu').val(data.Nama_Menu);
+                    $('#uharga').val(data.Harga);
+                    $('#ukategori').val(data.Id_Kategori);
+                },
 
-                 //delete
-                $("#modalHapus").on("show.bs.modal", function(e) {
-                $('.btn-delete').attr('href', $(e.relatedTarget).data('href'));
             });
         });
+        //detail
+        $(".btn-detail").on("click", function() {
+            const id = $(this).data('id');
+
+            $.ajax({
+                url: "/MenuAdmin/getDataMenus",
+                data: {
+                    id: id,
+                },
+                method: "POST",
+                dataType: "json",
+                success: function(data) {
+                    console.log(data);
+                    $('#dkode').val(data.Id_Menu);
+                    $('#dmenu').val(data.Nama_Menu);
+                    $('#dharga').val(data.Harga);
+                    $('#dkategori').val(data.Nama_Kategori);
+                    $('#dstatus').html(data.Status_Ketersediaan);
+                    if (data.Status_Ketersediaan == 0) {
+                        $('#dstatus').html('<span class="badge bg-danger py-2 px-2">Tidak Tersedia</span>')
+                    } else {
+                        $('#dstatus').html('<span class="badge bg-success py-2 px-2">Tersedia</span>')
+
+                    }
+                },
+
+            });
+        });
+
+        //delete
+        $("#modalHapus").on("show.bs.modal", function(e) {
+            $('.btn-delete').attr('href', $(e.relatedTarget).data('href'));
+        });
+    });
 </script>
 <?= $this->endSection(); ?>

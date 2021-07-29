@@ -7,8 +7,9 @@ class MenuAdmin extends BaseController
     public function index()
     {
         $data = [
-            'menus' => $this->menusModel->fetchDataMenus(),
-            'categories' => $this->categoryModel->fetchDataCategory()
+            'menus'         => $this->menusModel->fetchDataMenus(),
+            'categories'    => $this->categoryModel->fetchDataCategory(),
+            'id'            => $this->menusModel->generateIdMenu()
         ];
         return view('pages/admin/menu', $data);
     }
@@ -16,7 +17,6 @@ class MenuAdmin extends BaseController
     public function getDataMenus()
     {
         echo json_encode($this->menusModel->fetchJoinDataMenus($_POST['id']));
-
     }
 
 
@@ -47,7 +47,7 @@ class MenuAdmin extends BaseController
             $valid = $this->validate([
                 'kode' => [
                     'label'     => 'Kode Menu',
-                    'rules'     => 'required',
+                    'rules'     => 'required|is_unique[menu.Id_Menu]',
                     'errors'    => [
                         'required' => 'kolom {field} tidak boleh kosong',
                         'is_unique' => '{field} sudah terdaftar'
@@ -58,7 +58,6 @@ class MenuAdmin extends BaseController
                     'rules'     => 'required',
                     'errors'    => [
                         'required' => 'kolom {field} tidak boleh kosong',
-                         'is_unique' => '{field} sudah terdaftar',
                     ]
                 ],
                 'harga' => [
@@ -75,15 +74,15 @@ class MenuAdmin extends BaseController
                         'required' => 'kolom {field} tidak boleh kosong',
                     ]
                 ],
-                // 'sampul' => [
-                //     'rules' => 'uploaded[sampul]|max_size[sampul,1024]|is_image[sampul]|mime_in[sampul,image/jpg,image/jepeg,image/png]',
-                //     'errors' => [
-                //         'uploaded' => 'pilih gambar menu',
-                //         'max_size' => 'Ukuran terlalu besar',
-                //         'is_image' => 'Yang anda pilih bukan gambar',
-                //         'mine_in'  => 'Yang anda pilih bukan gambar'
-                //     ]
-                // ]
+                'sampul' => [
+                    'rules' => 'uploaded[sampul]|max_size[sampul,1024]|is_image[sampul]|mime_in[sampul,image/jpg,image/jepeg,image/png]',
+                    'errors' => [
+                        'uploaded' => 'pilih gambar menu',
+                        'max_size' => 'Ukuran terlalu besar maskismal 1 MB',
+                        'is_image' => 'Yang anda pilih bukan gambar',
+                        'mine_in'  => 'Yang anda pilih bukan gambar'
+                    ]
+                ]
             ]);
             if (!$valid) {
                 $msg = [
@@ -91,22 +90,16 @@ class MenuAdmin extends BaseController
                         'kodemenu' => $validation->getError('kode'),
                         'namamenu' => $validation->getError('namamenu'),
                         'harga'    => $validation->getError('harga'),
-                        'kategori'    => $validation->getError('kategori'),
-                        'sampul'    => $validation->getError('sampul')
+                        'kategori' => $validation->getError('kategori'),
+                        'sampul'   => $validation->getError('sampul')
                     ]
                 ];
-              
-
             } else {
-                //  //ambil gambar
-                //  $fileSampul = $this->request->getFile('sampul');
-                //  dd($fileSampul);
+                // //ambil gambar
+                $fileSampul = $this->request->getFile('sampul');
 
-                // //pindahkan file foto
-                // $fileSampul->move('Assets/images');
-
-                // // ambil nama file
-                // $namaSampul = $fileSampul->getName();
+                //buat nama file menjadi random
+                $filename = $fileSampul->getRandomName();
 
                 $this->menusModel->insert([
                     'Id_Menu' => $this->request->getVar('kode'),
@@ -114,9 +107,12 @@ class MenuAdmin extends BaseController
                     'Harga' => $this->request->getVar('harga'),
                     'Id_Kategori' => $this->request->getVar('kategori'),
                     'Status_Ketersediaan' => 1,
-                    // 'Photo' => $namaSampul
+                    'Photo' => $filename
 
                 ]);
+
+                //pindahkan file foto
+                $fileSampul->move('Assets/images', $filename);
 
                 $msg = [
                     'success' => 'Berhasil'

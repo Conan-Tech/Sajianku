@@ -21,18 +21,30 @@ class MenusModel extends Model
         return $this->where('Id_Menu', $id)->first();
     }
 
+    public function generateIdMenu()
+    {
+        $data   = $this->selectMax('Id_Menu')->get()->getRowArray();
+        $id     = $data['Id_Menu'];
+
+        $order = (int) substr($id, 3, 3);
+
+        $order++;
+
+        $alphabet = 'MN-';
+        $id = $alphabet . sprintf("%03s", $order);
+
+        return $id;
+    }
+
     public function fetchJoinDataMenus($id = null)
     {
-         if ($id == false) {
+        if ($id == false) {
 
             return $this->join('kategori', 'kategori.Id_Kategori = menu.Id_Kategori')->findAll();
-            
         }
 
         return $this->join('kategori', 'kategori.Id_Kategori = menu.Id_Kategori')
-        ->where('Id_Menu', $id)->first();
-        
-
+            ->where('Id_Menu', $id)->first();
     }
 
     public function fetchDataMenusByCategories($category)
