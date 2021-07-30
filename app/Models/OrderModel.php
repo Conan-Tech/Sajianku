@@ -28,6 +28,7 @@ class OrderModel extends Model
             return $this->findAll();
         } else {
             return $this->where("Tanggal_Order BETWEEN '$tgl1' AND '$tgl2'")
+                ->where('Status_Order', 2)
                 ->groupBy('Tanggal_Order')
                 ->findAll();
         }
@@ -109,7 +110,7 @@ class OrderModel extends Model
 
     public function countRevenueByDate()
     {
-        return $this->selectSum('Total_Harga')->where('Tanggal_Order', date('Y-m-d'))->get()->getRowArray();
+        return $this->selectSum('Total_Harga')->where(['Tanggal_Order' => date('Y-m-d'), 'Status_Order' => 2])->get()->getRowArray();
     }
 
     public function countOrderByStatus($status)
