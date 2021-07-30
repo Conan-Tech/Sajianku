@@ -106,10 +106,9 @@ class MenuAdmin extends BaseController
                     'Nama_Menu' => $this->request->getVar('namamenu'),
                     'Harga' => $this->request->getVar('harga'),
                     'Id_Kategori' => $this->request->getVar('kategori'),
-                    'Status_Ketersediaan' => 1,
                     'Photo' => $filename
-
                 ]);
+                
 
                 //pindahkan file foto
                 $fileSampul->move('Assets/images', $filename);
@@ -127,12 +126,39 @@ class MenuAdmin extends BaseController
 
     public function update($id)
     {
-        $this->menusModel->update($id, [
-            'Kode_Menu' => $this->request->getVar('kode'),
+          $datamenus = $this->menusModel->fetchDataMenus($id);
+
+          $old = $datamenus['Photo'];
+
+        if( $this->request->getFile('sampul') == ''){
+            
+
+            $this->menusModel->update($id, [
             'Nama_Menu' => $this->request->getVar('namamenu'),
             'Harga' => $this->request->getVar('harga'),
-            'Id_Kategori' => $this->request->getVar('kategori')
+            'Id_Kategori' => $this->request->getVar('kategori'),
+            'Photo' => $datamenus['Photo'],
         ]);
+        } else {
+           
+                $fileSampul = $this->request->getFile('sampul');
+
+                $filename = $fileSampul->getRandomName();
+                    $this->menusModel->update($id, [
+                    'Nama_Menu' => $this->request->getVar('namamenu'),
+                    'Harga' => $this->request->getVar('harga'),
+                    'Id_Kategori' => $this->request->getVar('kategori'),
+                    'Photo' => $filename
+                ]);
+                 //pindahkan file foto
+                $fileSampul->move('Assets/images', $filename);
+
+                $path = base_url('Assets').'/images'.$old;
+
+                $msg = [
+                    'success' => 'Berhasil'
+                ];
+        }
         return redirect()->to('/admin/menu');
     }
 
