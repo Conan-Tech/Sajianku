@@ -282,11 +282,12 @@
             e.preventDefault();
 
             let data = new FormData(this);
+            let action = "/admin/save-menu";
 
             $.ajax({
                 type: "post",
                 enctype: 'multipart/form-data',
-                url: $(this).attr('action'),
+                url: action,
                 data: data,
                 dataType: "json",
                 cache: false,
@@ -347,7 +348,7 @@
             $("form").attr("action", "/admin/update-menu/" + id);
 
             $.ajax({
-                url: "/MenuAdmin/getDataMenus",
+                url: "/admin/get-menu",
                 data: {
                     id: id,
                 },
@@ -359,7 +360,6 @@
                     $('#unamamenu').val(data.Nama_Menu);
                     $('#uharga').val(data.Harga);
                     $('#ukategori').val(data.Id_Kategori);
-                    $('#usampul').val(data.Photo);
                 },
 
             });
@@ -369,7 +369,7 @@
             const id = $(this).data('id');
 
             $.ajax({
-                url: "/MenuAdmin/getDataMenus",
+                url: "/admin/get-menu",
                 data: {
                     id: id,
                 },

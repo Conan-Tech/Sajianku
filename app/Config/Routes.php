@@ -59,7 +59,7 @@ $routes->add('/admin/delete-category/(:any)', 'Category::delete/$1');
 $routes->add('/admin/update-category/(:any)', 'Category::update/$1');
 
 $routes->get('/admin/menu', 'MenuAdmin::index');
-$routes->post('/admin/get-menu', 'MenuAdmin::getDataCategory');
+$routes->post('/admin/get-menu', 'MenuAdmin::getDataMenus');
 $routes->post('/admin/save-menu', 'MenuAdmin::save');
 $routes->add('/admin/delete-menu/(:any)', 'MenuAdmin::delete/$1');
 $routes->add('/admin/update-menu/(:any)', 'MenuAdmin::update/$1');

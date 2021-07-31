@@ -69,8 +69,8 @@ class Filters extends BaseConfig
 					'logout'
 				]
 			],
-			'honeypot',
-			'csrf',
+			// 'honeypot',
+			// 'csrf',
 		],
 		'after'  => [
 			'filteradmin' => [
@@ -97,8 +97,8 @@ class Filters extends BaseConfig
 				]
 			],
 
-	// 		'toolbar',
-	// 		// 'honeypot',
+			// 'toolbar',
+			// // 'honeypot',
 		],
 	];
 
