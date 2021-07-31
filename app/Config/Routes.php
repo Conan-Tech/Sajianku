@@ -82,8 +82,15 @@ $routes->add('/koki/updateReady/(:any)', 'Manageorders::updateReady/$1');
 $routes->add('/koki/updateAvailableMenu/(:any)', 'Menus::updateAvailable/$1');
 $routes->add('/koki/updateNotAvailableMenu/(:any)', 'Menus::updateNotAvailable/$1');
 
+// Kasir
 $routes->add('/kasir/report', 'Report::index');
 $routes->post('/kasir/get-data-order', 'Report::getDataOrder');
+$routes->add('/kasir/payment', 'Payment::index');
+// $routes->add('/kasir/process-payment/', 'Payment::processPayment/');
+$routes->add('/kasir/process-payment/(:any)', 'Payment::processPayment/$1');
+$routes->post('/kasir/save-payment', 'Payment::save');
+
+
 
 $routes->get('/manageorders', 'manageorders::index');
 

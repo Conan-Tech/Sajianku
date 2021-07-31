@@ -44,9 +44,9 @@
                             <ul class="navbar-nav ms-auto">
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Hello Din &nbsp; <i class="fas fa-user-circle fa-lg"></i>
+                                        Hello <?= session()->get('nama') ?> &nbsp; <i class="fas fa-user-circle fa-lg"></i>
                                     </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                                         <li><a class="dropdown-item" href="#">Profile</a></li>
                                         <li><a class="dropdown-item" href="#">Logout</a></li>
                                     </ul>
@@ -72,30 +72,30 @@
                                                 <label for="staticEmail" class="col-sm-4 col-form-label">Id
                                                     Order</label>
                                                 <div class="col-sm-8">
-                                                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value=": OR-0001">
+                                                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value=": <?= $payment['Id_Order'] ?>">
                                                 </div>
                                             </div>
                                             <div class="mb-3 row">
                                                 <label for="staticEmail" class="col-sm-4 col-form-label">Atas
                                                     Nama</label>
                                                 <div class="col-sm-8">
-                                                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value=": Idris Merdefi">
+                                                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value=": <?= $payment['Nama_Pemesan'] ?>">
                                                 </div>
                                             </div>
                                             <div class="mb-3 row">
                                                 <label for="staticEmail" class="col-sm-4 col-form-label">No Meja</label>
                                                 <div class="col-sm-8">
-                                                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value=": 01">
+                                                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value=": <?= $payment['No_Meja'] ?>">
                                                 </div>
                                             </div>
                                             <div class="mb-3 row">
                                                 <label for="staticEmail" class="col-sm-4 col-form-label">Total
                                                     Order</label>
                                                 <div class="col-sm-8">
-                                                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value=": 8">
+                                                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value=": <?= $qty["Qty"] ?>">
                                                 </div>
                                             </div>
-                                            <textarea class="form-control text-color form-color" id="catatan" name="catatan" rows="9" placeholder="Catatan..." readonly></textarea>
+                                            <textarea class="form-control text-color form-color" id="catatan" name="catatan" rows="9" placeholder="Catatan..." readonly><?= $payment['Catatan']; ?></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -111,132 +111,59 @@
                     <div class="col-md-5 payment">
                         <div class="card h-100">
                             <div class="card-body payment-body">
-                                <div class="card shadow mb-3">
-                                    <div class="card-body">
-                                        <div class="row h-100">
-                                            <div class="col-3">
-                                                <img class="px-2 py-2" src="../Assets/images/spagethi.png">
-                                            </div>
-                                            <div class="col-4 align-self-center ms-3">
-                                                <h5>Spagethi</h5>
-                                                <p><span class="text-custom">x&nbsp;</span>1</p>
-                                            </div>
-                                            <div class="col-auto align-self-center ms-auto mt-3">
-                                                <p class="price">Rp. 15.000</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card shadow mb-3">
-                                    <div class="card-body">
-                                        <div class="row h-100">
-                                            <div class="col-3">
-                                                <img class="px-2 py-2" src="../Assets/images/spagethi.png">
-                                            </div>
-                                            <div class="col-4 align-self-center ms-3">
-                                                <h5>Spagethi</h5>
-                                                <p><span class="text-custom">x&nbsp;</span>1</p>
-                                            </div>
-                                            <div class="col-auto align-self-center ms-auto mt-3">
-                                                <p class="price">Rp. 15.000</p>
+                                <?php foreach ($orders as $o) : ?>
+                                    <div class="card shadow mb-3">
+                                        <div class="card-body">
+                                            <div class="row h-100">
+                                                <div class="col-3">
+                                                    <img class="px-2 py-2" src="<?= base_url('Assets') ?>/images/<?= $o['Photo'] ?>">
+                                                </div>
+                                                <div class="col-4 align-self-center ms-3">
+                                                    <h5><?= $o['Nama_Menu'] ?></h5>
+                                                    <p><span class="text-custom">x&nbsp;</span><?= $o['Qty'] ?></p>
+                                                </div>
+                                                <div class="col-auto align-self-center ms-auto mt-3">
+                                                    <p class="price"><?= $o['Harga'] ?></p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="card shadow mb-3">
-                                    <div class="card-body">
-                                        <div class="row h-100">
-                                            <div class="col-3">
-                                                <img class="px-2 py-2" src="../Assets/images/spagethi.png">
-                                            </div>
-                                            <div class="col-4 align-self-center ms-3">
-                                                <h5>Spagethi</h5>
-                                                <p><span class="text-custom">x&nbsp;</span>1</p>
-                                            </div>
-                                            <div class="col-auto align-self-center ms-auto mt-3">
-                                                <p class="price">Rp. 15.000</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card shadow mb-3">
-                                    <div class="card-body">
-                                        <div class="row h-100">
-                                            <div class="col-3">
-                                                <img class="px-2 py-2" src="../Assets/images/spagethi.png">
-                                            </div>
-                                            <div class="col-4 align-self-center ms-3">
-                                                <h5>Spagethi</h5>
-                                                <p><span class="text-custom">x&nbsp;</span>1</p>
-                                            </div>
-                                            <div class="col-auto align-self-center ms-auto mt-3">
-                                                <p class="price">Rp. 15.000</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card shadow mb-3">
-                                    <div class="card-body">
-                                        <div class="row h-100">
-                                            <div class="col-3">
-                                                <img class="px-2 py-2" src="../Assets/images/spagethi.png">
-                                            </div>
-                                            <div class="col-4 align-self-center ms-3">
-                                                <h5>Spagethi</h5>
-                                                <p><span class="text-custom">x&nbsp;</span>1</p>
-                                            </div>
-                                            <div class="col-auto align-self-center ms-auto mt-3">
-                                                <p class="price">Rp. 15.000</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card shadow mb-3">
-                                    <div class="card-body">
-                                        <div class="row h-100">
-                                            <div class="col-3">
-                                                <img class="px-2 py-2" src="../Assets/images/spagethi.png">
-                                            </div>
-                                            <div class="col-4 align-self-center ms-3">
-                                                <h5>Spagethi</h5>
-                                                <p><span class="text-custom">x&nbsp;</span>1</p>
-                                            </div>
-                                            <div class="col-auto align-self-center ms-auto mt-3">
-                                                <p class="price">Rp. 15.000</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php endforeach; ?>
                             </div>
                             <div class="payment-footer">
-                                <div class="mb-3">
-                                    <textarea class="form-control" id="catatan" rows="4" placeholder="Catatan..."></textarea>
-                                </div>
-                                <div class="row mb-2">
-                                    <div class="col-md-6">
-                                        <h5 class="fw-bold">Total Harga</h5>
+                                <form action="/kasir/save-payment" method="POST">
+                                    <input type="hidden" readonly class="form-control" id="id" name="id" value="<?= $payment['Id_Order'] ?>">
+                                    <input type="hidden" name="bayar" id="bayar" value="<?= $payment['Total_Harga'] ?>">
+                                    <div class="mb-3">
+                                        <textarea class="form-control" id="catatan" rows="4" placeholder="Catatan..." readonly><?= $payment['Catatan']; ?></textarea>
                                     </div>
-                                    <div class="col-md-6 text-end">
-                                        <h5 class="fw-bold">Rp. 69.000</h5>
+                                    <div class="row mb-2">
+                                        <div class="col-md-6">
+                                            <h5 class="fw-bold">Total Harga</h5>
+                                        </div>
+                                        <div class="col-md-6 text-end">
+                                            <h5 class="total fw-bold">Rp. <?= $payment['Total_Harga'] ?></h5>
+
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row mb-2">
-                                    <div class="col-md-6">
-                                        <h5 class="fw-bold mt-1">Tunai</h5>
+                                    <div class="row mb-2">
+                                        <div class="col-md-6">
+                                            <h5 class="fw-bold mt-1">Tunai</h5>
+                                        </div>
+                                        <div class="offset-md-1 col-md-5 text-end">
+                                            <input type="number" class="form-control" id="tunai" name="tunai" required.>
+                                        </div>
                                     </div>
-                                    <div class="offset-md-1 col-md-5 text-end">
-                                        <input type="number" class="form-control" id="exampleFormControlInput1">
+                                    <div class="row mb-2">
+                                        <div class="col-md-6">
+                                            <h5 class="fw-bold">Kembalian</h5>
+                                        </div>
+                                        <div class="col-md-6 text-end">
+                                            <h5 class="kembalian fw-bold">Rp. 0</h5>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row mb-2">
-                                    <div class="col-md-6">
-                                        <h5 class="fw-bold">Kembalian</h5>
-                                    </div>
-                                    <div class="col-md-6 text-end">
-                                        <h5 class="fw-bold">Rp. 31.000</h5>
-                                    </div>
-                                </div>
-                                <button class="btn btn-custom w-100">Pay</button>
+                                    <button type="submit" class="btn btn-custom w-100">Pay</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -251,6 +178,18 @@
     <!-- Boostrap JS -->
     <script src="<?= base_url('Vendor') ?>/bootstrap-5.0.2/js/bootstrap.bundle.js"></script>
     <script>
+        // get element
+        $("#tunai").keyup(function(e) {
+            e.preventDefault;
+
+            let total = $("#bayar").val();
+            let tunai = $("#tunai").val();
+
+            let kembalian = tunai - total;
+            $(".kembalian").html("Rp. " + kembalian);
+        });
+
+
         $("#menu-toggle").on("click", function(e) {
             e.preventDefault;
 

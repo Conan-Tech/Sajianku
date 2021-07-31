@@ -21,6 +21,11 @@ class OrderModel extends Model
         return $this->where('Id_Order', $id)->findAll();
     }
 
+    public function fetchDataOrderById($id)
+    {
+        return $this->where('Id_Order', $id)->first();
+    }
+
     public function fetchDataOrderByDate($tgl1 = null, $tgl2 = null)
     {
         if (($tgl1 == false) and ($tgl2 == false)) {
@@ -72,6 +77,11 @@ class OrderModel extends Model
     {
         return $this->where('Status_Order', 0)
             ->orWhere('Status_Order', $status)->findAll();
+    }
+
+    public function fetchDataOrderByStatus1()
+    {
+        return $this->where('Status_Order', 1)->findAll();
     }
 
     public function generateIdOrder()
