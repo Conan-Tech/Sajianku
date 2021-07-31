@@ -31,7 +31,7 @@ class Pegawai extends Migration
 			],
 			'Password'	=> [
 				'type'			=> 'VARCHAR',
-				'constraint'	=> 50,
+				'constraint'	=> 255,
 				'null'			=> FALSE
 			],
 		]);

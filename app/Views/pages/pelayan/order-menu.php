@@ -8,6 +8,8 @@ $request = \Config\Services::request();
 
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = array();
+    $_SESSION['harga'] = array();
+    $_SESSION['total_harga'] = 0;
 }
 
 ?>
@@ -34,7 +36,7 @@ if (!isset($_SESSION['cart'])) {
                 <!-- Progressbar -->
                 <ul class="progressbar">
                     <li class="active">Select Table</li>
-                    <li>Select Menu</li>
+                    <li class="active">Select Menu</li>
                 </ul>
                 <!-- fieldsets -->
                 <fieldset class="set2">
@@ -83,7 +85,7 @@ if (!isset($_SESSION['cart'])) {
                                                 <div class="card-body menu-body">
                                                     <h5 class="card-title"><?= $food['Nama_Menu'] ?></h5>
                                                     <p class="card-text text-color">Rp. <?= $food['Harga'] ?></p>
-                                                    <button type="button" class="btn btn-color btn-add-cart rounded-circle text-white" data-meja="<?= $request->uri->getSegment(3) ?>" data-pemesan="<?= $request->uri->getSegment(4) ?>" data-menu="<?= $food['Id_Menu'] ?>"><i class="fas fa-plus"></i></button>
+                                                    <button type="button" class="btn btn-color btn-add-cart rounded-circle text-white" data-meja="<?= $request->uri->getSegment(3) ?>" data-pemesan="<?= $request->uri->getSegment(4) ?>" data-menu="<?= $food['Id_Menu'] ?>" data-harga="<?= $food['Harga'] ?>"><i class="fas fa-plus"></i></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -109,7 +111,7 @@ if (!isset($_SESSION['cart'])) {
                                                 <div class="card-body menu-body">
                                                     <h5 class="card-title"><?= $drink['Nama_Menu'] ?></h5>
                                                     <p class="card-text text-color"><?= $drink['Harga'] ?></p>
-                                                    <a href="#" class="btn btn-color btn-add-cart rounded-circle text-white"><i class="fas fa-plus"></i></a>
+                                                    <a href="#" class="btn btn-colorbtn-add-cart rounded-circle text-white" data-meja="<?= $request->uri->getSegment(3) ?>" data-pemesan="<?= $request->uri->getSegment(4) ?>" data-menu="<?= $food['Id_Menu'] ?>" data-harga="<?= $food['Harga'] ?>"><i class="fas fa-plus"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -149,7 +151,7 @@ if (!isset($_SESSION['cart'])) {
                     <div class="card shadow mb-3">
                         <div class="card-body">
                             <div class="cancel-btn">
-                                <button type="button" class="btn btn-remove-item text-danger" data-meja="<?= $request->uri->getSegment(3) ?>" data-pemesan="<?= $request->uri->getSegment(4) ?>" data-menu="<?= $cart['Id_Menu'] ?>">
+                                <button type="button" class="btn btn-remove-item text-danger" data-meja="<?= $request->uri->getSegment(3) ?>" data-pemesan="<?= $request->uri->getSegment(4) ?>" data-menu="<?= $cart['Id_Menu'] ?>" data-harga="<?= $cart['Harga'] ?>">
                                     <i class="far fa-times-circle fa-lg"></i>
                                 </button>
                             </div>
@@ -196,7 +198,7 @@ if (!isset($_SESSION['cart'])) {
                     <h5 class="fw-bold">Total Harga</h5>
                 </div>
                 <div class="col-md-6 text-end">
-                    <h5 class="fw-bold grand-total">Rp. 0</h5>
+                    <h5 class="fw-bold grand-total">Rp. <?= (isset($_SESSION['total_harga']) ?  $_SESSION['total_harga'] : '0') ?></h5>
                     <input type="hidden" name="grand-total" id="grand-total" value="0">
                 </div>
             </div>
@@ -215,15 +217,7 @@ if (!isset($_SESSION['cart'])) {
         let meja = $(this).data('meja');
         let pemesan = $(this).data('pemesan');
         let menu = $(this).data('menu');
-
-        let grand_total = 0.0;
-        $('.offcanvas-body > .card').each(function() {
-            let amount = Number($(this).find('#total-price').val());
-            grand_total += amount
-        });
-
-        $('.grand-total').html("Rp. " + grand_total);
-        $('#grand-total').val(grand_total);
+        let harga = $(this).data('harga');
 
         $.ajax({
             method: 'post',
@@ -231,9 +225,11 @@ if (!isset($_SESSION['cart'])) {
             data: {
                 meja: meja,
                 pemesan: pemesan,
-                menu: menu
+                menu: menu,
+                harga: harga
             },
             success: function(response) {
+                console.log(response)
                 window.location = "/pelayan/order-menu/" + meja + "/" + pemesan;
             }
         });
@@ -245,15 +241,7 @@ if (!isset($_SESSION['cart'])) {
         let meja = $(this).data('meja');
         let pemesan = $(this).data('pemesan');
         let menu = $(this).data('menu');
-
-        let grand_total = 0.0;
-        $('.offcanvas-body > .card').each(function() {
-            let amount = Number($(this).find('#total-price').val());
-            grand_total -= amount
-        });
-
-        $('.grand-total').html("Rp. " + grand_total);
-        $('#grand-total').val(grand_total);
+        let harga = $(this).data('harga');
 
         $.ajax({
             method: 'post',
@@ -261,7 +249,8 @@ if (!isset($_SESSION['cart'])) {
             data: {
                 meja: meja,
                 pemesan: pemesan,
-                menu: menu
+                menu: menu,
+                harga: harga
             },
             success: function(response) {
                 console.log(response);

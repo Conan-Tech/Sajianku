@@ -24,4 +24,9 @@ class TableModel extends Model
     {
         return $this->where('Status_Ketersediaan', $status)->findAll();
     }
+
+    public function fetchDataTableByCapacity($capacity)
+    {
+        return $this->where(['Kapasitas' => $capacity, 'Status_Ketersediaan' => 1])->findAll();
+    }
 }

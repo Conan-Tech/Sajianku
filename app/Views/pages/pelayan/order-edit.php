@@ -15,6 +15,15 @@ if (!isset($_SESSION['cart'])) {
         <h5>Order</h5>
     </div>
 
+    <?php if (isset($_SESSION['message'])) : ?>
+
+        <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+            <?= $_SESSION['message'] ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+    <?php endif; ?>
+
     <!-- Form -->
     <div class="row">
         <div class="col-12">
@@ -234,6 +243,7 @@ if (!isset($_SESSION['cart'])) {
                 menu: menu
             },
             success: function(response) {
+                console.log(response)
                 window.location = "/pelayan/order-edit/" + id;
             }
         });

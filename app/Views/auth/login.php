@@ -24,7 +24,6 @@
             </div>
             <div class="col-md-6" style="padding: 0 50px;">
                 <form action="/login" method="post">
-                    <?= csrf_field(); ?>
                     <div class="sidebar-heading text-center">
                         <h2 class="m-0 text-custom"> <img src="<?= base_url('Assets') ?>/images/logo.png" alt="logo" width="53.143px" st>Sajianku</h2>
                         Sign into your account

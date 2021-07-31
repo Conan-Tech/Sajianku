@@ -73,6 +73,7 @@ $routes->post('/pelayan/set-session-qty', 'Cart::set_session');
 $routes->get('/pelayan/manageorder', 'ManageOrderPelayan::index');
 $routes->post('/pelayan/get-manageorder', 'ManageOrderPelayan::getDataManageorders');
 $routes->add('/pelayan/order-edit/(:any)', 'Order::order_edit/$1');
+$routes->post('/pelayan/filter-meja', 'Order::filter_meja');
 
 $routes->get('/koki/manageorder', 'Manageorders::index');
 $routes->post('/koki/get-manageorder', 'Manageorders::getDataManageorders');

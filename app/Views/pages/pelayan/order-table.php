@@ -27,7 +27,7 @@
                                 <div class="row ms-auto justify-content-end">
                                     <label for="inputPasword" class="col-sm-5 col-form-label text-color text-capacity">Capacity</label>
                                     <div class="col-sm-5">
-                                        <select class="form-select form-select-sm text-color" aria-label="Default select example">
+                                        <select class="form-select form-select-sm text-color" id="filter" aria-label="Default select example">
                                             <option selected>Select Capacity</option>
                                             <option value="2">2</option>
                                             <option value="4">4</option>
@@ -39,7 +39,7 @@
                         </div>
                         <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade show active" id="nav-available" role="tabpanel" aria-labelledby="nav-available-tab">
-                                <div class="row mt-4">
+                                <div class="row mt-4 available-table">
 
                                     <?php
                                     foreach ($availableTable as $table) :
@@ -141,6 +141,37 @@
             let pemesan = $('#nama').val();
             $("form").attr("action", "/pelayan/order-menu/" + id + "/" + pemesan);
         })
+    })
+
+    $('#filter').change(function(e) {
+        e.preventDefault;
+
+        let kapasitas = $(this).val();
+
+        $.ajax({
+            method: 'post',
+            url: '/pelayan/filter-meja',
+            data: {
+                kapasitas: kapasitas
+            },
+            dataType: "json",
+            success: function(response) {
+                console.log(response)
+
+                let html = "";
+                for (let i = 0; i < response.length; i++) {
+                    html += '<div class="col-md-2">' +
+                        '<button type="button" class="btn-order btn-table-order" data-bs-toggle="modal" data-bs-target="#modalOrder" data-id="' + response[i].No_Meja + '">' +
+                        '<div class="card card-table shadow align-items-center py-4">' +
+                        '<img src="../Assets/images/table.svg" class="card-img-top table-image">' +
+                        '<span class="number">' + response[i].No_Meja + '</span>' +
+                        '</div>' +
+                        '</button>' +
+                        '</div>'
+                }
+                $('.available-table').html(html);
+            }
+        });
     })
 </script>
 

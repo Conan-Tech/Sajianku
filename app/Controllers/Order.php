@@ -33,7 +33,8 @@ class Order extends BaseController
             $data = [
                 'foods'     => $this->menusModel->fetchDataMenusByCategories("Makanan"),
                 'drinks'    => $this->menusModel->fetchDataMenusByCategories('Minuman'),
-                'carts'     => $this->menusModel->fetchMenuCart($menu)
+                'carts'     => $this->menusModel->fetchMenuCart($menu),
+                'jumlah'    => $jumlah
             ];
         }
 
@@ -61,7 +62,8 @@ class Order extends BaseController
                 'foods'     => $this->menusModel->fetchDataMenusByCategories("Makanan"),
                 'drinks'    => $this->menusModel->fetchDataMenusByCategories('Minuman'),
                 'orders'    => $this->detailOrderModel->fetchDataDetailOrderByIdOrder($id),
-                'carts'     => $this->menusModel->fetchMenuCart($menu)
+                'carts'     => $this->menusModel->fetchMenuCart($menu),
+                'jumlah'    => $jumlah
             ];
         }
 
@@ -108,5 +110,14 @@ class Order extends BaseController
         session()->removeTempdata('cart');
 
         return redirect()->to('/pelayan/order');
+    }
+
+    public function filter_meja()
+    {
+        if ($_POST['kapasitas'] == 'Select Capacity') {
+            echo json_encode($this->tableModel->fetchDataTableByStatus(1));
+        } else {
+            echo json_encode($this->tableModel->fetchDataTableByCapacity($_POST['kapasitas']));
+        }
     }
 }

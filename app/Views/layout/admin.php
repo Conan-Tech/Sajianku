@@ -95,8 +95,13 @@
 
                                 <?php if (session()->get('jabatan') == 'Pelayan') : ?>
 
-                                    <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#cart">
+                                    <button type="button" class="btn position-relative" data-bs-toggle="offcanvas" data-bs-target="#cart">
                                         <i class="fas fa-shopping-basket text-color"></i>
+                                        <?php if (!empty($_SESSION['cart'])) : ?>
+                                            <span style="top: 5px;" class="position-absolute start-100 translate-middle badge rounded-pill btn-custom">
+                                                <?= $jumlah ?>
+                                            </span>
+                                        <?php endif; ?>
                                     </button>
 
                                 <?php endif; ?>
