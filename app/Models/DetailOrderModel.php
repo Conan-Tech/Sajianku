@@ -28,6 +28,11 @@ class DetailOrderModel extends Model
             ->where('order.Id_Order', $id)->findAll();
     }
 
+    public function countQytByIdOrder($id)
+    {
+        return $this->selectSum('Qty')->where('Id_Order', $id)->get()->getRowArray();
+    }
+
     public function generateIdOrder()
     {
         $data   = $this->selectMax('Id_Detail_Order')->get()->getRowArray();

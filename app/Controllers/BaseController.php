@@ -9,6 +9,7 @@ use App\Models\EmployeeModel;
 use App\Models\ManageordersModel;
 use App\Models\MenusModel;
 use App\Models\OrderModel;
+use App\Models\PaymentModel;
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\CLIRequest;
 use CodeIgniter\HTTP\IncomingRequest;
@@ -70,6 +71,7 @@ class BaseController extends Controller
 	protected $manageordersModel;
 	protected $menusModel;
 	protected $orderModel;
+	protected $paymentModel;
 	protected $detailOrderModel;
 
 	public function __construct()
@@ -81,6 +83,7 @@ class BaseController extends Controller
 		$this->manageordersModel = new ManageordersModel();
 		$this->menusModel = new MenusModel();
 		$this->orderModel = new OrderModel();
+		$this->paymentModel = new PaymentModel();
 		$this->detailOrderModel = new DetailOrderModel();
 	}
 }
