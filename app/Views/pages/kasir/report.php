@@ -16,9 +16,9 @@
             </div>
             <div class="col-sm-2"><input type="submit" name="cari" class="btn btn-custom" value="Cari"></input></div>
     </form>
-    <div class="col-sm-auto ms-auto">
+    <!-- <div class="col-sm-auto ms-auto">
         <button type="button" class="btn btn-success ms-auto"><i class="fas fa-print"></i></button>
-    </div>
+    </div> -->
 </div>
 </div>
 
@@ -44,7 +44,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr class="align-middle">
 
                     <?php
                     $no = 1;
@@ -54,7 +54,7 @@
                         <td scope="row" class="text-center"><?= $no++; ?></td>
                         <td><?= $order['Tanggal_Order']; ?></td>
                         <td><?= $orderModel->get_count($order['Tanggal_Order']); ?></td>
-                        <td><?= $orderModel->sum_price($order['Tanggal_Order'])['Total_Harga']; ?></td>
+                        <td style="text-align: right;"><?= rupiah($orderModel->sum_price($order['Tanggal_Order'])['Total_Harga']); ?></td>
                         <td class="text-center">
                             <button type="button" class="btn btn-custom btn-detail" data-bs-toggle="modal" data-bs-target="#modalDetail" data-id="<?= $order['Tanggal_Order']; ?>"><i class="far fa-eye"></i></button>
                         </td>

@@ -48,4 +48,9 @@ class PaymentModel extends Model
     {
         return $this->where('Username', $username)->first();
     }
+
+    public function fetchKembalian($id)
+    {
+        return ($id == null) ? 0 : $this->first();
+    }
 }

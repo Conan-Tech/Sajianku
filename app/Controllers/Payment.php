@@ -31,6 +31,8 @@ class Payment extends BaseController
 
     public function save()
     {
+        $id = $this->request->getVar('id');
+
         $this->paymentModel->insert([
             "Id_Pembayaran" => $this->paymentModel->generateIdPembayaran(),
             "Tanggal_Pembayaran" => date("Y-m-d"),
@@ -45,7 +47,7 @@ class Payment extends BaseController
             "Status_Order" => 2
         ]);
 
-        return redirect()->to('kasir/payment');
+        return redirect()->to("kasir/print/$id");
     }
 
     public function print($id)
@@ -53,11 +55,12 @@ class Payment extends BaseController
         $data = [
             'payment' => $this->orderModel->fetchDataOrderById($id),
             'cashier' => $this->orderModel->getCashierName($id),
-            // 'qty' => $this->detailOrderModel->countQytByIdOrder($id),
+
+            'kembalian' => $this->paymentModel->fetchKembalian($id),
             'orders' => $this->detailOrderModel->fetchDataDetailOrderByIdOrder($id)
         ];
 
-        // dd($data['cashier']);
+        // dd($data['kembalian']);
 
         return view('pages/kasir/nota', $data);
     }

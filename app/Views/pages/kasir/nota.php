@@ -41,7 +41,6 @@
                             <tr>
                                 <td style="font-weight: bold;">Tanggal</td>
                                 <td>:<?= ($payment['Tanggal_Order']); ?></td>
-                                <!-- <td>:date_format(($payment['Tanggal_Order']), "d-m-Y H:i");</td> -->
                             </tr>
                         </table>
                     </div>
@@ -74,21 +73,26 @@
                             <div style="font-weight: bold;">Total</div>
                             <div><?= rupiah($payment["Total_Harga"]); ?></div>
                         </div>
+
                         <div class="d-flex d-column justify-content-between">
                             <div style="font-weight: bold;">Tunai</div>
-                            <div><?= rupiah(0); ?></div>
+                            <div><?= rupiah($kembalian["Tunai"]); ?></div>
                         </div>
                         <div class="d-flex d-column justify-content-between">
                             <div style="font-weight: bold;">Kembalian</div>
-                            <div><?= rupiah(0); ?></div>
+                            <div><?= rupiah($kembalian["Kembalian"]); ?></div>
                         </div>
                     </div>
                     <div class="mt-3 text-center">
                         Thank you for coming to the restaurant Sajianku
                     </div>
                 </div>
+                <div class="mt-3">
+                    <a href="/kasir/payment">Kembali ke daftar menu</a>
+                </div>
             </div>
         </div>
+
     </div>
 
 
