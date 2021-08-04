@@ -21,10 +21,10 @@
                     SajianKu
                 </div>
                 <ul class="list-group list-group-flush">
-                    <a href="dashboard.html" class="list-group-item "><i class="fas fa-tachometer-alt me-1"></i>Dashboard</a>
+                    <a href="/dashboard" class="list-group-item "><i class="fas fa-tachometer-alt me-1"></i>Dashboard</a>
                     <div class="sparator">Management</div>
-                    <a href="payment.html" class="list-group-item active"><i class="fas fa-cash-register me-1"></i></i>Payment</a>
-                    <a href="report.html" class="list-group-item"><i class="fas fa-clipboard-list me-1"></i>Report</a>
+                    <a href="/kasir/payment" class="list-group-item active"><i class="fas fa-cash-register me-1"></i></i>Payment</a>
+                    <a href="/kasir/report" class="list-group-item"><i class="fas fa-clipboard-list me-1"></i>Report</a>
                     <a href="#" class="list-group-item btn-logout btn-custom"><i class="fas fa-sign-out-alt me-1"></i></i>Logout</a>
                 </ul>
             </div>
@@ -116,14 +116,14 @@
                                         <div class="card-body">
                                             <div class="row h-100">
                                                 <div class="col-3">
-                                                    <img class="px-2 py-2" src="<?= base_url('Assets') ?>/images/<?= $o['Photo'] ?>">
+                                                    <img class="px-2 py-2" src="<?= base_url('Assets') ?>/images/<?= $o['Photo'] ?>" width="100" height="100">
                                                 </div>
                                                 <div class="col-4 align-self-center ms-3">
                                                     <h5><?= $o['Nama_Menu'] ?></h5>
                                                     <p><span class="text-custom">x&nbsp;</span><?= $o['Qty'] ?></p>
                                                 </div>
                                                 <div class="col-auto align-self-center ms-auto mt-3">
-                                                    <p class="price"><?= $o['Harga'] ?></p>
+                                                    <p class="price"><?= rupiah($o['Harga']) ?></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -151,7 +151,7 @@
                                             <h5 class="fw-bold mt-1">Tunai</h5>
                                         </div>
                                         <div class="offset-md-1 col-md-5 text-end">
-                                            <input type="number" class="form-control" id="tunai" name="tunai" required.>
+                                            <input type="number" class="form-control" id="tunai" name="tunai" required>
                                         </div>
                                     </div>
                                     <div class="row mb-2">
@@ -159,7 +159,8 @@
                                             <h5 class="fw-bold">Kembalian</h5>
                                         </div>
                                         <div class="col-md-6 text-end">
-                                            <h5 class="kembalian fw-bold">Rp. 0</h5>
+                                            <!-- <h5 class="kembalian fw-bold">Rp. 0</h5> -->
+                                            <input type="text" class="form-control kembalian text-right" id="kembalian" name="kembalian" readonly>
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-custom w-100">Pay</button>
@@ -186,7 +187,8 @@
             let tunai = $("#tunai").val();
 
             let kembalian = tunai - total;
-            $(".kembalian").html("Rp. " + kembalian);
+            // $(".kembalian").html("Rp. " + kembalian);
+            $(".kembalian").val(kembalian);
         });
 
 

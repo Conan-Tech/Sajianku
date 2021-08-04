@@ -90,6 +90,7 @@ $routes->add('/kasir/payment', 'Payment::index');
 // $routes->add('/kasir/process-payment/', 'Payment::processPayment/');
 $routes->add('/kasir/process-payment/(:any)', 'Payment::processPayment/$1');
 $routes->post('/kasir/save-payment', 'Payment::save');
+$routes->add('/kasir/print/(:any)', 'Payment::print/$1');
 
 
 

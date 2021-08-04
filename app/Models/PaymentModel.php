@@ -9,7 +9,7 @@ class PaymentModel extends Model
     protected $table      = 'pembayaran';
     protected $primaryKey = 'Id_Pembayaran';
 
-    protected $allowedFields = ['Id_Pembayaran', 'Tanggal_Pembayaran', 'Total_Bayar', 'Id_Order', 'Id_Pegawai'];
+    protected $allowedFields = ['Id_Pembayaran', 'Tanggal_Pembayaran', 'Tunai', 'Kembalian', 'Total_Bayar', 'Id_Order', 'Id_Pegawai'];
 
     public function generateIdPembayaran()
     {
