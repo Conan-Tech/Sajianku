@@ -279,7 +279,7 @@
                                 $('.error-nama').html('');
                             }
 
-                            if (response.error.jabatan) {
+                            if (response.error.jabatan || $('#tjabatan').val() == "--Pilih Jabatan--") {
                                 $('#tjabatan').addClass('is-invalid');
                                 $('.error-jabatan').html(response.error.jabatan);
                             } else {
