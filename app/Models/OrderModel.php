@@ -127,4 +127,14 @@ class OrderModel extends Model
     {
         return $this->selectCount('*')->where('Status_Order', $status)->countAllResults();
     }
+
+    public function getCashierName($id)
+    {
+        return $this->join('pegawai', 'order.Id_Pegawai = pegawai.Id_Pegawai')->where('order.Id_Order', $id)->first();
+    }
+
+    // public function getSum($id)
+    // {
+    //     return $this->
+    // }
 }

@@ -76,7 +76,7 @@
                         <a href="/dashboard" class="list-group-item <?= $request->uri->getSegment(1) == 'dashboard' ? 'active' : '' ?>"><i class="fas fa-tachometer-alt me-1"></i>Dashboard</a>
                         <div class="sparator">Management</div>
                         <a href="/kasir/payment" class="list-group-item <?= $request->uri->getSegment(2) == 'payment' ? 'active' : '' ?>"><i class="fas fa-cash-register me-1"></i>Payment</a>
-                        <a href="/kasir/report" class="list-group-item <?= $request->uri->getSegment(1) == 'report' ? 'active' : '' ?>"><i class="fas fa-clipboard-list me-1"></i></i>Report</a>
+                        <a href="/kasir/report" class="list-group-item <?= $request->uri->getSegment(2) == 'report' ? 'active' : '' ?>"><i class="fas fa-clipboard-list me-1"></i></i>Report</a>
                         <a href="#" class="list-group-item btn-logout btn-custom"><i class="fas fa-sign-out-alt me-1"></i></i>Logout</a>
 
                     <?php endif; ?>

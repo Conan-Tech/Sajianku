@@ -36,7 +36,8 @@
                         </td>
                         <td class="text-center">
                             <a href="/kasir/process-payment/<?= $p['Id_Order']; ?>" class="btn btn-success"><i class="fas fa-coins"></i></a>
-                            <button type="button" class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#modalDetail"><i class="far fa-eye"></i></button>
+                            <a href="/kasir/print/<?= $p['Id_Order']; ?>" class="btn btn-custom" target="_blank"><i class="fas fa-print"></i></a>
+                            <!-- <button type="button" class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#modalDetail"><i class="far fa-eye"></i></button> -->
                         </td>
                     </tr>
                 <?php endforeach ?>
