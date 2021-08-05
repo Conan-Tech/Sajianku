@@ -76,11 +76,11 @@
 
                         <div class="d-flex d-column justify-content-between">
                             <div style="font-weight: bold;">Tunai</div>
-                            <div><?= rupiah($kembalian["Tunai"]); ?></div>
+                            <div><?= (empty($kembalian["Tunai"])) ? "0" :  rupiah($kembalian["Tunai"]); ?></div>
                         </div>
                         <div class="d-flex d-column justify-content-between">
                             <div style="font-weight: bold;">Kembalian</div>
-                            <div><?= rupiah($kembalian["Kembalian"]); ?></div>
+                            <div><?= (empty($kembalian["Kembalian"])) ? "0" :  rupiah($kembalian["Kembalian"]); ?></div>
                         </div>
                     </div>
                     <div class="mt-3 text-center">

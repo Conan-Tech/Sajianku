@@ -47,7 +47,7 @@
                         <a href="/admin/table" class="list-group-item <?= $request->uri->getSegment(2) == 'table' ? 'active' : '' ?>"><i class="fas fa-th me-1"></i>Tables</a>
                         <a href="/admin/category" class="list-group-item <?= $request->uri->getSegment(2) == 'category' ? 'active' : '' ?>"><i class="fas fa-th-list me-1"></i>Categories</a>
                         <a href="/admin/menu" class="list-group-item <?= $request->uri->getSegment(2) == 'menu' ? 'active' : '' ?>"><i class="fas fa-utensils me-1"></i>Menus</a>
-                        <a href="/logout" class="list-group-item btn-logout btn-custom"><i class="fas fa-sign-out-alt me-1"></i></i>Logout</a>
+                        <a href="/auth/logout" class="list-group-item btn-logout btn-custom"><i class="fas fa-sign-out-alt me-1"></i></i>Logout</a>
 
                     <?php endif; ?>
 
@@ -57,7 +57,7 @@
                         <div class="sparator">Management</div>
                         <a href="/pelayan/order" class="list-group-item <?= $request->uri->getSegment(2) == 'order' || $request->uri->getSegment(2) == 'order-menu' ? 'active' : '' ?>"><i class="fas fa-users me-1"></i>Order</a>
                         <a href="/pelayan/manageorder" class="list-group-item <?= $request->uri->getSegment(2) == 'manageorder' || $request->uri->getSegment(2) == 'order-edit' ? 'active' : '' ?>"><i class="fas fa-th me-1"></i>Manage Order</a>
-                        <a href="#" class="list-group-item btn-logout btn-custom"><i class="fas fa-sign-out-alt me-1"></i></i>Logout</a>
+                        <a href="/auth/logout" class="list-group-item btn-logout btn-custom"><i class="fas fa-sign-out-alt me-1"></i></i>Logout</a>
 
                     <?php endif; ?>
 
@@ -67,7 +67,7 @@
                         <div class="sparator">Management</div>
                         <a href="/koki/manageorder" class="list-group-item <?= $request->uri->getSegment(2) == 'manageorder' ? 'active' : '' ?>"><i class="fas fa-users me-1"></i>Manage Orders</a>
                         <a href="/koki/menu" class="list-group-item <?= $request->uri->getSegment(2) == 'menu' ? 'active' : '' ?>"><i class="fas fa-utensils me-1"></i>Menus</a>
-                        <a href="/logout" class="list-group-item btn-logout btn-custom"><i class="fas fa-sign-out-alt me-1"></i></i>Logout</a>
+                        <a href="/auth/logout" class="list-group-item btn-logout btn-custom"><i class="fas fa-sign-out-alt me-1"></i></i>Logout</a>
 
                     <?php endif; ?>
 
@@ -77,7 +77,7 @@
                         <div class="sparator">Management</div>
                         <a href="/kasir/payment" class="list-group-item <?= $request->uri->getSegment(2) == 'payment' ? 'active' : '' ?>"><i class="fas fa-cash-register me-1"></i>Payment</a>
                         <a href="/kasir/report" class="list-group-item <?= $request->uri->getSegment(2) == 'report' ? 'active' : '' ?>"><i class="fas fa-clipboard-list me-1"></i></i>Report</a>
-                        <a href="#" class="list-group-item btn-logout btn-custom"><i class="fas fa-sign-out-alt me-1"></i></i>Logout</a>
+                        <a href="/auth/logout" class="list-group-item btn-logout btn-custom"><i class="fas fa-sign-out-alt me-1"></i></i>Logout</a>
 
                     <?php endif; ?>
 
@@ -102,7 +102,7 @@
                                         Hello <?= session()->get('nama') ?> &nbsp; <i class="fas fa-user-circle fa-lg"></i>
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                                        <li><a class="dropdown-item" href="/auth/logout">Logout</a></li>
                                     </ul>
                                 </li>
 

@@ -35,6 +35,6 @@ class Auth extends BaseController
         session()->remove('jabatan');
         session()->remove('username');
         session()->destroy();
-        return redirect()->to('/');
+        return redirect()->to('/auth');
     }
 }

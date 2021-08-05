@@ -308,7 +308,7 @@ img {
 
 .home__data {
   margin-top: 10%;
-  margin-left: 30%;
+  margin-left: 20%;
 }
 
 .home__food {
@@ -322,7 +322,7 @@ img {
   position: relative;
   justify-content: center;
   align-self: center;
-  margin-left: 15%;
+  margin-left: 10%;
   margin-top: -10%;
   animation: rotation 8s infinite linear;
 }
@@ -337,7 +337,7 @@ img {
 }
 
 .vector {
-  margin-top: -13.5rem;
+  margin-top: -10.5rem;
   opacity: 50%;
 }
 /*====== About ======*/
@@ -499,7 +499,7 @@ img {
   }
 
   .nav__logo {
-    margin-left: 70%;
+    margin-left: 50%;
     margin-top: 1.5rem;
     height: 56px;
     width: 70px;

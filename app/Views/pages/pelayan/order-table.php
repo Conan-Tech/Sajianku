@@ -48,7 +48,7 @@
                                         <div class="col-md-2">
                                             <button type="button" class="btn-order btn-table-order" data-bs-toggle="modal" data-bs-target="#modalOrder" data-id="<?= $table['No_Meja'] ?>">
                                                 <div class="card card-table shadow align-items-center py-4">
-                                                    <img src="../Assets/images/table.svg" class="card-img-top table-image">
+                                                    <img src="<?= base_url('Assets') ?>/images/table.svg" class="card-img-top table-image">
                                                     <span class="number"><?= $table['No_Meja'] ?></span>
                                                 </div>
                                             </button>
@@ -70,7 +70,7 @@
                                         <div class="col-md-2">
                                             <button type="button" class="btn-order btn-table-order">
                                                 <div class="card card-table shadow align-items-center py-4">
-                                                    <img src="../Assets/images/table.svg" class="card-img-top table-image">
+                                                    <img src="<?= base_url('Assets') ?>/images/table.svg" class="card-img-top table-image">
                                                     <span class="number"><?= $table['No_Meja'] ?></span>
                                                 </div>
                                             </button>

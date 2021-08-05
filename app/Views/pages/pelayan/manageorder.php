@@ -155,7 +155,7 @@
                         '<div class="card-body">' +
                         '<div class="row h-100">' +
                         '<div class="col-3">' +
-                        '<img class="px-2 py-2" src="<?= base_url('Assets') ?>/images/spagethi.png">' +
+                        '<img class="px-2 py-2" src="<?= base_url('Assets') ?>/images/' + data[i].Photo + '">' +
                         '</div>' +
                         '<div class="col-5 align-self-center ms-3 mt-2">' +
                         '<h5>' + data[i].Nama_Menu + '</h5>' +

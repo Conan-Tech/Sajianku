@@ -12,7 +12,7 @@ class FilterPelayan implements FilterInterface
     {
         if (session()->get('jabatan') == "") {
             session()->setFlashdata('error', 'Anda belum login! , silahkan login terlebih dahulu!');
-            return redirect()->to(site_url('/'));
+            return redirect()->to(site_url('/auth'));
         }
     }
 

@@ -41,6 +41,8 @@ class Filters extends BaseConfig
 			'filteradmin' => [
 				'except' => [
 					'/',
+					'/auth',
+					'/auth/*',
 					'/login',
 					'logout'
 				]
@@ -49,6 +51,8 @@ class Filters extends BaseConfig
 			'filterpelayan' => [
 				'except' => [
 					'/',
+					'/auth',
+					'/auth/*',
 					'/login',
 					'logout'
 				]
@@ -57,6 +61,8 @@ class Filters extends BaseConfig
 			'filterkoki' => [
 				'except' => [
 					'/',
+					'/auth',
+					'/auth/*',
 					'/login',
 					'logout'
 				]
@@ -65,6 +71,8 @@ class Filters extends BaseConfig
 			'filterkasir' => [
 				'except' => [
 					'/',
+					'/auth',
+					'/auth/*',
 					'/login',
 					'logout'
 				]

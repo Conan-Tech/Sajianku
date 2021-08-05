@@ -25,7 +25,7 @@
                     <div class="sparator">Management</div>
                     <a href="/kasir/payment" class="list-group-item active"><i class="fas fa-cash-register me-1"></i></i>Payment</a>
                     <a href="/kasir/report" class="list-group-item"><i class="fas fa-clipboard-list me-1"></i>Report</a>
-                    <a href="#" class="list-group-item btn-logout btn-custom"><i class="fas fa-sign-out-alt me-1"></i></i>Logout</a>
+                    <a href="/auth/logout" class="list-group-item btn-logout btn-custom"><i class="fas fa-sign-out-alt me-1"></i></i>Logout</a>
                 </ul>
             </div>
 
@@ -47,8 +47,7 @@
                                         Hello <?= session()->get('nama') ?> &nbsp; <i class="fas fa-user-circle fa-lg"></i>
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                        <li><a class="dropdown-item" href="#">Profile</a></li>
-                                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                                        <li><a class="dropdown-item" href="/auth/logout">Logout</a></li>
                                     </ul>
                                 </li>
                             </ul>
