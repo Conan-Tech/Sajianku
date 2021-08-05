@@ -11,23 +11,6 @@ class Cart extends BaseController
             session()->set('pemesan', $_POST['pemesan']);
         }
 
-        // $orders = $this->detailOrderModel->fetchDataDetailOrderByIdOrder($_POST['id']);
-        // $menu = [];
-        // foreach ($orders as $key => $order) {
-        //     $menu[$key] = $order['Id_Menu'];
-        //     array_push($_SESSION['cart'], $menu[$key]);
-        // }
-
-        // if (in_array($menu, $_SESSION['cart'])) {
-        //     $_SESSION['message'] = 'Product already in cart';
-        // }
-        // if (!in_array($menu, $_SESSION['cart'])) {
-        // }
-
-        // print_r($_POST['menu']);
-
-
-
         //check if product is already in the cart
         if (!in_array($_POST['menu'], $_SESSION['cart'])) {
             array_push($_SESSION['cart'], $_POST['menu']);
@@ -38,6 +21,40 @@ class Cart extends BaseController
             $_SESSION['message'] = 'Product added to cart';
         } else {
             $_SESSION['message'] = 'Product already in cart';
+        }
+    }
+
+    public function update_item()
+    {
+        if (isset($_POST['meja'])) {
+            session()->set('meja', $_POST['meja']);
+            session()->set('pemesan', $_POST['pemesan']);
+        }
+
+        $orders = $this->detailOrderModel->fetchDataDetailOrderByIdOrder($_POST['id']);
+        $menu = [];
+        foreach ($orders as $key => $order) {
+            $menu[$key] = $order['Id_Menu'];
+
+            if ($menu[$key] == $_POST['menu']) {
+                array_push($_SESSION['cart'], $menu[$key]);
+                if (in_array($menu[$key], $_SESSION['cart'])) {
+                    $keyCart = array_search($menu[$key], $_SESSION['cart']);
+                    unset($_SESSION['cart'][$keyCart]);
+                    $_SESSION['message'] = 'Product already in cart';
+                }
+            } else {
+                if (!in_array($_POST['menu'], $_SESSION['cart'])) {
+                    array_push($_SESSION['cart'], $_POST['menu']);
+                    array_push($_SESSION['harga'], $_POST['harga']);
+                    $keyHarga = array_search($_POST['harga'], $_SESSION['harga']);
+                    $_SESSION['total_harga'] = $_SESSION['total_harga'] + $_SESSION['harga'][$keyHarga];
+
+                    $_SESSION['message'] = 'Product added to cart';
+                } else {
+                    $_SESSION['message'] = 'Product already in cart';
+                }
+            }
         }
     }
 

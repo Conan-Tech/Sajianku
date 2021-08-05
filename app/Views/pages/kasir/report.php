@@ -33,7 +33,7 @@
 
     <div class="card-body">
         <h2 class="d-flex justify-content-end fs-5 py-2 text-color">Total : Rp<?= $orderModel->sumAll()['Total_Harga']; ?></h2>
-        <table class="table table-bordered table-hover table-responsive">
+        <table id="table-report" class="table table-bordered table-hover table-responsive">
             <thead>
                 <tr class="text-center">
                     <th scope="col">NO</th>
@@ -147,6 +147,10 @@
             },
 
         });
+    });
+
+    $(document).ready(function() {
+        $('#table-report').DataTable();
     });
 </script>
 

@@ -13,6 +13,20 @@
     <!-- font -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Data Tables -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css">
+
+    <style>
+        .page-item.active .page-link {
+            background: #fb9300;
+            border-color: #fb9300;
+        }
+
+        .page-link:focus {
+            box-shadow: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -88,7 +102,6 @@
                                         Hello <?= session()->get('nama') ?> &nbsp; <i class="fas fa-user-circle fa-lg"></i>
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <li><a class="dropdown-item" href="#">Profile</a></li>
                                         <li><a class="dropdown-item" href="/logout">Logout</a></li>
                                     </ul>
                                 </li>
@@ -131,6 +144,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <!-- Boostrap JS -->
     <script src="<?= base_url("Vendor") ?>/bootstrap-5.0.2/js/bootstrap.bundle.js"></script>
+    <!-- Data Tables -->
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
     <script>
         $("#menu-toggle").on("click", function(e) {
             e.preventDefault;

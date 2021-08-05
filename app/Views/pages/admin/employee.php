@@ -12,7 +12,7 @@
         <button class="btn btn-custom ms-auto px-4" data-bs-toggle="modal" data-bs-target="#modalAdd">Add Employee</button>
     </div>
     <div class="card-body">
-        <table class="table table-bordered table-hover table-responsive">
+        <table id="table-employee" class="table table-bordered table-hover table-responsive">
             <thead>
                 <tr class="text-center">
                     <th scope="col">NO</th>
@@ -362,6 +362,10 @@
             //delete
             $("#modalHapus").on("show.bs.modal", function(e) {
                 $('.btn-delete').attr('href', $(e.relatedTarget).data('href'));
+            });
+
+            $(document).ready(function() {
+                $('#table-employee').DataTable();
             });
         });
     </script>

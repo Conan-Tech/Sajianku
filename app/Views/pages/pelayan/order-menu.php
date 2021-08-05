@@ -106,12 +106,12 @@ if (!isset($_SESSION['cart'])) {
                                         <div class="col-md-3">
                                             <div class="card mb-5 mx-3 shadow">
                                                 <div class="img-wrapper text-center">
-                                                    <img src="../Assets/images/ice tea.png" class="card-img-top w-50 py-3">
+                                                    <img src="<?= base_url('Assets') ?>/images/<?= $drink['Photo'] ?>" class="card-img-top w-50 py-3">
                                                 </div>
                                                 <div class="card-body menu-body">
                                                     <h5 class="card-title"><?= $drink['Nama_Menu'] ?></h5>
                                                     <p class="card-text text-color"><?= $drink['Harga'] ?></p>
-                                                    <a href="#" class="btn btn-colorbtn-add-cart rounded-circle text-white" data-meja="<?= $request->uri->getSegment(3) ?>" data-pemesan="<?= $request->uri->getSegment(4) ?>" data-menu="<?= $food['Id_Menu'] ?>" data-harga="<?= $food['Harga'] ?>"><i class="fas fa-plus"></i></a>
+                                                    <button type="button" class="btn btn-color btn-add-cart rounded-circle text-white" data-meja="<?= $request->uri->getSegment(3) ?>" data-pemesan="<?= $request->uri->getSegment(4) ?>" data-menu="<?= $drink['Id_Menu'] ?>" data-harga="<?= $drink['Harga'] ?>"><i class="fas fa-plus"></i></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -157,7 +157,7 @@ if (!isset($_SESSION['cart'])) {
                             </div>
                             <div class="row h-100">
                                 <div class="col-3">
-                                    <img class="px-2 py-2" src="<?= base_url('Assets') ?>/images/spagethi.png">
+                                    <img class="px-2 py-2" src="<?= base_url('Assets') ?>/images/<?= $cart['Photo'] ?>">
                                 </div>
                                 <div class="col-4 align-self-center ms-3 container-qty">
                                     <h5><?= $cart['Nama_Menu'] ?></h5>

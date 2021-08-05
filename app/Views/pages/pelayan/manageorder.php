@@ -11,7 +11,7 @@
         <h6 class="m-0 text-custom">List Of New Orders</h6>
     </div>
     <div class="card-body">
-        <table class="table table-bordered table-hover table-responsive">
+        <table id="table-manageorder" class="table table-bordered table-hover table-responsive">
             <thead>
                 <tr class="text-center">
                     <th scope="col">NO</th>
@@ -172,6 +172,10 @@
             },
 
         });
+    });
+
+    $(document).ready(function() {
+        $('#table-manageorder').DataTable();
     });
 </script>
 <?= $this->endSection(); ?>

@@ -11,7 +11,7 @@
         <h6 class="m-0 text-custom">List Of New Orders</h6>
     </div>
     <div class="card-body">
-        <table class="table table-bordered table-hover table-responsive">
+        <table id="table-payment" class="table table-bordered table-hover table-responsive">
             <thead>
                 <tr class="text-center">
                     <th scope="col">No</th>
@@ -46,3 +46,13 @@
 </div>
 
 <?= $this->endSection(); ?>
+
+<?= $this->section('script') ?>
+
+<script>
+    $(document).ready(function() {
+        $('#table-payment').DataTable();
+    });
+</script>
+
+<?= $this->endSection() ?>

@@ -134,6 +134,7 @@
                                 <form action="/kasir/save-payment" method="POST">
                                     <input type="hidden" readonly class="form-control" id="id" name="id" value="<?= $payment['Id_Order'] ?>">
                                     <input type="hidden" name="bayar" id="bayar" value="<?= $payment['Total_Harga'] ?>">
+                                    <input type="hidden" name="meja" id="meja" value="<?= $payment['No_Meja'] ?>">
                                     <div class="mb-3">
                                         <textarea class="form-control" id="catatan" rows="4" placeholder="Catatan..." readonly><?= $payment['Catatan']; ?></textarea>
                                     </div>

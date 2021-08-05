@@ -43,6 +43,10 @@ class Payment extends BaseController
             "Status_Order" => 2
         ]);
 
+        $this->tableModel->update($this->request->getVar('meja'), [
+            "Status_Ketersediaan" => 1
+        ]);
+
         return redirect()->to('kasir/payment');
     }
 }

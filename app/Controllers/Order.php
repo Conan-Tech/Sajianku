@@ -120,4 +120,33 @@ class Order extends BaseController
             echo json_encode($this->tableModel->fetchDataTableByCapacity($_POST['kapasitas']));
         }
     }
+
+    public function update()
+    {
+        //Insert Detail Order
+        $jumlah_data = count((array) $this->request->getVar('id'));
+
+        $result = array();
+        for ($i = 0; $i < $jumlah_data; $i++) {
+            $idDetailOrder = mt_rand(1, 999);
+            $result[] = array(
+                'Id_Detail_Order'   => 'DT-' . $idDetailOrder,
+                'Qty'               => $this->request->getVar('qty')[$i],
+                'Id_Menu'           => $this->request->getVar('id')[$i],
+                'Id_Order'          => $this->request->getVar('idOrder')
+            );
+        }
+        $this->detailOrderModel->insertBatch($result);
+
+        session()->removeTempdata('cart');
+
+        return redirect()->to('/pelayan/order');
+    }
+
+    public function update_qty()
+    {
+        $this->detailOrderModel->update($_POST['detail'], [
+            'Qty'  => $_POST['qty']
+        ]);
+    }
 }

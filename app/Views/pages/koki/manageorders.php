@@ -11,7 +11,7 @@
         <h6 class="m-0 text-custom">List Of New Orders</h6>
     </div>
     <div class="card-body">
-        <table class="table table-bordered table-hover table-responsive">
+        <table id="table-manageorder" class="table table-bordered table-hover table-responsive">
             <thead>
                 <tr class="text-center">
                     <th scope="col">NO</th>
@@ -142,7 +142,7 @@
                         '<div class="card-body">' +
                         '<div class="row h-100">' +
                         '<div class="col-3">' +
-                        '<img class="px-2 py-2" src="<?= base_url('Assets') ?>/images/spagethi.png">' +
+                        '<img class="px-2 py-2" src="<?= base_url('Assets') ?>/images/' + data[i].Photo + '">' +
                         '</div>' +
                         '<div class="col-5 align-self-center ms-3 mt-2">' +
                         '<h5>' + data[i].Nama_Menu + '</h5>' +
@@ -159,6 +159,10 @@
             },
 
         });
+    });
+
+    $(document).ready(function() {
+        $('#table-manageorder').DataTable();
     });
 </script>
 <?= $this->endSection(); ?>
